@@ -1,0 +1,54 @@
+@import url("https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;600;700&display=swap");
+@import "tailwindcss";
+@import "../styles/tokens.css";
+
+:root {
+  --radius: 0.5rem;
+  --background: oklch(0.99 0.006 106);
+  --foreground: oklch(0.18 0.026 103);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.18 0.026 103);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.18 0.026 103);
+  --primary: #0760bc;
+  --primary-foreground: #ffffff;
+  --secondary: #edf4fb;
+  --secondary-foreground: #161616;
+  --muted: #f1f5f9;
+  --muted-foreground: #64748b;
+  --accent: #e7f1fb;
+  --accent-foreground: #161616;
+  --destructive: oklch(0.58 0.21 25);
+  --success: oklch(0.55 0.16 149);
+  --warning: oklch(0.72 0.16 72);
+  --border: #dbe3ec;
+  --input: #dbe3ec;
+  --ring: #0760bc;
+}
+
+* {
+  border-color: var(--border);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  background: var(--background);
+  color: var(--foreground);
+  font-family: "Google Sans";
+  overflow-x: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
