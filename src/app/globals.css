@@ -36,12 +36,44 @@ html {
 
 body {
   min-height: 100vh;
-  background: var(--background);
   color: var(--foreground);
   font-family: "Google Sans";
   overflow-x: hidden;
 }
-
+h1 {
+  font-size: 3.25rem;
+  line-height: 1.4;
+  font-weight: 700;
+}
+h2 {
+  font-size: 2.875rem;
+  line-height: 1.4;
+  font-weight: 700;
+}
+h3 {
+  font-size: 2.5rem;
+  line-height: 1.4;
+  font-weight: 700;
+}
+h4 {
+  font-size: 2.25rem;
+  line-height: 1.4;
+  font-weight: 700;
+}
+h5 {
+  font-size: 2.125rem;
+  line-height: 1.4;
+  font-weight: 700;
+}
+h6 {
+  font-size: 1.5rem;
+  line-height: 1.4;
+  font-weight: 700;
+}
+p {
+  font-size: 1rem;
+  line-height: 1.6;
+}
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

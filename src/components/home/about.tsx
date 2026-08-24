@@ -11,7 +11,7 @@ const highlightIcons = {
 export function About() {
   return (
     <section
-      className="overflow-hidden bg-white py-16 sm:py-20 lg:py-28"
+      className="overflow-hidden bg-white py-15 md:py-15 lg:py-20"
       aria-labelledby="about-title"
     >
       <div className="mx-auto max-w-[1920px] px-6 sm:px-6 lg:px-12">
