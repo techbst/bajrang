@@ -271,7 +271,7 @@ function AccountMenu({
               <span className="leading-normal">
                 <span className="block text-sm font-semibold">My Account</span>
                 <span className="text-xs text-slate-500">
-                  Login, profile and addresses
+                  Login, Profile and Addresses
                 </span>
               </span>
             </Link>
