@@ -63,6 +63,10 @@ export function Header() {
   return (
     <header
       ref={menuRef}
+      onMouseLeave={() => {
+        setOpenMenu(null);
+        setIsAccountOpen(false);
+      }}
       className="sticky top-0 z-40 border-b border-slate-200 bg-white/95 backdrop-blur-xl"
     >
       <div className="bg-secondary-foreground text-white">
@@ -223,7 +227,7 @@ function CartButton() {
     <Link
       href="/cart"
       aria-label="Cart, 0 items"
-      className="group relative flex gap-2 h-[40px] px-5 whitespace-nowrap place-items-center rounded-[10px] bg-[#0760BC] text-white transition hover:bg-secondary-foreground"
+      className="group relative flex gap-2 h-[40px] px-5 whitespace-nowrap place-items-center rounded-[10px] bg-[#0760BC] text-white transition hover:-translate-y-0.5 hover:bg-secondary-foreground hover:shadow-md active:translate-y-0"
     >
       <ShoppingCart className="size-4" /> Cart
       <span className="absolute -top-2 -right-2 grid size-5 place-items-center rounded-full bg-secondary-foreground group-hover:bg-primary text-[10px] font-bold">

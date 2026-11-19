@@ -21,9 +21,9 @@ export default function ShopByBrand() {
   const activeBrands = brands.filter((brand) => brand.vehicleType === activeVehicle.id);
 
   return (
-    <section className="py-15 md:py-15 lg:py-20 relative" aria-labelledby="shop-by-brand-title">
+    <section className="py-20 relative" aria-labelledby="shop-by-brand-title">
       <div className="mx-auto max-w-[1920px] px-6 sm:px-6 lg:px-12">
-        <Heading eyebrow={eyebrow} title={title} subtitle={subtitle} className="[&>h2]:text-3xl [&>h2]:leading-tight md:[&>h2]:text-4xl" />
+        <Heading eyebrow={eyebrow} title={title} subtitle={subtitle} />
 
         <div className="mb-7 grid max-w-2xl mx-auto overflow-hidden rounded-lg border border-border sm:grid-cols-3" role="tablist" aria-label="Vehicle type">
           {vehicleTypes.map((vehicleType, index) => {
@@ -52,7 +52,7 @@ export default function ShopByBrand() {
             <Link
               key={brand.name}
               href={brand.href}
-              className="group flex min-h-32 w-[calc(50%-8px)] flex-col rounded-[10px] border border-border bg-card pt-5 px-0 duration-300 hover:-translate-y-1 hover:border-primary/30 hover:shadow-md sm:w-[calc(33.333%-11px)] lg:w-[calc(16.666%-14px)]"
+              className="group flex min-h-32 w-[calc(50%-8px)] flex-col rounded-lg border border-border bg-card pt-5 px-0 transition-[transform,box-shadow,border-color] duration-500 ease-out hover:-translate-y-1 hover:border-primary/30 hover:shadow-[0_20px_45px_rgba(7,96,188,0.12)] sm:w-[calc(33.333%-11px)] lg:w-[calc(16.666%-14px)]"
             >
               <div className="relative mx-auto h-20 w-full max-w-26">
                 {typeof brand.logo === "string" ? (

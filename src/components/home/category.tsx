@@ -8,7 +8,7 @@ export default function Category() {
     const { eyebrow, title, subtitle, cards } = categoryData;
 
     return (
-        <section className="py-15 md:py-15 lg:py-20 bg-primary/5">
+        <section className="py-20 bg-primary/5">
             <div className="mx-auto w-full max-w-[1280px] px-5 md:px-8">
 
                 {/* Heading */}

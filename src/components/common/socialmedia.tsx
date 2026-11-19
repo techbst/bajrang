@@ -49,9 +49,6 @@ export function SocialIcons({
 }: SocialIconsProps) {
   return (
     <div className={cn("flex items-center", wrapperClassName)}>
-      <span className="font-semibold tracking-wide hidden lg:block">
-        Follow us:
-      </span>
       {socialLinks.map(({ name, href, icon: Icon }) => (
         <a
           key={name}

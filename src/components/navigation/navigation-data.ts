@@ -26,24 +26,25 @@ export const brandGroups: Record<string, BrandItem[]> = {
     ["Toyota", "toyota", "/img/brands/toyota.svg"]
   ].map(([name, slug, short]) => ({ name, slug, short })),
   motorcycle: [
-    ["Bajaj", "bajaj", "/img/brands/bajaj.svg"],
-    ["Hero", "hero", "/img/brands/hero.svg"],
-    ["Tvs", "tvs", "/img/brands/tvs.svg"],
-    ["Honda", "honda", "/img/brands/honda.svg"],
-    ["Suzuki", "suzuki", "/img/brands/suzuki.svg"],
-    ["Yahama", "yahama", "/img/brands/yahama.svg"],
-    ["Royal Enfield", "royal-enfield", "/img/brands/royal-enfield.svg"],
-    ["Piaggio", "piaggio", "/img/brands/piaggio.svg"]
+    ["Bajaj", "bajaj", "/img/brands/bike-1.webp"],
+    ["Hero", "hero", "/img/brands/bike-2.webp"],
+    ["TVS", "tvs", "/img/brands/bike-3.webp"],
+    ["Honda", "honda", "/img/brands/bike-4.webp"],
+    ["Suzuki", "suzuki", "/img/brands/bike-5.webp"],
+    ["Yamaha", "yamaha", "/img/brands/bike-6.webp"],
+    ["Royal Enfield", "royal-enfield", "/img/brands/bike-7.webp"],
+    ["Piaggio", "piaggio", "/img/brands/bike-8.webp"]
   ].map(([name, slug, short]) => ({ name, slug, short })),
   tractor: [
-    ["Mahindra", "mahindra", "/img/brands/mahindra.svg"],
-    ["Ashok Leyland", "ashok-leyland", "/img/brands/ashok-leyland.svg"],
-    ["Force", "force", "/img/brands/force.svg"],
-    ["SML ISUZU", "sml-isuzu", "/img/brands/sml-isuzu.svg"],
-    ["New Holland", "new-holland", "/img/brands/new-holland.svg"],
-    ["Tafe", "tafe", "/img/brands/tafe.svg"],
-    ["Farmtrac", "farmtrac", "/img/brands/farmtrac.svg"],
-    ["Eicher", "eicher", "/img/brands/eicher.svg"]
+    ["Tata", "tata", "/img/brands/tracktor-1.webp"],
+    ["Mahindra", "mahindra", "/img/brands/tracktor-2.webp"],
+    ["Ashok Leyland", "ashok-leyland", "/img/brands/tracktor-3.webp"],
+    ["Force", "force", "/img/brands/tracktor-4.webp"],
+    ["SML ISUZU", "sml-isuzu", "/img/brands/tracktor-5.webp"],
+    ["New Holland", "new-holland", "/img/brands/tracktor-6.webp"],
+    ["TAFE", "tafe", "/img/brands/tracktor-7.webp"],
+    ["Farmtrac", "farmtrac", "/img/brands/tracktor-8.webp"],
+    ["Eicher", "eicher", "/img/brands/tracktor-9.webp"]
   ].map(([name, slug, short]) => ({ name, slug, short }))
 };
 

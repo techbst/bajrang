@@ -1,6 +1,6 @@
 export const shopByBrandData = {
   eyebrow: "Shop By Brands",
-  title: "Find Spare Parts by Your Favourite Brands",
+  title: "OEM Brands We Deal",
   subtitle: "Explore genuine and reliable spare parts across leading automotive brands.",
   vehicleTypes: [
     { id: "four-wheeler", label: "4 Wheeler", icon: "car" },
