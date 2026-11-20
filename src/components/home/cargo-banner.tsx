@@ -25,7 +25,7 @@ export function CargoBanner() {
       />
       <div className="absolute inset-0 -z-10 bg-black/10" aria-hidden="true" />
 
-      <div className="mx-auto flex h-full max-w-[1920px] items-center px-5 py-8 sm:px-8 lg:px-12">
+      <div className="container flex h-full items-center py-8">
         <div className="w-full max-w-[540px] rounded-xl bg-[linear-gradient(153.32deg,#000000_-65.62%,rgba(0,0,0,0.09)_76.12%)] p-6 text-white shadow-[0px_4px_24px_-1px_#00234300] backdrop-blur-[50px] sm:p-8 lg:p-10">
           <h2 id="cargo-banner-title" className="text-3xl leading-[1.1] font-bold tracking-tight uppercase sm:text-4xl">
             Shipped From India to Global Markets
@@ -43,7 +43,7 @@ export function CargoBanner() {
             ))}
           </ul>
 
-          <Button asChild variant="light" className="mt-6 h-auto gap-4 px-6 py-4 text-sm font-semibold">
+          <Button asChild variant="light" className="mt-6 gap-4">
             <Link href="/contact">
               Request A Call
               <ArrowRight className="size-5" aria-hidden="true" />

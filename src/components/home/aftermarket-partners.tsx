@@ -20,9 +20,10 @@ export function AftermarketPartners() {
 
   return (
     <section className="relative py-20" aria-labelledby="aftermarket-partners-title">
-      <div className="mx-auto max-w-[1920px] px-6 sm:px-6 lg:px-12">
+      <div className="container">
         <div id="aftermarket-partners-title">
           <Heading
+            eyebrow="Partner Network"
             title={title}
             subtitle={subtitle}
           />

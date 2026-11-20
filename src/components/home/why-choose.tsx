@@ -23,7 +23,7 @@ const reasons = [
 export function WhyChoose() {
   return (
     <section className="py-20" aria-labelledby="why-choose-title">
-      <div className="mx-auto grid max-w-[1920px] items-stretch gap-10 px-6 sm:px-6 lg:grid-cols-2 lg:gap-12 lg:px-12">
+      <div className="container grid items-stretch gap-10 lg:grid-cols-2 lg:gap-12">
         <figure className="group relative aspect-[4/3] overflow-hidden rounded-md lg:aspect-auto">
           <Image
             src="/img/home/why-choose.webp"
@@ -42,6 +42,7 @@ export function WhyChoose() {
         <div>
           <div id="why-choose-title">
             <Heading
+              eyebrow="Why Choose Us"
               title="Why Businesses<br />Choose Us Globally"
               subtitle="Delivering consistency, quality, and speed—so your supply chain never slows down."
               align="left"

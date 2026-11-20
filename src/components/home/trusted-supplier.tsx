@@ -38,7 +38,7 @@ export function TrustedSupplier({ data = trustedSupplierData }: TrustedSupplierP
         <Button
           asChild
           variant="light"
-          className="mt-10 h-auto w-fit gap-5 rounded-lg px-6 py-3 text-base font-semibold sm:px-6"
+          className="mt-10 w-fit gap-5"
         >
           <Link href={data.ctaHref}>
             {data.ctaLabel}

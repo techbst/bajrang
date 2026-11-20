@@ -5,7 +5,6 @@ interface HeadingProps {
   title: string;
   subtitle?: string;
   align?: "left" | "center";
-  linePosition?: "both" | "left" | "right" | "none";
   className?: string;
 }
 
@@ -14,15 +13,8 @@ export default function Heading({
   title,
   subtitle,
   align = "center",
-  linePosition = "both",
   className = "",
 }: HeadingProps) {
-  const showLeftLine =
-    linePosition === "both" || linePosition === "left";
-
-  const showRightLine =
-    linePosition === "both" || linePosition === "right";
-
   return (
     <div
       className={`
@@ -31,31 +23,11 @@ export default function Heading({
       `}
     >
       {eyebrow && (
-        <div
-          className={`
-            flex gap-3 text-[11px] font-bold tracking-[0.24em]
-            text-primary uppercase
-            ${align === "center" ? "justify-center" : "justify-start"}
-          `}
-        >
-          <div className="flex items-center gap-3 h-6">
-
-            {showLeftLine && (
-              <span
-                className="h-px w-8 bg-[#0760BC]"
-                aria-hidden="true"
-              />
-            )}
-
+        <div className={`mb-3 flex ${align === "center" ? "justify-center" : "justify-start"}`}>
+          <div className="flex h-6 items-center gap-3 text-[11px] font-bold tracking-[0.24em] text-primary uppercase">
+            <span className="h-px w-8 bg-[#0760bc]" aria-hidden="true" />
             {eyebrow}
-
-            {showRightLine && (
-              <span
-                className="h-px w-8 bg-[#0760BC]"
-                aria-hidden="true"
-              />
-            )}
-
+            <span className="h-px w-8 bg-[#0760bc]" aria-hidden="true" />
           </div>
         </div>
       )}

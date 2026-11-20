@@ -47,8 +47,9 @@ function FlagTrack({ reverse = false, duplicate = false }: { reverse?: boolean; 
 export function CountryMarquee() {
   return (
     <section className="overflow-hidden py-20" aria-label="Countries we serve">
-      <div className="mx-auto max-w-[1920px] px-6 sm:px-6 lg:px-12">
+      <div className="container">
         <Heading
+          eyebrow="Global Reach"
           title="Trusted Across<br />36+ Countries Worldwide"
           subtitle="Connecting India to global markets with trusted spare parts solutions."
         />

@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Mail, MapPin, MessageCircle, Phone } from "lucide-react";
+import { BadgeCheck, Mail, MapPin, MessageCircle, Phone } from "lucide-react";
 import { Container } from "@/components/common/container";
 import { SocialIcons } from "@/components/common/socialmedia";
 
@@ -22,9 +22,45 @@ const policyLinks = [
   { label: "Sellers Policy", href: "/sellers-policy" },
 ];
 
+const trustPoints = [
+  {
+    title: "Genuine & Trusted Products",
+    description: "Authentic and certified spare parts to ensure reliability.",
+  },
+  {
+    title: "Global Supply Network",
+    description: "Trusted by businesses across the USA, Europe, Asia, and the Middle East.",
+  },
+  {
+    title: "Trusted by B2B Clients",
+    description: "Long-term partnerships built on trust, transparency, and consistency.",
+  },
+];
+
 export function Footer() {
   return (
     <footer className="bg-[#0066a8] text-white">
+      <section className="bg-[#171717]" aria-label="Why customers trust Bajrang Auto Parts">
+        <div className="container grid sm:grid-cols-3">
+          {trustPoints.map((point) => (
+            <div
+              key={point.title}
+              className="flex gap-4 border-b border-white/25 py-6 last:border-b-0 sm:border-r sm:border-b-0 sm:px-5 sm:py-8 sm:last:border-r-0 lg:gap-5 lg:px-10"
+            >
+              <BadgeCheck aria-hidden="true" className="mt-0.5 size-9 shrink-0 fill-white text-[#171717] sm:size-12" strokeWidth={2.5} />
+              <div>
+                <h2 className="!text-lg leading-tight font-bold text-white uppercase sm:!text-xl ">
+                  {point.title}
+                </h2>
+                <p className="mt-2 max-w-md text-sm leading-6 text-white/90 sm:text-base sm:leading-7">
+                  {point.description}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
       <Container className="grid gap-x-10 gap-y-12 py-12 sm:grid-cols-2 lg:grid-cols-[1.25fr_1.25fr_0.9fr_0.9fr] lg:gap-x-12 lg:py-16">
         <div>
           <Link href="/" aria-label="Bajrang Auto Parts home" className="inline-block">

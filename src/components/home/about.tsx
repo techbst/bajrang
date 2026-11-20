@@ -14,7 +14,7 @@ export function About() {
       className="overflow-hidden bg-white py-20"
       aria-labelledby="about-title"
     >
-      <div className="mx-auto max-w-[1920px] px-6 sm:px-6 lg:px-12">
+      <div className="container">
         <AboutReveal>
           <header className="grid grid-cols-[4fr_8fr]">
             <div className="flex gap-3 text-[11px] font-bold tracking-[0.24em] text-primary uppercase">

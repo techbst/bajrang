@@ -9,7 +9,7 @@ export default function Category() {
 
     return (
         <section className="py-20 bg-primary/5">
-            <div className="mx-auto w-full max-w-[1280px] px-5 md:px-8">
+            <div className="container container-narrow">
 
                 {/* Heading */}
                 <Heading

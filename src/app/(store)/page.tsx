@@ -8,6 +8,11 @@ import { WhyChoose } from "@/components/home/why-choose";
 import { CountryMarquee } from "@/components/home/country-marquee";
 import { CargoBanner } from "@/components/home/cargo-banner";
 import { ExportProcess } from "@/components/home/export-process";
+import { Operations } from "@/components/home/operations";
+import { Certifications } from "@/components/home/certifications";
+import { ContactCta } from "@/components/home/contact-cta";
+import { Testimonials } from "@/components/home/testimonials";
+import { QuoteRequest } from "@/components/home/quote-request";
 
 export default function HomePage() {
   return (
@@ -22,6 +27,11 @@ export default function HomePage() {
       <CountryMarquee />
       <CargoBanner />
       <ExportProcess />
+      <Operations />
+      <Certifications />
+      <ContactCta />
+      <Testimonials />
+      <QuoteRequest />
     </>
   );
 }

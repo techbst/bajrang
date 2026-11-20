@@ -17,7 +17,7 @@ export function Hero() {
       className="pointer-events-none absolute inset-0 opacity-60 [background-image:linear-gradient(rgba(7,96,188,0.06)_1px,transparent_1px),linear-gradient(90deg,rgba(7,96,188,0.06)_1px,transparent_1px)] [background-size:48px_48px]" />
     <div className="pointer-events-none absolute -right-28 top-24 size-96 rounded-full bg-[#0760BC]/10 blur-3xl" />
     <div
-      className="relative mx-auto grid max-w-[1920px] gap-12 px-6 py-14 sm:px-6 sm:py-20 lg:grid-cols-[1.02fr_0.98fr] lg:items-center lg:px-12 lg:py-14">
+      className="container relative grid gap-12 py-14 sm:py-20 lg:grid-cols-[1.02fr_0.98fr] lg:items-center lg:py-14">
       <div className="max-w-2xl">
         <div className="mb-6 flex items-center gap-3 text-[11px] font-bold uppercase tracking-[0.24em] text-[#0760BC]">
           <span className="h-px w-8 bg-[#0760BC]" /> Genuine spare parts · global export</div>

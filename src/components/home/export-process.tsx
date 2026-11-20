@@ -37,18 +37,19 @@ const partnerLogos = [
 export function ExportProcess() {
   return (
     <section className="bg-white py-20" aria-labelledby="export-process-title">
-      <div className="mx-auto max-w-[1920px] px-6 sm:px-6 lg:px-12">
+      <div className="container">
         <div className="grid gap-12 lg:grid-cols-[0.78fr_1.22fr] lg:items-center lg:gap-16">
           <div>
             <div id="export-process-title">
               <Heading
+                eyebrow="Our Export Process"
                 title={'Fast, Reliable &amp; Transparent<br /><span class="text-primary">Export Process</span>'}
                 subtitle="A simple, end-to-end process that ensures speed, quality, and complete transparency in every export."
                 align="left"
                 className="[&>p]:mx-0 [&>p]:mb-0"
               />
             </div>
-            <Button asChild className="mt-8 h-auto gap-4 bg-[#0864d8] px-6 py-4 text-base font-semibold hover:bg-[#0756ba] sm:px-8">
+            <Button asChild className="mt-8 gap-4">
               <Link href="/contact">
                 Send Requirement
                 <ArrowRight aria-hidden="true" className="size-6" />

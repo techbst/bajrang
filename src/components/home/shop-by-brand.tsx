@@ -22,7 +22,7 @@ export default function ShopByBrand() {
 
   return (
     <section className="py-20 relative" aria-labelledby="shop-by-brand-title">
-      <div className="mx-auto max-w-[1920px] px-6 sm:px-6 lg:px-12">
+      <div className="container">
         <Heading eyebrow={eyebrow} title={title} subtitle={subtitle} />
 
         <div className="mb-7 grid max-w-2xl mx-auto overflow-hidden rounded-lg border border-border sm:grid-cols-3" role="tablist" aria-label="Vehicle type">
