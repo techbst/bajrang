@@ -8,7 +8,7 @@ const fieldClassName =
 
 export function QuoteRequest() {
   return (
-    <section className="bg-white py-16 sm:py-20" aria-labelledby="quote-request-title">
+    <section className="bg-white py-12 sm:py-16 lg:py-20" aria-labelledby="quote-request-title">
       <div className="container grid w-full grid-cols-1 items-start gap-10 lg:grid-cols-2 lg:gap-12">
         <div className="relative z-10 w-full min-w-0">
           <div className="relative aspect-[4/3] w-full overflow-hidden rounded-xl border border-border bg-[#f1f5f9] sm:aspect-[16/10] lg:aspect-[690/475] lg:max-w-[690px]">
@@ -26,7 +26,7 @@ export function QuoteRequest() {
               We help importers and distributors source genuine OEM and aftermarket auto parts with ease, accuracy, and competitive pricing.
             </p>
 
-            <div className="mt-6 grid grid-cols-2 gap-5">
+            <div className="mt-6 grid gap-3 sm:gap-4 xl:grid-cols-2">
               <a href="mailto:info@bajrangautoparts.com" className="group flex min-w-0 items-center gap-3 text-sm sm:text-base border border-[#dbe3ec] rounded-md p-4 hover:bg-[#f1f5f9] transition-colors">
                 <span className="grid size-10 shrink-0 place-items-center rounded-full bg-[#edf5fd] text-primary transition-colors bg-primary text-white">
                   <Mail aria-hidden="true" className="size-5 " />
@@ -65,13 +65,13 @@ export function QuoteRequest() {
               action="mailto:Exports@Bajrangautoparts.In"
               method="post"
               encType="text/plain"
-              className="mt-8 block w-full min-w-0 rounded-xl border border-border bg-white p-5 shadow-[0_12px_32px_rgba(16,36,74,0.08)] sm:p-7 lg:relative lg:z-20 lg:mt-16"
+              className="mt-6 block w-full min-w-0 rounded-xl border border-border bg-white p-4 shadow-[0_12px_32px_rgba(16,36,74,0.08)] sm:mt-8 sm:p-6 lg:relative lg:z-20 lg:mt-16 lg:p-7"
             >
-              <h2 id="quote-request-title" className="text-2xl leading-tight font-bold text-[#171717] uppercase sm:text-3xl">
+              <h2 id="quote-request-title" className="text-[clamp(1.5rem,4vw,1.875rem)] leading-tight font-bold text-[#171717] uppercase">
                 Request a Quote
               </h2>
 
-              <div className="mt-6 grid gap-3 sm:grid-cols-2 sm:gap-4">
+              <div className="mt-6 grid min-w-0 grid-cols-1 gap-3 sm:gap-4 md:grid-cols-2">
                 <Input className={fieldClassName} name="name" placeholder="Your Name" aria-label="Your name" autoComplete="name" required />
                 <Input className={fieldClassName} name="email" type="email" placeholder="Email Address" aria-label="Email address" autoComplete="email" required />
                 <Input className={fieldClassName} name="phone" type="tel" placeholder="Phone" aria-label="Phone number" autoComplete="tel" required />
@@ -100,7 +100,7 @@ export function QuoteRequest() {
                   placeholder="Type Your Message"
                   aria-label="Your message"
                   rows={5}
-                  className="min-h-32 resize-y rounded-md border border-[#dbe3ec] bg-white px-3 py-3 text-sm text-[#172033] outline-none placeholder:text-[#64748b] focus-visible:ring-2 focus-visible:ring-ring sm:col-span-2"
+                  className="min-h-32 min-w-0 resize-y rounded-md border border-[#dbe3ec] bg-white px-3 py-3 text-sm text-[#172033] outline-none placeholder:text-[#64748b] focus-visible:ring-2 focus-visible:ring-ring md:col-span-2"
                 />
               </div>
 
