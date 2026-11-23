@@ -70,8 +70,8 @@ export function Header() {
       className="sticky top-0 z-40 border-b border-slate-200 bg-white/95 backdrop-blur-xl"
     >
       <div className="bg-secondary-foreground text-white">
-        <Container className="flex h-8 items-center justify-between text-xs font-regular py-1 tracking-wide">
-          <div className="flex items-center gap-6">
+        <Container className="flex min-h-8 flex-wrap items-center justify-center gap-x-4 gap-y-1 py-2 text-[10px] font-regular tracking-wide sm:justify-between sm:text-xs">
+          <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-1 sm:gap-6">
             <a
               href="tel:9718346347"
               className="flex items-center gap-2 hover:text-white/80"
@@ -79,7 +79,7 @@ export function Header() {
               <Phone className="size-3.5" />
               Need Spare Parts : +91 971-8346-347
             </a>
-            <span className="h-4 w-[1px] bg-white/20" />
+            <span className="hidden h-4 w-[1px] bg-white/20 sm:block" />
             <a
               href="mailto:info@bajrangautoparts.com"
               className="flex items-center gap-2 hover:text-white/80"
@@ -88,7 +88,7 @@ export function Header() {
               info@bajrangautoparts.com
             </a>
           </div>
-          <div className="flex items-center gap-5">
+          <div className="hidden items-center gap-5 md:flex">
             <Link href="/">Home</Link>
             <Link href="/about/who-we-are">About Us</Link>
             <Link href="/contact">Contact Us</Link>

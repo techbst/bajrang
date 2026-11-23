@@ -1,7 +1,7 @@
 export const siteConfig = {
-  name: "Bajrang Commerce",
-  description: "A secure, scalable eCommerce foundation built with Next.js.",
-  url: process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000",
+  name: "Maruti Suzuki Spare Parts, Hyundai Genuine Parts, Mahindra Parts, Tata Parts, Ashok Leyland Parts",
+  description: "Maruti Suzuki Genuine Spare Parts - Exporters of Maruti Parts, Hyundai Parts, Mahindra Parts, Tata Spares, Suzuki Parts and Ashok Leyland Parts India",
+  url: process.env.NEXT_PUBLIC_SITE_URL || "https://bajrangautoparts.com",
   links: {
     products: "/products",
     categories: "/category",
