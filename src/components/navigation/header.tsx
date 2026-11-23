@@ -105,7 +105,7 @@ export function Header() {
         </Container>
       </div>
 
-      <Container className="grid min-h-[76px] grid-cols-[1fr_auto] items-center gap-2 py-3 lg:grid-cols-[1fr_auto_1fr]">
+      <Container className="grid min-h-[76px] grid-cols-[1fr_auto] items-center gap-2 py-3 max-[400px]:px-3 lg:grid-cols-[1fr_auto_1fr]">
         <Link
           href="/"
           className="flex w-fit shrink-0 items-center"
@@ -116,7 +116,7 @@ export function Header() {
             alt="Bajrang Auto Parts"
             width={320}
             height={48}
-            className="h-auto max-[1280px]:w-[280px]  max-[1170px]:w-[230px]"
+            className="h-auto w-[320px] max-[1170px]:w-[230px] max-[430px]:w-[185px] max-[360px]:w-[145px]"
             priority
           />
         </Link>
@@ -152,9 +152,9 @@ export function Header() {
           <AccountMenu open={isAccountOpen} onOpenChange={setIsAccountOpen} />
           <CartButton />
         </div>
-        <div className="flex items-center justify-end gap-2 lg:hidden">
+        <div className="flex items-center justify-end gap-1.5 lg:hidden">
           <SearchSheet open={isSearchOpen} onOpenChange={setIsSearchOpen} />
-          <CartButton />
+          <CartButton compact />
           <Sheet>
             <SheetTrigger asChild>
               <button
@@ -212,9 +212,9 @@ function SearchSheet({
         <button
           type="button"
           aria-label="Search parts"
-          className="grid size-10 place-items-center rounded-full border border-slate-200 text-slate-700 transition hover:border-[#0760BC] hover:bg-[#0760BC] hover:text-white cursor-pointer"
+          className="grid size-9 place-items-center rounded-full border border-slate-200 text-slate-700 transition hover:border-[#0760BC] hover:bg-[#0760BC] hover:text-white cursor-pointer lg:size-10"
         >
-          <Search className="size-4" />
+          <Search className="size-3.5 lg:size-4" />
         </button>
       </SheetTrigger>
       <SearchDrawer />
@@ -222,14 +222,15 @@ function SearchSheet({
   );
 }
 
-function CartButton() {
+function CartButton({ compact = false }: { compact?: boolean }) {
   return (
     <Link
       href="/cart"
       aria-label="Cart, 0 items"
-      className="group relative flex gap-2 h-[40px] px-5 whitespace-nowrap place-items-center rounded-[10px] bg-[#0760BC] text-white transition hover:-translate-y-0.5 hover:bg-secondary-foreground hover:shadow-md active:translate-y-0"
+      className={`group relative flex h-9 place-items-center rounded-[10px] bg-[#0760BC] text-white transition hover:-translate-y-0.5 hover:bg-secondary-foreground hover:shadow-md active:translate-y-0 lg:h-[40px] ${compact ? "w-9 justify-center px-0 lg:w-auto lg:gap-2 lg:px-5" : "gap-2 px-5"}`}
     >
-      <ShoppingCart className="size-4" /> Cart
+      <ShoppingCart className="size-3.5 lg:size-4" />
+      {!compact ? "Cart" : <span className="hidden lg:inline">Cart</span>}
       <span className="absolute -top-2 -right-2 grid size-5 place-items-center rounded-full bg-secondary-foreground group-hover:bg-primary text-[10px] font-bold">
         0
       </span>
