@@ -1,0 +1,58 @@
+{
+  "partCount": 927,
+  "kitCount": 38,
+  "assemblyCategoryCount": 53,
+  "vehicleCategoryCount": 45,
+  "groups": [
+    {
+      "name": "Engine",
+      "assemblyCount": 20,
+      "assemblies": [
+        { "code": "E-4", "name": "CAM CHAIN TENSIONER", "partCount": 21 },
+        { "code": "E-3", "name": "CAM SHAFT/VALVE", "partCount": 13 },
+        { "code": "E-6", "name": "CLUTCH", "partCount": 25 },
+        { "code": "E-6A", "name": "CLUTCH", "partCount": 25 },
+        { "code": "E-6B", "name": "CLUTCH (3 LUG)", "partCount": 25 },
+        { "code": "E-8", "name": "CRANK CASE/OIL PUMP", "partCount": 29 },
+        { "code": "E-9", "name": "CRANKSHAFT/PISTON", "partCount": 20 },
+        { "code": "E-1", "name": "CYLINDER HEAD COVER/INLET PIPE", "partCount": 19 },
+        { "code": "E-2", "name": "CYLINDER/CYLINDER HEAD", "partCount": 12 },
+        { "code": "E-13A", "name": "FUEL INJECTOR ASSY", "partCount": 11 },
+        { "code": "E-12", "name": "GEAR SHIFT", "partCount": 24 },
+        { "code": "E-11", "name": "KICK STARTER", "partCount": 13 },
+        { "code": "E-7A", "name": "LEFT CRANKCASE COVER/A.C. GEN. ASSY. (SELF START)", "partCount": 17 },
+        { "code": "E-8A", "name": "OIL PUMP ASSY", "partCount": 7 },
+        { "code": "E-5", "name": "RIGHT CRANKCASE COVER", "partCount": 12 },
+        { "code": "E-7B", "name": "STARTING CLUTCH", "partCount": 11 },
+        { "code": "E-7C", "name": "STARTING MOTOR", "partCount": 23 },
+        { "code": "E-7D", "name": "STARTING MOTOR", "partCount": 21 },
+        { "code": "E-13", "name": "THROTTLE BODY ASSY", "partCount": 8 },
+        { "code": "E-10", "name": "TRANSMISSION", "partCount": 25 }
+      ]
+    },
+    {
+      "name": "Frame",
+      "assemblyCount": 33,
+      "assemblies": [
+        { "code": "F-1", "name": "FRAME BODY", "partCount": 18 },
+        { "code": "F-2", "name": "FRONT FORK", "partCount": 24 },
+        { "code": "F-3", "name": "FRONT WHEEL", "partCount": 16 },
+        { "code": "F-4", "name": "REAR WHEEL", "partCount": 19 },
+        { "code": "F-5", "name": "HANDLEBAR/STEERING", "partCount": 14 },
+        { "code": "F-6", "name": "FUEL TANK", "partCount": 12 },
+        { "code": "F-7", "name": "SEAT", "partCount": 9 },
+        { "code": "F-8", "name": "REAR CUSHION", "partCount": 11 },
+        { "code": "F-9", "name": "EXHAUST MUFFLER", "partCount": 13 },
+        { "code": "F-10", "name": "STAND/KICKER PEDAL", "partCount": 8 }
+      ]
+    }
+  ],
+  "kits": [
+    { "code": "K-01", "name": "ENGINE OVERHAUL KIT", "partCount": 32 },
+    { "code": "K-02", "name": "CLUTCH SERVICE KIT", "partCount": 12 },
+    { "code": "K-03", "name": "CAM CHAIN SERVICE KIT", "partCount": 8 },
+    { "code": "K-04", "name": "FRONT FORK SEAL KIT", "partCount": 6 },
+    { "code": "K-05", "name": "BRAKE SERVICE KIT", "partCount": 10 },
+    { "code": "K-06", "name": "FULL GASKET KIT", "partCount": 18 }
+  ]
+}

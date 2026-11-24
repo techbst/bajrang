@@ -1,10 +1,10 @@
 import { Footer } from "./footer";
 import { Header } from "@/components/navigation/header";
 
-export function StoreShell({ children }: { children: React.ReactNode }) {
+export function StoreShell({ children, isAuthenticated }: { children: React.ReactNode; isAuthenticated: boolean }) {
   return (
     <div className="flex min-h-screen flex-col">
-      <Header />
+      <Header isAuthenticated={isAuthenticated} />
       <main className="flex-1">{children}</main>
       <Footer />
     </div>

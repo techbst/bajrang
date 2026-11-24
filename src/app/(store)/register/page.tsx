@@ -1,5 +1,5 @@
-import { PageHeader } from "@/components/common/page-header";
+import { AccountForm } from "@/components/auth/account-form";
 
 export default function RegisterPage() {
-  return <PageHeader title="Register" description="Registration placeholder." />;
+  return <AccountForm mode="register" />;
 }

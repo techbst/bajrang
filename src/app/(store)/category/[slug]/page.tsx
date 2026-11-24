@@ -1,5 +1,11 @@
-import { PageHeader } from "@/components/common/page-header";
-import { CategorySkeleton } from "@/components/skeletons/category-skeleton";
+import { redirect } from "next/navigation";
+import { ComingSoonPage } from "@/components/company/coming-soon";
+
+const categoryTitles: Record<string, string> = {
+  "car-spare-parts": "Car Spare Parts",
+  "motorcycle-spare-parts": "Motorcycle Spare Parts",
+  "tractor-hcv-parts": "Tractor & HCV Parts",
+};
 
 type CategoryPageProps = {
   params: Promise<{ slug: string }>;
@@ -7,13 +13,8 @@ type CategoryPageProps = {
 
 export default async function CategoryPage({ params }: CategoryPageProps) {
   const { slug } = await params;
-
-  return (
-    <>
-      <PageHeader title={slug} description="Category route prepared for filtered products." />
-      <div className="mx-auto w-full max-w-7xl px-4 pb-10 sm:px-6 lg:px-8">
-        <CategorySkeleton />
-      </div>
-    </>
-  );
+  const category = slug === "car-spare-parts" ? "car" : slug === "motorcycle-spare-parts" ? "motorcycle" : slug === "tractor-hcv-parts" ? "truck" : null;
+  if (category) redirect(`/catalogue?category=${category}`);
+  const title = categoryTitles[slug] ?? slug.split("-").map((word) => word.charAt(0).toUpperCase() + word.slice(1)).join(" ");
+  return <ComingSoonPage title={`${title} Catalogue`} />;
 }

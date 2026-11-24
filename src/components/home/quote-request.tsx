@@ -8,7 +8,7 @@ const fieldClassName =
 
 export function QuoteRequest() {
   return (
-    <section className="bg-white py-12 sm:py-16 lg:py-20" aria-labelledby="quote-request-title">
+    <section id="upload" className="bg-white py-12 sm:py-16 lg:py-20" aria-labelledby="quote-request-title">
       <div className="container grid w-full grid-cols-1 items-start gap-10 lg:grid-cols-2 lg:gap-12">
         <div className="relative z-10 w-full min-w-0">
           <div className="relative aspect-[4/3] w-full overflow-hidden rounded-xl border border-border bg-[#f1f5f9] sm:aspect-[16/10] lg:aspect-[690/475] lg:max-w-[690px]">

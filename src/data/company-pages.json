@@ -1,0 +1,67 @@
+{
+  "whoWeAre": {
+    "eyebrow": "About Bajrang Auto Parts",
+    "title": "A specialist exporter, built on long-term partnerships",
+    "intro": "We bring automotive product knowledge, supplier coordination, and export experience together for businesses that need a dependable source in India.",
+    "sections": [
+      { "title": "Built for business supply", "body": "Our work is focused on wholesale and export requirements. We coordinate sourcing, order details, quality checks, packing, and shipment documentation so buyers can manage procurement with one experienced partner." },
+      { "title": "A broad automotive range", "body": "We source genuine, OEM, and aftermarket spare parts for two-wheelers, three-wheelers, passenger vehicles, and heavy commercial vehicles. Our wider product range also includes lubricants, tyres, and batteries." },
+      { "title": "A growing export operation", "body": "Bajrang began in Delhi in 2009 and has grown from a 100-square-metre starting space into a 165,000-square-foot warehouse operation. Today, our team serves business customers across more than 50 countries." }
+    ],
+    "values": [
+      { "title": "Integrity", "body": "Clear communication and dependable business practices at every stage." },
+      { "title": "Quality focus", "body": "Careful attention to product specifications, inspection, and export packing." },
+      { "title": "Reliability", "body": "Responsive coordination from enquiry and quotation through dispatch." },
+      { "title": "Partnership", "body": "Long-term relationships built around each buyer’s sourcing needs." }
+    ],
+    "stats": [{ "value": "2009", "label": "Established" }, { "value": "50+", "label": "Countries served" }, { "value": "165,000 sq. ft.", "label": "Warehouse footprint" }, { "value": "B2B", "label": "Wholesale export focus" }]
+  },
+  "about": {
+    "intro": "Bajrang Auto Parts Pvt. Ltd. is an India-based export partner for importers, wholesalers, distributors, and automotive trading businesses. We make it easier to source a broad range of vehicle parts and related products from India."
+  },
+  "recognitions": {
+    "eyebrow": "Trust & Compliance",
+    "title": "Recognitions and certifications",
+    "intro": "Our registrations, memberships, and quality credentials reflect our commitment to responsible export operations and consistent service.",
+    "items": [
+      { "title": "Star Export House", "body": "Recognized by the Government of India in 2018 for export performance." },
+      { "title": "Authorised Economic Operator (AEO T-1)", "body": "Accredited by Indian Customs under the World Customs Organization SAFE Framework, supporting secure and efficient trade processes." },
+      { "title": "ISO 9001:2015", "body": "Quality management system certification issued by International Accreditation Service (IAS)." },
+      { "title": "FIEO Associate Member", "body": "Member of the Federation of Indian Export Organisations." },
+      { "title": "MSME Registered", "body": "Registered as a Micro, Small and Medium Enterprise in India." },
+      { "title": "Indian Industries Association", "body": "Member of the Indian Industries Association (IIA)." },
+      { "title": "Registered Intellectual Property", "body": "Bajrang’s brand identity and logo are registered intellectual property." },
+      { "title": "Industry Feature", "body": "Featured by Aftermarket magazine, published by Infomedia." }
+    ]
+  },
+  "hardWorkship": {
+    "eyebrow": "Our Operations",
+    "title": "Care in every step of the supply chain",
+    "intro": "Reliable export supply is built through consistent work: sourcing the right products, checking order details, protecting parts in transit, and keeping buyers informed.",
+    "steps": [
+      { "title": "Sourcing", "body": "We coordinate across product categories and supplier networks to match business requirements." },
+      { "title": "Order coordination", "body": "Our team confirms specifications, quantities, availability, and shipment expectations." },
+      { "title": "Quality checks", "body": "Orders receive careful checks against the agreed product and packing details." },
+      { "title": "Export packing", "body": "Products are prepared for international transport with attention to protection and handling." },
+      { "title": "Dispatch support", "body": "We coordinate dispatch and export documentation and keep customers updated." }
+    ],
+    "gallery": [
+      { "src": "/img/brands/our-term-1.webp", "alt": "Automotive parts operation" },
+      { "src": "/img/brands/our-term-2.webp", "alt": "Automotive parts storage and handling" },
+      { "src": "/img/brands/our-term-3.webp", "alt": "Automotive export operations" },
+      { "src": "/img/brands/our-term-4.webp", "alt": "Parts supply team operations" },
+      { "src": "/img/brands/our-term-5.webp", "alt": "Warehouse and parts handling" },
+      { "src": "/img/brands/our-term-6.webp", "alt": "Export preparation" }
+    ]
+  },
+  "contact": {
+    "eyebrow": "Contact Bajrang Auto Parts",
+    "title": "Talk to our export team",
+    "intro": "Share your parts list, target brands, quantities, or destination market. Our team will help with your wholesale sourcing enquiry.",
+    "address": "Khasra No. 579, 585, 588, 595, 600, 607, Near DJB Office, Kadipur Village, Delhi-110036, India",
+    "phones": ["+91 97183 46347", "+91 98107 72076"],
+    "emails": ["exports@bajrangautoparts.in", "info@bajrangautoparts.com"],
+    "hours": "Monday–Saturday, 10:00 AM–7:00 PM (IST)",
+    "closed": "Sunday closed"
+  }
+}

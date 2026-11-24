@@ -1,0 +1,8 @@
+[
+  { "partNumber": "HERO-BRK-00421", "name": "Front brake shoe set", "brand": "Hero", "vehicle": "Splendor Plus, HF Deluxe", "category": "Brakes", "mrp": 285, "moq": 10, "productType": "OEM" },
+  { "partNumber": "HERO-CLT-00187", "name": "Clutch plate assembly", "brand": "Hero", "vehicle": "Glamour, Passion Pro", "category": "Clutch", "mrp": 760, "moq": 5, "productType": "Aftermarket" },
+  { "partNumber": "HERO-CBL-00632", "name": "Accelerator cable", "brand": "Hero", "vehicle": "HF Deluxe, Splendor Plus", "category": "Cables", "mrp": 145, "moq": 20, "productType": "Aftermarket" },
+  { "partNumber": "HERO-BRG-00094", "name": "Front wheel bearing kit", "brand": "Hero", "vehicle": "HF 100, Splendor Plus", "category": "Bearings", "mrp": 320, "moq": 10, "productType": "OEM" },
+  { "partNumber": "BAJ-BRK-00214", "name": "Rear brake shoe set", "brand": "Bajaj", "vehicle": "Pulsar 150, Discover 125", "category": "Brakes", "mrp": 310, "moq": 10, "productType": "Aftermarket" },
+  { "partNumber": "MAR-FLT-00810", "name": "Engine oil filter", "brand": "Maruti Suzuki", "vehicle": "Swift, WagonR", "category": "Filters", "mrp": 195, "moq": 25, "productType": "OEM" }
+]

@@ -5,12 +5,14 @@ import { Container } from "@/components/common/container";
 import { SocialIcons } from "@/components/common/socialmedia";
 
 const quickLinks = [
+  { label: "About Us", href: "/about" },
   { label: "Who We Are", href: "/about/who-we-are" },
   { label: "Our Recognitions", href: "/about/recognitions" },
-  { label: "Our Hard Workship", href: "/about/hard-workship" },
-  { label: "Car Spare Parts", href: "/category/car-spare-parts" },
-  { label: "Motorcycle Spare Parts", href: "/category/motorcycle-spare-parts" },
-  { label: "Tractor & HCV Parts", href: "/category/tractor-hcv-parts" },
+  { label: "Our Operations", href: "/about/hard-workship" },
+  { label: "Contact Us", href: "/contact" },
+  { label: "Car Spare Parts", href: "/catalogue?category=car" },
+  { label: "Motorcycle Spare Parts", href: "/catalogue?category=motorcycle" },
+  { label: "Truck & HCV Parts", href: "/catalogue?category=truck" },
 ];
 
 const policyLinks = [

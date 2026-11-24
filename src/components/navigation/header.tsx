@@ -4,16 +4,23 @@ import Image from "next/image";
 import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
 import {
+  ArrowRight,
   Bike,
   CarFront,
   ChevronDown,
   CircleUserRound,
+  LogIn,
   Mail,
+  Minus,
   Menu,
+  Plus,
   Phone,
   Search,
+  ShoppingBag,
   ShoppingCart,
-  Tractor
+  Trash2,
+  Tractor,
+  UserRoundPlus
 } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { Container } from "@/components/common/container";
@@ -28,12 +35,18 @@ import {
 import { SearchBar } from "./search-bar";
 import { MegaMenu } from "./mega-menu";
 import { aboutLinks, brandGroups, megaMenuConfig } from "./navigation-data";
-import { SocialIcons } from "@/components/common/socialmedia";
+import { useCatalogueCartStore } from "@/stores/catalogue-cart-store";
+import { useCartStore } from "@/stores/cart-store";
+import { ProductTypeBadge } from "@/components/catalogue/assembly-detail";
 
-export function Header() {
+export function Header({ isAuthenticated = false }: { isAuthenticated?: boolean }) {
   const [openMenu, setOpenMenu] = useState<string | null>(null);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isAccountOpen, setIsAccountOpen] = useState(false);
+  const [cartCount, setCartCount] = useState(0);
+  const isCartOpen = useCartStore((state) => state.isCartOpen);
+  const openCart = useCartStore((state) => state.openCart);
+  const closeCart = useCartStore((state) => state.closeCart);
   const menuRef = useRef<HTMLElement>(null);
   const activeMenu = megaMenuConfig.find((item) => item.key === openMenu);
 
@@ -60,17 +73,20 @@ export function Header() {
     };
   }, []);
 
+  useEffect(() => {
+    setCartCount(useCatalogueCartStore.getState().items.length);
+    return useCatalogueCartStore.subscribe((state) => setCartCount(state.items.length));
+  }, []);
+
   return (
     <header
       ref={menuRef}
-      onMouseLeave={() => {
-        setOpenMenu(null);
-        setIsAccountOpen(false);
-      }}
-      className="sticky top-0 z-40 border-b border-slate-200 bg-white/95 backdrop-blur-xl"
+      onMouseLeave={() => setOpenMenu(null)}
+      className="sticky top-0 z-40 border-b border-slate-200 bg-white/95 shadow-sm shadow-slate-900/[0.03] backdrop-blur-xl"
     >
+      <Sheet open={isCartOpen} onOpenChange={(open) => open ? openCart() : closeCart()}>
       <div className="bg-secondary-foreground text-white">
-        <Container className="flex min-h-8 flex-wrap items-center justify-center gap-x-4 gap-y-1 py-2 text-[10px] font-regular tracking-wide sm:justify-between sm:text-xs">
+        <Container className="flex min-h-9 flex-wrap items-center justify-center gap-x-4 gap-y-1 py-2 text-[10px] font-medium tracking-wide sm:justify-between sm:text-xs">
           <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-1 sm:gap-6">
             <a
               href="tel:9718346347"
@@ -89,26 +105,18 @@ export function Header() {
             </a>
           </div>
           <div className="hidden items-center gap-5 md:flex">
-            <Link href="/">Home</Link>
-            <Link href="/about/who-we-are">About Us</Link>
-            <Link href="/contact">Contact Us</Link>
-            <span className="h-4 w-[1px] bg-white/20" />
-            
-            
-              <SocialIcons
-                wrapperClassName="gap-1"
-                itemClassName="size-6 text-white hover:text-[#0760BC]"
-                iconClassName="size-3.4"
-              />
-            
+            <span className="text-[10px] font-bold uppercase tracking-[0.16em] text-white/75">Wholesale | Export | Genuine Parts</span>
+            <span className="h-4 w-px bg-white/20" />
+            <Link href="/about" className="transition-colors hover:text-white/70">About Us</Link>
+            <Link href="/contact" className="transition-colors hover:text-white/70">Contact</Link>
           </div>
         </Container>
       </div>
 
-      <Container className="grid min-h-[76px] grid-cols-[1fr_auto] items-center gap-2 py-3 max-[400px]:px-3 lg:grid-cols-[1fr_auto_1fr]">
+      <Container className="grid min-h-[88px] grid-cols-[1fr_auto] items-center gap-3 py-3 max-[400px]:px-3 xl:grid-cols-[260px_minmax(0,1fr)_auto] xl:gap-5">
         <Link
           href="/"
-          className="flex w-fit shrink-0 items-center"
+          className="flex w-fit shrink-0 items-center rounded-sm focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#0760BC]"
           aria-label="Bajrang home"
         >
           <Image
@@ -116,12 +124,12 @@ export function Header() {
             alt="Bajrang Auto Parts"
             width={320}
             height={48}
-            className="h-auto w-[320px] max-[1170px]:w-[230px] max-[430px]:w-[185px] max-[360px]:w-[145px]"
+            className="h-auto w-[300px] max-[1170px]:w-[210px] max-[430px]:w-[185px] max-[360px]:w-[120px]"
             priority
           />
         </Link>
         <nav
-          className="hidden items-center justify-center gap-6 lg:flex"
+          className="hidden items-center justify-end gap-3 border-l border-slate-200 pl-5 xl:flex xl:gap-5"
           aria-label="Primary navigation"
         >
           {megaMenuConfig.map((item) => (
@@ -137,30 +145,36 @@ export function Header() {
                 }
                 aria-expanded={openMenu === item.key}
                 aria-haspopup="true"
-                className="flex items-center gap-1 text-[14px] max-[1170px]:text-[13px] font-semibold whitespace-nowrap text-secondary-foreground transition hover:text-primary focus-visible:ring-2 focus-visible:ring-[#0760BC] focus-visible:outline-none cursor-pointer"
+                className="group relative flex items-center gap-1 whitespace-nowrap py-3 text-xs font-semibold text-slate-700 transition-colors hover:text-[#0760BC] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0760BC] xl:text-[13px] cursor-pointer"
               >
                 {item.label}
                 <ChevronDown
                   className={`size-3.5 transition ${openMenu === item.key ? "rotate-180" : ""}`}
                 />
+                <span className="absolute inset-x-0 bottom-1 h-0.5 origin-left scale-x-0 bg-[#0760BC] transition-transform duration-200 group-hover:scale-x-100" />
               </button>
             </div>
           ))}
         </nav>
-        <div className="hidden items-center justify-end gap-2 lg:flex">
+        <div className="hidden items-center justify-end gap-2 xl:flex">
           <SearchSheet open={isSearchOpen} onOpenChange={setIsSearchOpen} />
-          <AccountMenu open={isAccountOpen} onOpenChange={setIsAccountOpen} />
-          <CartButton />
+          <AccountMenu open={isAccountOpen} onOpenChange={setIsAccountOpen} isAuthenticated={isAuthenticated} />
+          <Link href="/contact" className="site-action inline-flex h-10 items-center gap-2 whitespace-nowrap rounded-lg bg-[#0760BC] px-3 text-xs font-semibold text-white shadow-sm shadow-[#0760BC]/20 transition-[transform,box-shadow,color,background-color,border-color] hover:-translate-y-0.5 hover:bg-[#064d96] hover:shadow-md xl:px-4">
+            Request a quote
+            <ArrowRight aria-hidden="true" className="size-4" />
+          </Link>
+          {isAuthenticated ? <CartButton count={cartCount} /> : null}
         </div>
-        <div className="flex items-center justify-end gap-1.5 lg:hidden">
+        <div className="flex items-center justify-end gap-1.5 xl:hidden">
           <SearchSheet open={isSearchOpen} onOpenChange={setIsSearchOpen} />
-          <CartButton compact />
+          {isAuthenticated ? <CartButton compact count={cartCount} /> : null}
+          <AccountMenu open={isAccountOpen} onOpenChange={setIsAccountOpen} isAuthenticated={isAuthenticated} />
           <Sheet>
             <SheetTrigger asChild>
               <button
                 type="button"
                 aria-label="Open navigation"
-                className="grid size-10 place-items-center border border-slate-200 block lg:hidden"
+                className="grid size-10 place-items-center rounded-lg border border-slate-200 transition-colors hover:border-[#0760BC] hover:text-[#0760BC] xl:hidden"
               >
                 <Menu className="size-5" />
               </button>
@@ -195,6 +209,10 @@ export function Header() {
           />
         ) : null}
       </AnimatePresence>
+      <SheetContent className="w-full max-w-md overflow-y-auto p-0 font-sans">
+        <CartDrawerContents />
+      </SheetContent>
+      </Sheet>
     </header>
   );
 }
@@ -212,7 +230,7 @@ function SearchSheet({
         <button
           type="button"
           aria-label="Search parts"
-          className="grid size-9 place-items-center rounded-full border border-slate-200 text-slate-700 transition hover:border-[#0760BC] hover:bg-[#0760BC] hover:text-white cursor-pointer lg:size-10"
+          className="grid size-9 place-items-center rounded-lg border border-slate-200 bg-white text-slate-700 shadow-sm transition-[transform,box-shadow,color,background-color,border-color] hover:-translate-y-0.5 hover:border-[#0760BC] hover:bg-[#0760BC] hover:text-white hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0760BC] cursor-pointer lg:size-10"
         >
           <Search className="size-3.5 lg:size-4" />
         </button>
@@ -222,28 +240,74 @@ function SearchSheet({
   );
 }
 
-function CartButton({ compact = false }: { compact?: boolean }) {
+function CartButton({ compact = false, count }: { compact?: boolean; count: number }) {
   return (
-    <Link
-      href="/cart"
-      aria-label="Cart, 0 items"
-      className={`group relative flex h-9 place-items-center rounded-[10px] bg-[#0760BC] text-white transition hover:-translate-y-0.5 hover:bg-secondary-foreground hover:shadow-md active:translate-y-0 lg:h-[40px] ${compact ? "w-9 justify-center px-0 lg:w-auto lg:gap-2 lg:px-5" : "gap-2 px-5"}`}
-    >
-      <ShoppingCart className="size-3.5 lg:size-4" />
-      {!compact ? "Cart" : <span className="hidden lg:inline">Cart</span>}
-      <span className="absolute -top-2 -right-2 grid size-5 place-items-center rounded-full bg-secondary-foreground group-hover:bg-primary text-[10px] font-bold">
-        0
-      </span>
-    </Link>
+    <SheetTrigger asChild>
+      <button
+        type="button"
+        aria-label={`Open cart, ${count} ${count === 1 ? "item" : "items"}`}
+        className={`group relative inline-flex h-10 items-center justify-center rounded-lg border border-slate-200 bg-white font-sans text-xs font-semibold text-slate-700 shadow-sm transition-[transform,box-shadow,color,background-color,border-color] hover:-translate-y-0.5 hover:border-primary hover:text-primary hover:shadow-md ${compact ? "size-10 px-0" : "gap-3 px-4 xl:px-5"}`}
+      >
+        <ShoppingCart className="size-[18px] shrink-0" />
+        {!compact ? <span className="tracking-wide">Cart</span> : null}
+        <span className={`${compact ? "absolute -right-1.5 -top-1.5" : "ml-0.5"} grid min-w-5 place-items-center rounded-full bg-primary px-1.5 py-0.5 text-[10px] font-bold leading-none text-white ring-2 ring-white`}>{count}</span>
+      </button>
+    </SheetTrigger>
+  );
+}
+
+function CartDrawerContents() {
+  const items = useCatalogueCartStore((state) => state.items);
+  const setQuantity = useCatalogueCartStore((state) => state.setQuantity);
+  const removeItem = useCatalogueCartStore((state) => state.removeItem);
+  const clear = useCatalogueCartStore((state) => state.clear);
+  const totalQuantity = items.reduce((total, item) => total + item.quantity, 0);
+
+  return (
+    <div className="flex h-full flex-col font-sans">
+      <div className="border-b border-slate-200 px-5 py-5 pr-14 sm:px-6">
+        <SheetHeader>
+          <SheetTitle className="text-left text-xl font-bold tracking-tight text-slate-950">Cart <span className="text-primary">({items.length})</span></SheetTitle>
+          <SheetDescription className="text-left text-sm text-slate-500">Your selected automotive parts and quantities.</SheetDescription>
+        </SheetHeader>
+      </div>
+      {items.length === 0 ? (
+        <div className="grid flex-1 content-center justify-items-center px-8 text-center">
+          <span className="grid size-14 place-items-center rounded-full bg-slate-100 text-slate-400"><ShoppingBag className="size-6" /></span>
+          <p className="mt-4 font-bold text-slate-900">Your cart is empty</p>
+          <p className="mt-1 max-w-xs text-sm leading-5 text-slate-500">Add parts from a vehicle assembly to build your enquiry list.</p>
+        </div>
+      ) : (
+        <>
+          <div className="flex-1 divide-y divide-slate-100 overflow-y-auto px-5 sm:px-6">
+            {items.map((item) => <article key={item.id} className="py-4">
+              <div className="flex items-start justify-between gap-3">
+                <div className="min-w-0"><div className="flex flex-wrap items-center gap-2"><p className="text-sm font-bold text-slate-900">{item.partNumber}</p><ProductTypeBadge productType={item.productType} /></div><p className="mt-1 text-sm text-slate-700">{item.description}</p><p className="mt-1 truncate text-xs text-slate-500">{item.brand} {item.vehicle} · {item.assemblyCode}</p></div>
+                <button type="button" aria-label={`Remove ${item.partNumber}`} onClick={() => removeItem(item.id)} className="grid size-8 shrink-0 place-items-center rounded-lg text-slate-400 transition-colors hover:bg-red-50 hover:text-red-600"><Trash2 className="size-4" /></button>
+              </div>
+              <div className="mt-3 inline-flex h-9 items-center rounded-lg border border-slate-200"><button type="button" aria-label={`Decrease ${item.partNumber} quantity`} onClick={() => setQuantity(item.id, item.quantity - 1)} className="grid size-8 place-items-center text-slate-500 hover:text-primary"><Minus className="size-3.5" /></button><span className="min-w-8 text-center text-xs font-bold text-slate-800">{item.quantity}</span><button type="button" aria-label={`Increase ${item.partNumber} quantity`} onClick={() => setQuantity(item.id, item.quantity + 1)} className="grid size-8 place-items-center text-slate-500 hover:text-primary"><Plus className="size-3.5" /></button></div>
+            </article>)}
+          </div>
+          <div className="border-t border-slate-200 bg-white p-5 sm:p-6">
+            <div className="flex justify-between text-sm text-slate-600"><span>{items.length} parts</span><strong className="text-slate-900">{totalQuantity} total qty</strong></div>
+            <p className="mt-2 text-xs leading-5 text-slate-500">Pricing and availability will be confirmed with your enquiry.</p>
+            <Link href="/contact?source=cart" className="mt-4 inline-flex h-11 w-full items-center justify-center gap-2 rounded-lg bg-primary px-4 text-sm font-bold text-white transition hover:bg-blue-800">Submit enquiry <ArrowRight className="size-4" /></Link>
+            <div className="mt-3 flex items-center justify-between"><Link href="/cart" className="text-xs font-semibold text-primary hover:underline">Open full cart</Link><button type="button" onClick={clear} className="text-xs font-semibold text-slate-400 transition-colors hover:text-red-600">Clear cart</button></div>
+          </div>
+        </>
+      )}
+    </div>
   );
 }
 
 function AccountMenu({
   open,
-  onOpenChange
+  onOpenChange,
+  isAuthenticated
 }: {
   open: boolean;
   onOpenChange: (open: boolean) => void;
+  isAuthenticated: boolean;
 }) {
   return (
     <div className="relative">
@@ -252,10 +316,11 @@ function AccountMenu({
         onClick={() => onOpenChange(!open)}
         aria-expanded={open}
         aria-haspopup="menu"
-        className="grid size-10 place-items-center rounded-full border border-slate-200 text-slate-700 transition hover:border-[#0760BC] hover:bg-[#0760BC] hover:text-white  cursor-pointer"
+        aria-label={isAuthenticated ? "Open account menu" : "Login or register"}
+        className="grid size-10 place-items-center rounded-lg border border-slate-200 bg-white text-slate-700 shadow-sm transition-[transform,box-shadow,color,background-color,border-color] hover:-translate-y-0.5 hover:border-[#0760BC] hover:text-[#0760BC] hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0760BC] cursor-pointer"
       >
-        <CircleUserRound className="size-5" />
-        <span className="sr-only">Account</span>
+        <CircleUserRound className="size-[19px]" />
+        <span className="sr-only">{isAuthenticated ? "Account" : "Login or register"}</span>
       </button>
       <AnimatePresence>
         {open ? (
@@ -263,37 +328,32 @@ function AccountMenu({
             initial={{ opacity: 0, y: -8 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
-            className="absolute top-12 right-0 z-50 w-64 border border-slate-100 bg-white p-2 shadow-[0_18px_45px_rgba(15,23,42,0.15)]"
+            className="absolute top-12 right-0 z-50 w-[min(19rem,calc(100vw-2rem))] overflow-hidden rounded-xl border border-slate-200 bg-white p-2 shadow-[0_20px_55px_rgba(15,23,42,0.18)]"
             role="menu"
           >
-            <Link
-              href="/account"
-              className="group flex items-center gap-3 p-3 hover:bg-[#0760BC]/10"
-            >
-               <span className="bg-slate-100 group-hover:bg-white grid size-10 place-items-center rounded-full">
-                <CircleUserRound className="size-5 text-[#0760BC]" />
-              </span>
-              <span className="leading-normal">
-                <span className="block text-sm font-semibold">My Account</span>
-                <span className="text-xs text-slate-500">
-                  Login, Profile and Addresses
-                </span>
-              </span>
-            </Link>
-            <Link
-              href="/account/orders"
-              className="group flex items-center gap-3 p-3 hover:bg-[#0760BC]/10"
-            >
-              <span className="bg-slate-100 group-hover:bg-white grid size-10 place-items-center rounded-full">
-                <ShoppingCart className="size-5 text-[#0760BC]" />
-              </span>
-              <span>
-                <span className="block text-sm font-semibold">My Orders</span>
-                <span className="text-xs text-slate-500">
-                  Track your purchases
-                </span>
-              </span>
-            </Link>
+            <div className="border-b border-slate-100 px-3 py-3">
+              <p className="text-sm font-bold text-slate-900">{isAuthenticated ? "Your account" : "Welcome to Bajrang"}</p>
+              <p className="mt-1 text-xs leading-5 text-slate-500">{isAuthenticated ? "Manage orders and account details." : "Sign in to manage orders and your parts list."}</p>
+            </div>
+            {isAuthenticated ? (
+              <div className="space-y-1 pt-2">
+                <Link href="/account" role="menuitem" className="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-semibold text-slate-700 transition-colors hover:bg-[#0760BC]/[0.06] hover:text-[#0760BC]">
+                  <CircleUserRound className="size-4" /> My Account
+                </Link>
+                <Link href="/account/orders" role="menuitem" className="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-semibold text-slate-700 transition-colors hover:bg-[#0760BC]/[0.06] hover:text-[#0760BC]">
+                  <ShoppingCart className="size-4" /> My Orders
+                </Link>
+              </div>
+            ) : (
+              <div className="grid gap-2 p-2 pt-3">
+                <Link href="/login" role="menuitem" className="flex h-10 items-center justify-center gap-2 rounded-lg bg-[#0760BC] px-4 text-sm font-semibold text-white transition-colors hover:bg-[#064d96]">
+                  <LogIn className="size-4" /> Login
+                </Link>
+                <Link href="/register" role="menuitem" className="flex h-10 items-center justify-center gap-2 rounded-lg border border-slate-200 px-4 text-sm font-semibold text-slate-700 transition-colors hover:border-[#0760BC] hover:bg-[#0760BC]/[0.04] hover:text-[#0760BC]">
+                  <UserRoundPlus className="size-4" /> Create an account
+                </Link>
+              </div>
+            )}
           </motion.div>
         ) : null}
       </AnimatePresence>
@@ -422,7 +482,7 @@ function MobileNavigation() {
               {brandGroups[item.key].map((brand) => (
                 <Link
                   key={brand.slug}
-                  href={`${item.href}/${brand.slug}`}
+                  href={`/brands/${brand.slug}`}
                   className="block py-2 text-sm text-slate-500"
                 >
                   {brand.name}

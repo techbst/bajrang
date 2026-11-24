@@ -2,6 +2,8 @@ import Image from "next/image";
 import { ArrowUpRight, CalendarDays, Cog, Globe2, BanknoteArrowDown, UserShield } from "lucide-react";
 import { aboutData } from "@/data/home/about";
 import { AboutReveal } from "./about-reveal";
+import { CountUp } from "@/components/common/count-up";
+import { SectionEyebrow } from "@/components/common/section-eyebrow";
 const highlightIcons = {
   globe: Globe2,
   calendar: CalendarDays,
@@ -17,13 +19,7 @@ export function About() {
       <div className="container">
         <AboutReveal>
           <header className="grid min-w-0 gap-4 sm:grid-cols-[minmax(140px,1fr)_minmax(0,2fr)] sm:items-start sm:gap-6 lg:gap-10">
-            <div className="min-w-0 text-[10px] font-bold tracking-[0.16em] text-primary uppercase sm:text-[11px] sm:tracking-[0.2em]">
-              <div className="flex min-h-6 flex-wrap items-center gap-3">
-              {/* <span className="h-px w-8 bg-[#0760BC]" aria-hidden="true" /> */}
-              {aboutData.eyebrow}
-              <span className="h-px w-8 bg-[#0760BC]" aria-hidden="true" />
-              </div>
-            </div>
+            <SectionEyebrow className="min-w-0">{aboutData.eyebrow}</SectionEyebrow>
             <div
               id="about-title"
               className="min-w-0 text-[clamp(1.5rem,4vw,2.75rem)] leading-[1.2] font_regular tracking-[-0.04em] text-[#161616]"
@@ -134,9 +130,7 @@ function AboutImage() {
 function CommitmentCard() {
   return (
     <article className="min-w-0 rounded-[20px] bg-[#f5f8fc] p-5 sm:min-h-[360px] sm:p-7 lg:min-h-[420px] lg:p-9">
-      <p className="text-[11px] font-bold tracking-[0.24em] text-[#0760BC] uppercase">
-        {aboutData.commitment.title}
-      </p>
+      <SectionEyebrow>{aboutData.commitment.title}</SectionEyebrow>
       <ul className="mt-6 divide-y divide-slate-200">
         {aboutData.commitment.items.map((item) => (
           <li
@@ -168,7 +162,7 @@ function Facts() {
           >
             <div className=" text-center">
               <dd className="mt-2 text-[clamp(1.75rem,5vw,2.25rem)] font-semibold tracking-[-0.04em] text-secondary-foreground">
-                {stat.value}
+                <CountUp value={stat.value} />
               </dd>
               <dt className="mt-2 text-[10px] font-bold tracking-[0.08em] text-secondary-foreground uppercase sm:text-xs sm:tracking-[0.12em]">
                 {stat.label}

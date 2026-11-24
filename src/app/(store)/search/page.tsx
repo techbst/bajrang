@@ -1,13 +1,6 @@
-import { DemoForm } from "@/components/common/demo-form";
-import { PageHeader } from "@/components/common/page-header";
+import { PartsSearchResults } from "@/components/catalogue/parts-search-results";
 
-export default function SearchPage() {
-  return (
-    <>
-      <PageHeader title="Search" description="Search architecture placeholder." />
-      <div className="mx-auto w-full max-w-3xl px-4 pb-10 sm:px-6 lg:px-8">
-        <DemoForm />
-      </div>
-    </>
-  );
+export default async function SearchPage({ searchParams }: { searchParams: Promise<{ q?: string }> }) {
+  const { q = "" } = await searchParams;
+  return <PartsSearchResults initialQuery={q} />;
 }

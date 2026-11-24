@@ -1,0 +1,38 @@
+{
+  "assemblyCode": "E-4",
+  "assemblyName": "CAM CHAIN TENSIONER",
+  "partCount": 21,
+  "parts": [
+    { "ref": 1, "partNumber": "14321-AAD-200", "name": "SPROCKET CAM", "quantity": 1, "productType": "OEM" },
+    { "ref": 2, "partNumber": "14401-AAD-00099", "name": "CAM CHAIN", "quantity": 1, "productType": "OEM" },
+    { "ref": 3, "partNumber": "1450A-ACK-000", "name": "ARM ASSY. CAM CHAIN TENSIONER", "quantity": 1, "productType": "OEM" },
+    { "ref": 4, "partNumber": "96001-06018-00", "name": "BOLT, FLANGE, 6 X 18", "quantity": 1, "productType": "OEM" },
+    { "ref": 5, "partNumber": "14531-035-000", "name": "PIVOT, CAM CHAIN TENSIONER", "quantity": 1, "productType": "OEM" },
+    { "ref": 6, "partNumber": "14541-GB4-681", "name": "SPRING, TENSIONER", "quantity": 1, "productType": "OEM" },
+    { "ref": 7, "partNumber": "14550-GB0-910R", "name": "PUSH ROD, COMP., TENSIONER", "quantity": 1, "productType": "OEM" },
+    { "ref": 8, "partNumber": "14566-086-030", "name": "HEAD, TENSIONER PUSH ROD", "quantity": 1, "productType": "OEM" },
+    { "ref": 9, "partNumber": "90100-ACK-000", "name": "STEP BOLT M6", "quantity": 1, "productType": "OEM" },
+    { "ref": 10, "partNumber": "14615-035-010", "name": "PIN, GUIDE ROLLER", "quantity": 1, "productType": "OEM" },
+    { "ref": 11, "partNumber": "14670-ACK-000", "name": "SPROCKET, COMP., CAM CHAIN GUIDE", "quantity": 1, "productType": "OEM" },
+    { "ref": 12, "partNumber": "14610-086-000R", "name": "ROLLER COMP., CAM CHAIN GUIDE", "quantity": 1, "productType": "OEM" },
+    { "ref": 13, "partNumber": "90081-035-000", "name": "BOLT, SEALING, 14 MM", "quantity": 1, "productType": "OEM" },
+    { "ref": 14, "partNumber": "90083-KVH-900", "name": "BOLT, KNOCK, 5 MM", "quantity": 2, "productType": "OEM" },
+    { "ref": 15, "partNumber": "90441-035-000", "name": "WASHER, SEALING, 14 MM", "quantity": 1, "productType": "OEM" },
+    { "ref": 16, "partNumber": "90461-357-000", "name": "WASHER, SEALING, 12 MM", "quantity": 1, "productType": "OEM" },
+    { "ref": 17, "partNumber": "90481-035-000", "name": "WASHER, 8 MM", "quantity": 1, "productType": "OEM" },
+    { "ref": 18, "partNumber": "90702-GB6-910", "name": "PIN, DOWEL, 8 X 12", "quantity": 1, "productType": "OEM" },
+    { "ref": 19, "partNumber": "14500-ACK-000", "name": "ARM COMP., CAM CHAIN TENSIONER", "quantity": 1, "productType": "OEM" },
+    { "ref": 20, "partNumber": "14502-086-000R", "name": "ROLLER, CAM CHAIN TENSIONER", "quantity": 1, "productType": "OEM" },
+    { "ref": 21, "partNumber": "90014-ACK-000", "name": "BOLT CAM", "quantity": 1, "productType": "OEM" }
+  ],
+  "supportedVehicles": [
+    "SPLENDOR+ SPORTS (Sept,2023)",
+    "HF 100 OBD1 (HMCM FI KIT) (Nov,2022)",
+    "HF 100 (Dec, 2021)",
+    "HF 100 (Jan,2023)",
+    "HF 100_BF THB (Sept.,2024)",
+    "HF DELUXE (June,2025)",
+    "HF DELUXE BLACK OBD2 PHB (July,2025)",
+    "HF DELUXE BLACK_BF THB (Sept.,2024)"
+  ]
+}

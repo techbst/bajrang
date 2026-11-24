@@ -17,7 +17,7 @@ export function MegaMenu({ label, href, description, brands }: { label: string; 
           <Link href={href} className="mt-5 inline-flex items-center gap-1 text-sm font-semibold text-[#0760BC] hover:gap-2">Explore catalog <ArrowUpRight className="size-4" /></Link>
         </div>
         <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-6">
-          {brands.map((brand) => <Link key={brand.slug} href={`${href}/${brand.slug}`} className="group flex justify-center flex-col align-middle items-center gap-0 border border-transparent transition hover:border-slate-200 hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0760BC]">
+          {brands.map((brand) => <Link key={brand.slug} href={`/brands/${brand.slug}`} className="group flex justify-center flex-col align-middle items-center gap-0 border border-transparent transition hover:border-slate-200 hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0760BC]">
             <span className="my-3 flex h-[80px] w-[100px] items-center justify-center">
               <Image src={brand.short} alt={`${brand.name} logo`} width={100} height={60} className="max-h-[56px] w-full object-contain transition-transform duration-300 group-hover:scale-105" />
             </span>

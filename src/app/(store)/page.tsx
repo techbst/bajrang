@@ -13,11 +13,13 @@ import { Certifications } from "@/components/home/certifications";
 import { ContactCta } from "@/components/home/contact-cta";
 import { Testimonials } from "@/components/home/testimonials";
 import { QuoteRequest } from "@/components/home/quote-request";
+import { PartsFinder } from "@/components/home/parts-finder";
 
 export default function HomePage() {
   return (
     <>
       <Hero />
+      <PartsFinder />
       <About />
       <Category />
       <ShopByBrand />

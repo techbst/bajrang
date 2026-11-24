@@ -1,0 +1,32 @@
+{
+  "brand": "Hero",
+  "brandSlug": "hero",
+  "vehicleGroup": "Bikes & Scooters",
+  "modelCount": 60,
+  "variantCount": 226,
+  "fastMovingPartCount": 2073,
+  "partGroupCount": 99,
+  "description": "Hero's high-turnover parts with MRP and MOQ — brakes, clutch, cables, bearings and more. Browse by part group instead of by model.",
+  "models": [
+    { "name": "Achiever", "type": "Motorcycles", "variantCount": 2, "variants": ["Achiever (2014)", "Achiever (2016)"] },
+    { "name": "Destini", "type": "Scooters", "variantCount": 12, "variants": ["Destini 125 (2018)", "Destini 125 Xtec (2022)"] },
+    { "name": "Duet", "type": "Scooters", "variantCount": 2, "variants": ["Duet (2016)", "Duet VX (2018)"] },
+    { "name": "Glamour", "type": "Motorcycles", "variantCount": 23, "variants": ["Glamour (2017)", "Glamour FI (2020)", "Glamour Xtec (2022)"] },
+    { "name": "HF 100", "type": "Motorcycles", "variantCount": 8, "variants": ["HF 100 (2021)", "HF 100 (2023)", "HF 100 (2024)"] },
+    { "name": "HF Dawn", "type": "Motorcycles", "variantCount": 4, "variants": ["HF Dawn (2012)", "HF Dawn (2014)"] },
+    { "name": "HF Deluxe", "type": "Motorcycles", "variantCount": 19, "variants": ["HF Deluxe (2022)", "HF Deluxe (2023)", "HF Deluxe OBD II (2023)", "HF Deluxe OBD2B (2025)"] },
+    { "name": "Hunk", "type": "Motorcycles", "variantCount": 6, "variants": ["Hunk (2011)", "Hunk (2014)"] },
+    { "name": "Ignitor", "type": "Motorcycles", "variantCount": 4, "variants": ["Ignitor (2012)", "Ignitor (2015)"] },
+    { "name": "Karizma", "type": "Motorcycles", "variantCount": 5, "variants": ["Karizma (2014)", "Karizma ZMR (2017)"] },
+    { "name": "Maestro", "type": "Scooters", "variantCount": 16, "variants": ["Maestro (2012)", "Maestro Edge (2016)", "Maestro Edge 125 (2019)"] },
+    { "name": "Mavrick", "type": "Motorcycles", "variantCount": 3, "variants": ["Mavrick 440 (2024)", "Mavrick 440 (2025)"] },
+    { "name": "Passion", "type": "Motorcycles", "variantCount": 19, "variants": ["Passion Pro (2018)", "Passion Xpro (2020)", "Passion Plus (2023)"] },
+    { "name": "Pleasure", "type": "Scooters", "variantCount": 10, "variants": ["Pleasure Plus (2019)", "Pleasure Plus Xtec (2023)"] },
+    { "name": "Splendor", "type": "Motorcycles", "variantCount": 14, "variants": ["Splendor Plus (2019)", "Splendor Plus IBS (2021)", "Splendor Plus Xtec (2023)", "SPLENDOR+ SPORTS (Sept,2023)"] },
+    { "name": "Super Splendor", "type": "Motorcycles", "variantCount": 11, "variants": ["Super Splendor (2021)", "Super Splendor Xtec (2023)"] },
+    { "name": "Vida", "type": "Electric", "variantCount": 3, "variants": ["Vida V1 Plus (2022)", "Vida V1 Pro (2022)"] },
+    { "name": "Xoom", "type": "Scooters", "variantCount": 7, "variants": ["Xoom 110 (2023)", "Xoom 125 (2025)"] },
+    { "name": "Xpulse", "type": "Motorcycles", "variantCount": 13, "variants": ["Xpulse 200 (2021)", "Xpulse 200 4V (2023)", "Xpulse 200T (2022)"] },
+    { "name": "Xtreme", "type": "Motorcycles", "variantCount": 23, "variants": ["Xtreme 160R (2020)", "Xtreme 160R 4V (2023)", "Xtreme 200S (2022)"] }
+  ]
+}

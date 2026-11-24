@@ -2,9 +2,11 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { Bike, CarFront, Truck } from "lucide-react";
 import Heading from "@/components/ui/heading";
 import { aftermarketPartnersData } from "@/data/home/aftermarket-partners";
+import { aftermarketSlug } from "@/lib/catalogue-slugs";
 
 const vehicleIcons = {
   car: CarFront,
@@ -61,22 +63,24 @@ export function AftermarketPartners() {
           {activePartners.map((partner) => (
             <li
               key={partner.name}
-              className="group flex min-h-40 w-[calc(50%-8px)] flex-col rounded-lg border border-border bg-card px-0 pt-5 transition-[transform,box-shadow,border-color] duration-500 ease-out hover:-translate-y-1 hover:border-primary/30 hover:shadow-[0_20px_45px_rgba(7,96,188,0.12)] sm:w-[calc(33.333%-11px)] lg:w-[calc(16.666%-14px)]"
+              className="group min-h-40 w-[calc(50%-8px)] rounded-lg border border-border bg-card px-0 transition-[transform,box-shadow,border-color] duration-500 ease-out hover:-translate-y-1 hover:border-primary/30 hover:shadow-[0_20px_45px_rgba(7,96,188,0.12)] focus-within:border-primary/40 focus-within:ring-2 focus-within:ring-primary/20 sm:w-[calc(33.333%-11px)] lg:w-[calc(16.666%-14px)]"
             >
-              <div className="relative mx-auto h-24 w-full max-w-32 sm:h-28">
-                <Image
-                  src={partner.logo}
-                  alt={`${partner.name} logo`}
-                  fill
-                  className="object-contain"
-                  sizes="(max-width: 640px) 40vw, 15vw"
-                />
-              </div>
-              <div className="mt-5 flex items-center justify-center gap-3 bg-primary/5 py-2 text-center text-sm text-muted-foreground">
-                <span>
-                  <strong className="font-semibold text-primary">{partner.parts}</strong> Spare Parts
-                </span>
-              </div>
+              <Link href={`/brands/${aftermarketSlug(partner.name, partner.vehicleType)}`} aria-label={`Browse ${partner.name} parts`} className="flex min-h-40 flex-col rounded-lg pt-5 focus-visible:outline-none">
+                <div className="relative mx-auto h-24 w-full max-w-32 sm:h-28">
+                  <Image
+                    src={partner.logo}
+                    alt={`${partner.name} logo`}
+                    fill
+                    className="object-contain"
+                    sizes="(max-width: 640px) 40vw, 15vw"
+                  />
+                </div>
+                <div className="mt-5 flex items-center justify-center gap-3 bg-primary/5 py-2 text-center text-sm text-muted-foreground transition-colors group-hover:bg-primary/10">
+                  <span>
+                    <strong className="font-semibold text-primary">{partner.parts}</strong> Spare Parts
+                  </span>
+                </div>
+              </Link>
             </li>
           ))}
         </ul>

@@ -7,17 +7,17 @@ export const categoryData = {
     {
       title: "4 Wheeler Vehicle",
       image: "/img/home/car-spare-parts.webp",
-      href: "/car-spare-parts",
+      href: "/catalogue?category=car",
     },
     {
       title: "2 Wheeler Vehicle",
       image: "/img/home/bike-spare-parts.webp",
-      href: "/bike-spare-parts",
+      href: "/catalogue?category=motorcycle",
     },
     {
       title: "HCV Vehicle",
       image: "/img/home/hcv-spare-parts.webp",
-      href: "/hcv-spare-parts",
+      href: "/catalogue?category=truck",
     },
   ],
 };

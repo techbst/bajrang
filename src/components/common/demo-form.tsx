@@ -32,7 +32,7 @@ export function DemoForm() {
         <Label htmlFor="demo-search">Search</Label>
         <Input
           id="demo-search"
-          placeholder="Try cotton kurta"
+          placeholder="Search by part name or number"
           aria-invalid={Boolean(errors.search)}
           {...register("search")}
         />

@@ -1,0 +1,29 @@
+{
+  "four-wheeler": {
+    "vehicleGroup": "Cars & Light Commercial Vehicles",
+    "models": [
+      { "name": "Swift", "type": "Cars", "variantCount": 8, "variants": ["Swift VXi (2022)", "Swift ZXi (2023)", "Swift VDi (2021)"] },
+      { "name": "Wagon R", "type": "Cars", "variantCount": 7, "variants": ["Wagon R LXi (2022)", "Wagon R VXi (2023)"] },
+      { "name": "Baleno", "type": "Cars", "variantCount": 6, "variants": ["Baleno Sigma (2022)", "Baleno Alpha (2023)"] },
+      { "name": "Dzire", "type": "Cars", "variantCount": 5, "variants": ["Dzire VXi (2022)", "Dzire ZXi (2023)"] }
+    ]
+  },
+  "two-wheeler": {
+    "vehicleGroup": "Motorcycles & Scooters",
+    "models": [
+      { "name": "Commuter 125", "type": "Motorcycles", "variantCount": 4, "variants": ["Commuter 125 Drum (2023)", "Commuter 125 Disc (2024)"] },
+      { "name": "Street 160", "type": "Motorcycles", "variantCount": 5, "variants": ["Street 160 Standard (2023)", "Street 160 ABS (2024)"] },
+      { "name": "City Scooter", "type": "Scooters", "variantCount": 3, "variants": ["City Scooter Standard (2022)", "City Scooter Deluxe (2024)"] },
+      { "name": "Electric One", "type": "Electric", "variantCount": 2, "variants": ["Electric One (2023)", "Electric One Plus (2024)"] }
+    ]
+  },
+  "hvc-wheeler": {
+    "vehicleGroup": "Tractors & Commercial Vehicles",
+    "models": [
+      { "name": "Heavy Duty 1616", "type": "Commercial Vehicles", "variantCount": 4, "variants": ["Heavy Duty 1616 BS6 (2022)", "Heavy Duty 1616 BS6 (2024)"] },
+      { "name": "Loadmaster 12T", "type": "Commercial Vehicles", "variantCount": 3, "variants": ["Loadmaster 12T (2023)", "Loadmaster 12T Plus (2024)"] },
+      { "name": "Farm 575", "type": "Tractors", "variantCount": 5, "variants": ["Farm 575 DI (2022)", "Farm 575 XP (2024)"] },
+      { "name": "Farm 590", "type": "Tractors", "variantCount": 3, "variants": ["Farm 590 DI (2023)", "Farm 590 Pro (2024)"] }
+    ]
+  }
+}
