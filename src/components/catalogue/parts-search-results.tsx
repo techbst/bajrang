@@ -5,18 +5,30 @@ import { useMemo, useState } from "react";
 import { ArrowUpRight, PackageCheck, Search } from "lucide-react";
 import sampleParts from "@/data/catalogue/sample-parts.json";
 import { ProductTypeBadge } from "@/components/catalogue/assembly-detail";
+import { slugifyCatalogueName } from "@/lib/catalogue-slugs";
 
-export function PartsSearchResults({ initialQuery = "" }: { initialQuery?: string }) {
+export function PartsSearchResults({ initialQuery = "", brand, model, catalogueHref }: {
+  initialQuery?: string;
+  brand?: { name: string; slug: string };
+  model?: string;
+  catalogueHref?: string;
+}) {
   const [query, setQuery] = useState(initialQuery);
   const [productFilter, setProductFilter] = useState("All");
   const results = useMemo(() => {
     const normalized = query.trim().toLowerCase();
+    const modelSlug = model ? slugifyCatalogueName(model) : "";
     return sampleParts.filter((part) => {
       const matchesQuery = !normalized || `${part.partNumber} ${part.name} ${part.brand} ${part.vehicle} ${part.category}`.toLowerCase().includes(normalized);
       const matchesType = productFilter === "All" || part.productType === productFilter;
-      return matchesQuery && matchesType;
+      const matchesBrand = !brand || part.brand === brand.name;
+      const matchesModel = !modelSlug || part.vehicle.split(",").some((vehicle) => {
+        const vehicleSlug = slugifyCatalogueName(vehicle);
+        return vehicleSlug.replaceAll("-", "") === modelSlug.replaceAll("-", "") || vehicleSlug.startsWith(`${modelSlug}-`);
+      });
+      return matchesQuery && matchesType && matchesBrand && matchesModel;
     });
-  }, [productFilter, query]);
+  }, [brand, model, productFilter, query]);
 
   return (
     <main className="min-h-[65vh] bg-slate-50 py-10 sm:py-14">
@@ -28,6 +40,8 @@ export function PartsSearchResults({ initialQuery = "" }: { initialQuery?: strin
         </div>
 
         <form action="/search" role="search" className="mx-auto mt-7 flex max-w-3xl flex-col gap-2 rounded-xl border border-slate-200 bg-white p-2 shadow-sm sm:flex-row">
+          {brand && <input type="hidden" name="brand" value={brand.slug} />}
+          {model && <input type="hidden" name="model" value={model} />}
           <label htmlFor="parts-search-page" className="sr-only">Search by part number, name, brand or vehicle</label>
           <div className="relative min-w-0 flex-1">
             <Search className="pointer-events-none absolute left-3.5 top-1/2 size-4 -translate-y-1/2 text-slate-400" />
@@ -35,6 +49,12 @@ export function PartsSearchResults({ initialQuery = "" }: { initialQuery?: strin
           </div>
           <button type="submit" className="inline-flex h-11 items-center justify-center gap-2 rounded-lg bg-primary px-6 text-sm font-semibold text-white transition hover:bg-blue-800">Search <ArrowUpRight className="size-4" /></button>
         </form>
+        {brand && catalogueHref && (
+          <div className="mx-auto mt-3 flex max-w-3xl flex-wrap items-center justify-between gap-2 text-sm">
+            <p className="text-slate-600">Searching in <strong>{brand.name}{model ? ` ${model}` : ""}</strong></p>
+            <Link href={catalogueHref} className="font-semibold text-primary hover:underline">Browse vehicle catalogue</Link>
+          </div>
+        )}
 
         <div className="mt-8 flex items-center justify-between gap-3">
           <h2 className="text-lg font-bold text-slate-900">{query ? `Results for “${query}”` : "Popular parts"}</h2>

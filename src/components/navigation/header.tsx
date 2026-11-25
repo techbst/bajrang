@@ -159,7 +159,7 @@ export function Header({ isAuthenticated = false }: { isAuthenticated?: boolean 
         <div className="hidden items-center justify-end gap-2 xl:flex">
           <SearchSheet open={isSearchOpen} onOpenChange={setIsSearchOpen} />
           <AccountMenu open={isAccountOpen} onOpenChange={setIsAccountOpen} isAuthenticated={isAuthenticated} />
-          <Link href="/contact" className="site-action inline-flex h-10 items-center gap-2 whitespace-nowrap rounded-lg bg-[#0760BC] px-3 text-xs font-semibold text-white shadow-sm shadow-[#0760BC]/20 transition-[transform,box-shadow,color,background-color,border-color] hover:-translate-y-0.5 hover:bg-[#064d96] hover:shadow-md xl:px-4">
+          <Link href="/contact" className="site-action inline-flex h-10 items-center gap-2 whitespace-nowrap rounded-lg bg-[#0760BC] px-3 text-sm font-semibold text-white shadow-sm shadow-[#0760BC]/20 transition-[transform,box-shadow,color,background-color,border-color] hover:-translate-y-0.5 hover:bg-[#064d96] hover:shadow-md xl:px-4">
             Request a quote
             <ArrowRight aria-hidden="true" className="size-4" />
           </Link>
