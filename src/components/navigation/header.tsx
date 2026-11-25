@@ -41,6 +41,9 @@ import { useCatalogueCartStore } from "@/stores/catalogue-cart-store";
 import { useCartStore } from "@/stores/cart-store";
 import { ProductTypeBadge } from "@/components/catalogue/assembly-detail";
 
+const headerIconButtonClass =
+  "site-action grid size-10 shrink-0 cursor-pointer place-items-center rounded-lg border border-slate-200 bg-white text-slate-700 shadow-sm hover:border-primary hover:bg-primary hover:text-white focus-visible:outline-2 focus-visible:outline-primary";
+
 export function Header({
   isAuthenticated = false
 }: {
@@ -205,9 +208,9 @@ export function Header({
                 <button
                   type="button"
                   aria-label="Open navigation"
-                  className="grid size-10 place-items-center rounded-lg border border-slate-200 transition-colors hover:border-[#0760BC] hover:text-[#0760BC] xl:hidden"
+                  className={headerIconButtonClass}
                 >
-                  <Menu className="size-5" />
+                  <Menu aria-hidden="true" className="size-[18px]" />
                 </button>
               </SheetTrigger>
               <SheetContent className="overflow-y-auto p-0">
@@ -220,9 +223,6 @@ export function Header({
                       Genuine parts. Global supply.
                     </SheetDescription>
                   </SheetHeader>
-                  <div className="mt-6">
-                    <SearchBar compact />
-                  </div>
                   <MobileNavigation />
                 </div>
               </SheetContent>
@@ -261,9 +261,9 @@ function SearchSheet({
         <button
           type="button"
           aria-label="Search parts"
-          className="grid size-9 place-items-center rounded-lg border border-slate-200 bg-white text-slate-700 shadow-sm transition-[transform,box-shadow,color,background-color,border-color] hover:-translate-y-0.5 hover:border-[#0760BC] hover:bg-[#0760BC] hover:text-white hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0760BC] cursor-pointer lg:size-10"
+          className={headerIconButtonClass}
         >
-          <Search className="size-3.5 lg:size-4" />
+          <Search aria-hidden="true" className="size-[18px]" />
         </button>
       </SheetTrigger>
       <SearchDrawer />
@@ -348,9 +348,9 @@ function AccountMenu({
         aria-expanded={open}
         aria-haspopup="menu"
         aria-label={isAuthenticated ? "Open account menu" : "Login or register"}
-        className="grid size-10 place-items-center rounded-lg border border-slate-200 bg-white text-slate-700 shadow-sm transition-[transform,box-shadow,color,background-color,border-color] hover:-translate-y-0.5 hover:border-[#0760BC] hover:text-[#0760BC] hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0760BC] cursor-pointer"
+        className={headerIconButtonClass}
       >
-        <CircleUserRound className="size-[19px]" />
+        <CircleUserRound aria-hidden="true" className="size-[18px]" />
         <span className="sr-only">{isAuthenticated ? "Account" : "Login or register"}</span>
       </button>
       <AnimatePresence>

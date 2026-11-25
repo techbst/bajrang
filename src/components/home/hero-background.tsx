@@ -22,7 +22,7 @@ export function HeroBackground() {
 
   return (
     <motion.div
-      className="absolute inset-0 bg-[url('/img/home/main_bannernew.webp')] bg-cover [background-position:78%_center] bg-no-repeat lg:bg-center lg:motion-safe:-bottom-16 lg:motion-safe:translate-y-[var(--hero-background-offset)]"
+      className="absolute inset-0 bg-[url('/img/home/mobile-hero.webp')] bg-cover bg-bottom bg-no-repeat md:bg-[url('/img/home/main_bannernew.webp')] md:bg-right lg:motion-safe:-bottom-16 lg:motion-safe:translate-y-[var(--hero-background-offset)]"
       style={backgroundStyle}
     />
   );

@@ -1,7 +1,7 @@
 ﻿"use client";
 
 import { useState } from "react";
-import { Search } from "lucide-react";
+import { ChevronDown, Search } from "lucide-react";
 import brandVehicles from "@/data/catalogue/brand-vehicles.json";
 import { brandGroups } from "@/components/navigation/navigation-data";
 import { Button } from "@/components/ui/button";
@@ -34,8 +34,18 @@ export function PartsFinder({
       "scheme-dark border-white/30 bg-slate-950/30 text-white placeholder:text-slate-300 focus-visible:outline-blue-300 disabled:bg-slate-950/20 disabled:text-slate-300"
   );
   const vehicleLabelClass = cn(
-    "grid min-w-0 gap-1 font-semibold  lg:border-slate-300 lg:px-4",
-    glass && "lg:border-white/20"
+    "grid min-w-0 gap-1 font-semibold lg:px-4",
+    glass && "relative lg:px-0 xl:px-4"
+  );
+  const selectClass = cn(
+    fieldClass,
+    glass && "appearance-none pe-9 forced-colors:appearance-auto"
+  );
+  const selectArrow = glass && (
+    <ChevronDown
+      aria-hidden="true"
+      className="pointer-events-none absolute end-3 bottom-3.5 size-4 text-slate-300 xl:end-7 forced-colors:hidden"
+    />
   );
 
   return (
@@ -52,7 +62,8 @@ export function PartsFinder({
       <div
         className={cn(
           "grid grid-cols-1 items-end gap-3 rounded-lg border border-slate-300 p-3 sm:grid-cols-2 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)_minmax(0,1.5fr)_auto] lg:gap-0",
-          glass && "border-0 lg:grid-cols-[repeat(3,minmax(0,1fr))_auto]"
+          glass &&
+            "border-0 p-0 lg:grid-cols-2 lg:gap-3 xl:grid-cols-[repeat(3,minmax(0,1fr))_auto] xl:gap-0"
         )}
       >
         <label className={vehicleLabelClass}>
@@ -64,7 +75,7 @@ export function PartsFinder({
               setBrand(event.target.value);
               setModel("");
             }}
-            className={fieldClass}
+            className={selectClass}
           >
             <option value="">All brands</option>
             {Object.entries(brandGroupLabels).map(([group, label]) => (
@@ -77,6 +88,7 @@ export function PartsFinder({
               </optgroup>
             ))}
           </select>
+          {selectArrow}
         </label>
         <label className={vehicleLabelClass}>
           Model
@@ -85,7 +97,7 @@ export function PartsFinder({
             value={model}
             onChange={(event) => setModel(event.target.value)}
             disabled={!models.length}
-            className={fieldClass}
+            className={selectClass}
           >
             <option value="">
               {brand ? "All models" : "Select a brand first"}
@@ -96,11 +108,12 @@ export function PartsFinder({
               </option>
             ))}
           </select>
+          {selectArrow}
         </label>
         <label
           className={cn(
             "grid min-w-0 gap-1 font-semibold lg:px-4",
-            glass && "lg:border-s lg:border-white/40"
+            glass && "lg:px-0 xl:border-s xl:border-white/40 xl:px-4"
           )}
         >
           Part number or name
@@ -112,10 +125,7 @@ export function PartsFinder({
             placeholder="e.g. Brake shoe"
           />
         </label>
-        <Button
-          type="submit"
-          className={cn("h-11", glass && "lg:min-w-36 xl:min-w-44")}
-        >
+        <Button type="submit" className={cn("h-11", glass && "xl:min-w-44")}>
           <Search aria-hidden="true" className="size-4" /> Search
         </Button>
       </div>

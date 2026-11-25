@@ -23,17 +23,17 @@ export function Hero() {
   return (
     <section
       aria-labelledby="home-hero-title"
-      className="relative isolate grid grid-cols-1 text-white"
+      className="relative isolate bg-[#071427] text-white"
     >
-      <div className="contents">
+      <div>
         <div
           aria-hidden="true"
-          className="absolute inset-x-0 -top-[min(55vw,22rem)] bottom-0 -z-10 overflow-hidden max-lg:col-start-1 max-lg:row-start-2 max-lg:row-end-3 lg:inset-0"
+          className="absolute inset-0 -z-10 overflow-hidden"
         >
           <HeroBackground />
-          {/* <div className="absolute inset-0 bg-linear-to-b from-[#071427] via-[#071427]/30 to-[#071427]/55 lg:bg-[linear-gradient(90deg,rgba(7,20,39,0.94)_0%,rgba(7,20,39,0.7)_31%,rgba(7,20,39,0.32)_55%,transparent_78%)]" /> */}
+          <div className="absolute inset-0 bg-linear-to-b from-[#071427]/45 to-transparent to-65% md:bg-[linear-gradient(90deg,rgba(7,20,39,0.86)_0%,rgba(7,20,39,0.57)_34%,transparent_72%)]" />
         </div>
-        <Container className="relative pt-12 pb-[min(55vw,22rem)] sm:pt-16 lg:flex lg:min-h-[31rem] lg:flex-col lg:justify-center lg:py-24 xl:min-h-[35rem]">
+        <Container className="relative pt-9 pb-[clamp(11rem,55vw,22rem)] sm:pt-12 lg:flex lg:min-h-[clamp(27rem,60svh,35rem)] lg:flex-col lg:justify-center lg:py-16">
           <div className="w-full max-w-2xl">
             <p className="flex items-center gap-3 text-xs font-bold tracking-[0.16em] text-blue-200 uppercase">
               Wholesale Auto Parts &amp; Export
@@ -44,9 +44,9 @@ export function Hero() {
             </p>
             <h1
               id="home-hero-title"
-              className="mt-5 max-w-[16ch] text-[clamp(2.5rem,5.5vw,4.75rem)] leading-[1.06] font-bold text-balance"
+              className="mt-5 max-w-[16ch] text-[clamp(2rem,6vw,4.75rem)] leading-[1.06] font-bold text-balance"
             >
-              Auto Parts for <span className="text-">Global Trade.</span>
+              Auto Parts for Global Trade.
             </h1>
             <p className="mt-5 max-w-lg text-base leading-7 text-slate-200 sm:text-lg">
               Source genuine OEM and aftermarket parts for cars, motorcycles,
@@ -56,7 +56,7 @@ export function Hero() {
               <Link
                 href="#upload"
                 className={buttonVariants({
-                  className: "px-5 whitespace-nowrap"
+                  className: "px-3 text-center sm:px-5"
                 })}
               >
                 Upload Your Requirement{" "}
@@ -66,7 +66,7 @@ export function Hero() {
                 href="#home-part-number"
                 className={buttonVariants({
                   variant: "light",
-                  className: "px-5 whitespace-nowrap"
+                  className: "px-3 text-center sm:px-5"
                 })}
               >
                 Search by Part Number{" "}
@@ -84,8 +84,8 @@ export function Hero() {
           </div>
         </Container>
       </div>
-      <div className="py-[10px] [backdrop-filter:blur(6px)] [--dark-divider-color:#ffffff14] [-webkit-backdrop-filter:blur(62px)] [background:linear-gradient(var(--dark-divider-color),var(--dark-divider-color)),#00000047]">
-        <Container className="grid gap-3 lg:grid-cols-[11rem_minmax(0,1fr)] lg:items-center lg:gap-6">
+      <div className="relative -mt-6 py-5 backdrop-blur-[6px] lg:mt-0">
+        <Container className="grid gap-3 xl:grid-cols-[11rem_minmax(0,1fr)] xl:items-center xl:gap-6">
           <h2 className="text-xl leading-tight font-semibold">
             Find auto parts
           </h2>
