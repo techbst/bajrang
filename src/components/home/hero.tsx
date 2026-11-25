@@ -46,7 +46,7 @@ export function Hero() {
               id="home-hero-title"
               className="mt-5 max-w-[16ch] text-[clamp(2.5rem,5.5vw,4.75rem)] leading-[1.06] font-bold text-balance"
             >
-              Auto Parts for <span className="text-primary">Global Trade.</span>
+              Auto Parts for <span className="text-">Global Trade.</span>
             </h1>
             <p className="mt-5 max-w-lg text-base leading-7 text-slate-200 sm:text-lg">
               Source genuine OEM and aftermarket parts for cars, motorcycles,
