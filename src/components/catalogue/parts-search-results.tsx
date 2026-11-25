@@ -72,8 +72,8 @@ export function PartsSearchResults({ initialQuery = "", brand, model, catalogueH
               </div>
             </div>
             <div className="flex items-center justify-between gap-5 border-t border-slate-100 pt-3 sm:border-0 sm:pt-0">
-              <div className="flex gap-4 text-xs text-slate-500"><span>MRP <strong className="text-slate-800">₹{part.mrp}</strong></span><span>MOQ <strong className="text-slate-800">{part.moq}</strong></span></div>
-              <Link href={`/contact?part=${encodeURIComponent(part.partNumber)}`} className="inline-flex h-9 shrink-0 items-center gap-1.5 rounded-lg border border-primary/25 px-3 text-xs font-bold text-primary transition hover:bg-primary hover:text-white">Request quote <ArrowUpRight className="size-3.5" /></Link>
+              <span className="text-xs text-slate-500">MOQ <strong className="text-slate-800">{part.moq}</strong></span>
+              <Link href={`/contact?part=${encodeURIComponent(part.partNumber)}#enquiry-form`} className="inline-flex h-9 shrink-0 items-center gap-1.5 rounded-lg border border-primary/25 px-3 text-xs font-bold text-primary transition hover:bg-primary hover:text-white">Request quote <ArrowUpRight className="size-3.5" /></Link>
             </div>
           </article>)}
           {results.length === 0 ? <div className="rounded-xl border border-dashed border-slate-300 bg-white p-10 text-center"><p className="font-semibold text-slate-800">No matching parts found</p><p className="mt-2 text-sm text-slate-500">Try another part number or send your requirement to our team.</p><Link href="/contact" className="mt-4 inline-flex text-sm font-bold text-primary hover:underline">Send a parts enquiry</Link></div> : null}

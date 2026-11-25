@@ -39,6 +39,7 @@ import { MegaMenu } from "./mega-menu";
 import { aboutLinks, brandGroups, megaMenuConfig } from "./navigation-data";
 import { useCatalogueCartStore } from "@/stores/catalogue-cart-store";
 import { useCartStore } from "@/stores/cart-store";
+import { CartActions } from "@/components/catalogue/cart-actions";
 import { ProductTypeBadge } from "@/components/catalogue/assembly-detail";
 
 const headerIconButtonClass =
@@ -193,11 +194,11 @@ export function Header({
               Request a quote
               <ArrowRight aria-hidden="true" className="size-4" />
             </Link>
-            {isAuthenticated ? <CartButton compact count={cartCount} /> : null}
+            {isAuthenticated || cartCount > 0 ? <CartButton compact count={cartCount} /> : null}
           </div>
           <div className="flex shrink-0 items-center justify-end gap-1.5 xl:hidden">
             <SearchSheet open={isSearchOpen} onOpenChange={setIsSearchOpen} />
-            {isAuthenticated ? <CartButton compact count={cartCount} /> : null}
+            {isAuthenticated || cartCount > 0 ? <CartButton compact count={cartCount} /> : null}
             <AccountMenu
               open={isAccountOpen}
               onOpenChange={setIsAccountOpen}
@@ -241,7 +242,7 @@ export function Header({
           ) : null}
         </AnimatePresence>
         <SheetContent className="w-full max-w-md overflow-y-auto p-0 font-sans">
-          <CartDrawerContents />
+          <CartDrawerContents isAuthenticated={isAuthenticated} closeCart={closeCart} />
         </SheetContent>
       </Sheet>
     </header>
@@ -287,11 +288,10 @@ function CartButton({ compact = false, count }: { compact?: boolean; count: numb
   );
 }
 
-function CartDrawerContents() {
+function CartDrawerContents({ isAuthenticated, closeCart }: { isAuthenticated: boolean; closeCart: () => void }) {
   const items = useCatalogueCartStore((state) => state.items);
   const setQuantity = useCatalogueCartStore((state) => state.setQuantity);
   const removeItem = useCatalogueCartStore((state) => state.removeItem);
-  const clear = useCatalogueCartStore((state) => state.clear);
   const totalQuantity = items.reduce((total, item) => total + item.quantity, 0);
 
   return (
@@ -322,8 +322,8 @@ function CartDrawerContents() {
           <div className="border-t border-slate-200 bg-white p-5 sm:p-6">
             <div className="flex justify-between text-sm text-slate-600"><span>{items.length} parts</span><strong className="text-slate-900">{totalQuantity} total qty</strong></div>
             <p className="mt-2 text-xs leading-5 text-slate-500">Pricing and availability will be confirmed with your enquiry.</p>
-            <Link href="/contact?source=cart" className="mt-4 inline-flex h-11 w-full items-center justify-center gap-2 rounded-lg bg-primary px-4 text-sm font-bold text-white transition hover:bg-blue-800">Submit enquiry <ArrowRight className="size-4" /></Link>
-            <div className="mt-3 flex items-center justify-between"><Link href="/cart" className="text-xs font-semibold text-primary hover:underline">Open full cart</Link><button type="button" onClick={clear} className="text-xs font-semibold text-slate-400 transition-colors hover:text-red-600">Clear cart</button></div>
+            <CartActions isAuthenticated={isAuthenticated} onNavigate={closeCart} />
+            <Link href="/cart" onClick={closeCart} className="mt-3 block text-center text-xs font-semibold text-primary hover:underline">Open full cart</Link>
           </div>
         </>
       )}

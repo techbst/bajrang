@@ -1,3 +1,4 @@
+import { EnquiryRequirement } from "@/components/company/enquiry-requirement";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, BadgeCheck, Clock3, Mail, MapPin, Phone, ShieldCheck } from "lucide-react";
@@ -50,7 +51,7 @@ export function HardWorkshipPage() {
   </Container></main>;
 }
 
-export function ContactPage() {
+export function ContactPage({ sourceCart, part }: { sourceCart: boolean; part?: string }) {
   const page = companyPages.contact;
   return <main className="bg-[#f6f9fc] pb-12 sm:pb-16"><section className="border-b border-blue-100 bg-gradient-to-r from-blue-50 via-white to-white"><Container className="py-8 sm:py-10"><SectionEyebrow>{page.eyebrow}</SectionEyebrow><h1 className="mt-2 max-w-3xl text-2xl leading-tight font-bold tracking-tight text-slate-950 sm:text-3xl lg:text-4xl">{page.title}</h1><p className="mt-3 max-w-3xl text-base leading-7 text-slate-600">{page.intro}</p></Container></section><Container className="pt-8 sm:pt-10">
     <div className="grid items-start gap-8 xl:grid-cols-[0.9fr_1.1fr] xl:gap-10">
@@ -62,9 +63,9 @@ export function ContactPage() {
       </section>
       <section className={`${panel} p-5 sm:p-6 lg:p-7`}>
         <SectionEyebrow>Business enquiries</SectionEyebrow><h2 className="mt-2 text-xl font-bold text-slate-950 sm:text-2xl">Send us your requirement</h2><p className="mt-2 text-sm leading-6 text-slate-600">Include part numbers, vehicle or product category, quantities, and destination country so we can respond with relevant information.</p>
-        <form action="mailto:exports@bajrangautoparts.in" method="post" encType="text/plain" className="mt-5 grid gap-3 sm:grid-cols-2 sm:gap-4">
+        <form id="enquiry-form" action="mailto:exports@bajrangautoparts.in" method="post" encType="text/plain" className="mt-5 grid scroll-mt-28 gap-3 sm:grid-cols-2 sm:gap-4">
           <Field label="Your name" name="name" placeholder="Full name" required/><Field label="Business email" name="email" type="email" placeholder="name@company.com" required/><Field label="Company" name="company" placeholder="Company name"/><Field label="Phone / WhatsApp" name="phone" type="tel" placeholder="+ country code"/>
-          <label className="grid gap-2 text-sm font-semibold text-slate-700 sm:col-span-2">Parts or product requirement<textarea name="message" rows={5} required placeholder="Part numbers, brands, quantities, destination market..." className="w-full resize-y rounded-lg border border-slate-200 bg-white px-3 py-3 text-sm font-normal text-slate-900 outline-none placeholder:text-slate-400 focus:border-primary focus:ring-2 focus:ring-primary/15"/></label>
+          <EnquiryRequirement key={JSON.stringify([sourceCart, part])} sourceCart={sourceCart} part={part} />
           <button type="submit" className="inline-flex h-11 items-center justify-center gap-2 rounded-lg bg-primary px-5 text-sm font-bold text-white shadow-sm transition hover:-translate-y-0.5 hover:bg-blue-800 hover:shadow-md sm:col-span-2 sm:w-fit">Send enquiry <ArrowRight className="size-4"/></button>
         </form>
       </section>
