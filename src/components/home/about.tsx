@@ -38,7 +38,7 @@ export function About() {
             />
           </header>
         </AboutReveal>
-        <div className="mt-8 grid min-w-0 gap-4 md:mt-10 lg:mt-14 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1fr)_minmax(0,0.9fr)] lg:gap-5">
+        <div className="mt-8 grid min-w-0 gap-4 md:mt-10 lg:mt-20 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1fr)_minmax(0,0.9fr)] lg:gap-5">
           <AboutReveal className="grid min-w-0">
             <AboutIntroCard />
           </AboutReveal>
