@@ -1,11 +1,12 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, BadgeCheck, Boxes, CarFront, ChevronDown, Search, Truck, Wrench } from "lucide-react";
+import { ArrowRight, BadgeCheck, Boxes, CarFront, Truck, Wrench } from "lucide-react";
 import { Container } from "@/components/common/container";
 import { brandGroups } from "@/components/navigation/navigation-data";
-import { CatalogueSelector } from "@/components/catalogue/catalogue-selector";
+import { PartsFinder } from "@/components/catalogue/parts-finder";
 import { CompanyCta } from "@/components/company/company-cta";
 import { SectionEyebrow } from "@/components/common/section-eyebrow";
+import { buttonVariants } from "@/components/ui/button";
 import brandVehicles from "@/data/catalogue/brand-vehicles.json";
 
 type CategoryKey = "car" | "motorcycle" | "truck";
@@ -18,13 +19,12 @@ const categories: Record<CategoryKey, { label: string; group: keyof typeof brand
 export function CatalogueLanding({ category = "motorcycle" }: { category?: string }) {
   const selected = (category in categories ? category : "motorcycle") as CategoryKey;
   const details = categories[selected];
-  const Icon = details.icon;
   const brands = brandGroups[details.group];
 
   return (
     <main className="bg-[#f6f9fc] pb-16 sm:pb-20">
       <section className="relative isolate overflow-hidden bg-slate-950 text-white">
-        <Image src="/img/home/main__banner.webp" alt="" fill priority sizes="100vw" className="-z-20 object-cover object-center" />
+        <Image src="/img/home/hero.webp" alt="" fill preload sizes="100vw" className="-z-20 object-cover object-[center_40%]" />
         <div aria-hidden="true" className="absolute inset-0 -z-10 bg-[linear-gradient(90deg,rgba(2,10,25,0.98)_0%,rgba(2,10,25,0.88)_42%,rgba(2,10,25,0.3)_100%)]" />
         <div aria-hidden="true" className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top_right,rgba(7,96,188,0.5),transparent_55%)]" />
         <Container className="grid gap-10 py-12 sm:py-16 lg:min-h-[500px] lg:grid-cols-[1fr_0.9fr] lg:items-center lg:gap-14 lg:py-20">
@@ -33,8 +33,8 @@ export function CatalogueLanding({ category = "motorcycle" }: { category?: strin
             <h1 className="mt-5 max-w-2xl text-3xl leading-tight font-bold tracking-tight sm:text-4xl lg:text-5xl">Find the right part for your business</h1>
             <p className="mt-4 max-w-xl text-base leading-7 text-slate-300 sm:text-lg">Browse parts by vehicle brand and model, or search by part number and name. Our team can also help source items not yet listed.</p>
             <div className="mt-7 flex flex-wrap gap-3">
-              <a href="https://wa.me/919718346347" className="inline-flex h-11 items-center justify-center gap-2 rounded-lg bg-primary px-5 text-sm font-bold text-white shadow-md shadow-blue-950/30 transition hover:-translate-y-0.5 hover:bg-blue-700">WhatsApp our team <ArrowRight className="size-4"/></a>
-              <Link href="/contact" className="inline-flex h-11 items-center justify-center rounded-lg border border-white/25 px-5 text-sm font-semibold text-white transition hover:bg-white/10">Contact us</Link>
+              <a href="https://wa.me/919718346347" className={buttonVariants()}>WhatsApp our team <ArrowRight className="size-4"/></a>
+              <Link href="/contact" className={buttonVariants({ variant: "light" })}>Contact us</Link>
             </div>
           </div>
           <div className="grid grid-cols-2 gap-3 sm:gap-4" aria-label="Catalogue highlights">
@@ -51,8 +51,7 @@ export function CatalogueLanding({ category = "motorcycle" }: { category?: strin
       <Container className="pt-8 sm:pt-10">
         <section aria-labelledby="parts-search-title" className="rounded-2xl border border-slate-200 bg-white p-5 shadow-[0_12px_32px_rgba(16,36,74,0.07)] sm:p-7">
           <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between"><div><SectionEyebrow>Search catalogue</SectionEyebrow><h2 id="parts-search-title" className="mt-2 text-xl font-bold text-slate-950 sm:text-2xl">Search by part number, name, or brand</h2></div><p className="max-w-md text-sm leading-6 text-slate-500">Have an OEM number or product description? Search the catalogue or send it to our team.</p></div>
-          <form action="/search" role="search" className="mt-5 grid gap-2 sm:grid-cols-[190px_minmax(0,1fr)_auto]"><label htmlFor="catalogue-search" className="sr-only">Search part number, part name, or brand</label><label className="relative"><span className="sr-only">Search by</span><select name="by" defaultValue="part-number" className="h-12 w-full appearance-none rounded-xl border border-slate-200 bg-slate-50 px-4 pr-10 text-sm font-medium text-slate-700 outline-none transition focus:border-primary focus:bg-white focus:ring-2 focus:ring-primary/10"><option value="part-number">Part number</option><option value="part-name">Part name</option><option value="brand">Brand</option></select><ChevronDown aria-hidden="true" className="pointer-events-none absolute right-4 top-1/2 size-4 -translate-y-1/2 text-slate-500"/></label><div className="relative min-w-0"><Search aria-hidden="true" className="pointer-events-none absolute left-4 top-1/2 size-5 -translate-y-1/2 text-slate-400"/><input id="catalogue-search" name="q" placeholder="Enter a part number, name, or brand" className="h-12 w-full rounded-xl border border-slate-200 bg-slate-50 pl-12 pr-4 text-sm text-slate-900 outline-none transition focus:border-primary focus:bg-white focus:ring-2 focus:ring-primary/10"/></div><button type="submit" className="inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-primary px-6 text-sm font-bold text-white shadow-sm transition hover:bg-blue-800">Search parts <ArrowRight className="size-4"/></button></form>
-          <div className="mt-5 border-t border-slate-100 pt-5"><p className="text-sm font-semibold text-slate-800">Or browse by vehicle</p><CatalogueSelector brands={brands}/></div>
+          <PartsFinder className="mt-5 border-0 p-0 shadow-none sm:p-0" />
         </section>
 
         <section className="mt-10" aria-labelledby="browse-brand-title">
