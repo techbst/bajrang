@@ -9,6 +9,7 @@ import {
   CarFront,
   ChevronDown,
   CircleUserRound,
+  Globe2,
   LogIn,
   Mail,
   Minus,
@@ -32,6 +33,7 @@ import {
   SheetTitle,
   SheetTrigger
 } from "@/components/ui/sheet";
+import { buttonVariants } from "@/components/ui/button";
 import { SearchBar } from "./search-bar";
 import { MegaMenu } from "./mega-menu";
 import { aboutLinks, brandGroups, megaMenuConfig } from "./navigation-data";
@@ -39,11 +41,15 @@ import { useCatalogueCartStore } from "@/stores/catalogue-cart-store";
 import { useCartStore } from "@/stores/cart-store";
 import { ProductTypeBadge } from "@/components/catalogue/assembly-detail";
 
-export function Header({ isAuthenticated = false }: { isAuthenticated?: boolean }) {
+export function Header({
+  isAuthenticated = false
+}: {
+  isAuthenticated?: boolean;
+}) {
   const [openMenu, setOpenMenu] = useState<string | null>(null);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isAccountOpen, setIsAccountOpen] = useState(false);
-  const [cartCount, setCartCount] = useState(0);
+  const cartCount = useCatalogueCartStore((state) => state.items.length);
   const isCartOpen = useCartStore((state) => state.isCartOpen);
   const openCart = useCartStore((state) => state.openCart);
   const closeCart = useCartStore((state) => state.closeCart);
@@ -73,145 +79,170 @@ export function Header({ isAuthenticated = false }: { isAuthenticated?: boolean 
     };
   }, []);
 
-  useEffect(() => {
-    setCartCount(useCatalogueCartStore.getState().items.length);
-    return useCatalogueCartStore.subscribe((state) => setCartCount(state.items.length));
-  }, []);
-
   return (
     <header
       ref={menuRef}
       onMouseLeave={() => setOpenMenu(null)}
       className="sticky top-0 z-40 border-b border-slate-200 bg-white/95 shadow-sm shadow-slate-900/[0.03] backdrop-blur-xl"
     >
-      <Sheet open={isCartOpen} onOpenChange={(open) => open ? openCart() : closeCart()}>
-      <div className="bg-secondary-foreground text-white">
-        <Container className="flex min-h-9 flex-wrap items-center justify-center gap-x-4 gap-y-1 py-2 text-[10px] font-medium tracking-wide sm:justify-between sm:text-xs">
-          <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-1 sm:gap-6">
-            <a
-              href="tel:9718346347"
-              className="flex items-center gap-2 hover:text-white/80"
+      <Sheet
+        open={isCartOpen}
+        onOpenChange={(open) => (open ? openCart() : closeCart())}
+      >
+        <div className="bg-slate-950 text-slate-100">
+          <Container className="flex min-h-7 items-center justify-between gap-2 max-[400px]:px-3">
+            <p className="flex min-w-0 items-center gap-2 py-1 text-xs font-semibold">
+              <Globe2
+                aria-hidden="true"
+                className="size-3.5 shrink-0 text-blue-300"
+              />
+              Wholesale &amp; Export
+              <span className="hidden text-slate-300 sm:inline">
+                · Genuine Parts
+              </span>
+            </p>
+            <div className="flex shrink-0 items-center gap-3 text-xs sm:gap-5">
+              <a
+                href="tel:+919718346347"
+                aria-label="Call +91 971-8346-347"
+                className="inline-flex min-h-7 items-center gap-1.5 hover:text-blue-200"
+              >
+                <Phone aria-hidden="true" className="size-3.5 text-blue-300" />
+                <span>+91 971-8346-347</span>
+              </a>
+              <a
+                href="mailto:info@bajrangautoparts.com"
+                aria-label="Email info@bajrangautoparts.com"
+                className="inline-flex min-h-7 items-center gap-1.5 hover:text-blue-200"
+              >
+                <Mail aria-hidden="true" className="size-3.5 text-blue-300" />
+                <span className="hidden md:inline">
+                  info@bajrangautoparts.com
+                </span>
+              </a>
+              <div className="hidden items-center gap-4 border-l border-white/20 pl-4 xl:flex">
+                <Link href="/about" className="hover:text-blue-200">
+                  About Us
+                </Link>
+                <Link href="/contact" className="hover:text-blue-200">
+                  Contact
+                </Link>
+              </div>
+            </div>
+          </Container>
+        </div>
+
+        <Container className="flex min-h-[60px] items-center justify-between gap-3 py-2 max-[400px]:px-3">
+          <Link
+            href="/"
+            className="flex min-w-0 items-center rounded-sm focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#0760BC]"
+            aria-label="Bajrang home"
+          >
+            <Image
+              src="/img/common/logo.png"
+              alt="Bajrang Auto Parts"
+              width={320}
+              height={48}
+              className="h-auto w-52 max-w-full 2xl:w-56"
+              priority
+            />
+          </Link>
+          <nav
+            className="hidden shrink-0 items-center xl:flex"
+            aria-label="Primary navigation"
+          >
+            {megaMenuConfig.map((item) => (
+              <div
+                key={item.key}
+                className="relative"
+                onMouseEnter={() => setOpenMenu(item.key)}
+              >
+                <button
+                  type="button"
+                  onClick={() =>
+                    setOpenMenu(openMenu === item.key ? null : item.key)
+                  }
+                  aria-expanded={openMenu === item.key}
+                  aria-haspopup="true"
+                  className="group hover:text-primary focus-visible:outline-primary aria-expanded:text-primary flex min-h-10 cursor-pointer items-center gap-1.5 rounded-md px-3 text-sm font-semibold whitespace-nowrap text-slate-700 transition-colors hover:bg-slate-100 focus-visible:outline-2 aria-expanded:bg-slate-100"
+                >
+                  {item.label}
+                  <ChevronDown
+                    className={`size-3.5 transition ${openMenu === item.key ? "rotate-180" : ""}`}
+                  />
+                </button>
+              </div>
+            ))}
+          </nav>
+          <div className="hidden shrink-0 items-center justify-end gap-2 xl:flex">
+            <SearchSheet open={isSearchOpen} onOpenChange={setIsSearchOpen} />
+            <AccountMenu
+              open={isAccountOpen}
+              onOpenChange={setIsAccountOpen}
+              isAuthenticated={isAuthenticated}
+            />
+            <Link
+              href="/contact"
+              className={buttonVariants({
+                className: "h-10 px-4 whitespace-nowrap"
+              })}
             >
-              <Phone className="size-3.5" />
-              Need Spare Parts : +91 971-8346-347
-            </a>
-            <span className="hidden h-4 w-[1px] bg-white/20 sm:block" />
-            <a
-              href="mailto:info@bajrangautoparts.com"
-              className="flex items-center gap-2 hover:text-white/80"
-            >
-              <Mail className="size-3.5" />
-              info@bajrangautoparts.com
-            </a>
+              Request a quote
+              <ArrowRight aria-hidden="true" className="size-4" />
+            </Link>
+            {isAuthenticated ? <CartButton compact count={cartCount} /> : null}
           </div>
-          <div className="hidden items-center gap-5 md:flex">
-            <span className="text-[10px] font-bold uppercase tracking-[0.16em] text-white/75">Wholesale | Export | Genuine Parts</span>
-            <span className="h-4 w-px bg-white/20" />
-            <Link href="/about" className="transition-colors hover:text-white/70">About Us</Link>
-            <Link href="/contact" className="transition-colors hover:text-white/70">Contact</Link>
+          <div className="flex shrink-0 items-center justify-end gap-1.5 xl:hidden">
+            <SearchSheet open={isSearchOpen} onOpenChange={setIsSearchOpen} />
+            {isAuthenticated ? <CartButton compact count={cartCount} /> : null}
+            <AccountMenu
+              open={isAccountOpen}
+              onOpenChange={setIsAccountOpen}
+              isAuthenticated={isAuthenticated}
+            />
+            <Sheet>
+              <SheetTrigger asChild>
+                <button
+                  type="button"
+                  aria-label="Open navigation"
+                  className="grid size-10 place-items-center rounded-lg border border-slate-200 transition-colors hover:border-[#0760BC] hover:text-[#0760BC] xl:hidden"
+                >
+                  <Menu className="size-5" />
+                </button>
+              </SheetTrigger>
+              <SheetContent className="overflow-y-auto p-0">
+                <div className="p-6">
+                  <SheetHeader>
+                    <SheetTitle className="text-left text-xl tracking-[0.12em]">
+                      BAJRANG<span className="text-[#0760BC]">.</span>
+                    </SheetTitle>
+                    <SheetDescription className="text-left">
+                      Genuine parts. Global supply.
+                    </SheetDescription>
+                  </SheetHeader>
+                  <div className="mt-6">
+                    <SearchBar compact />
+                  </div>
+                  <MobileNavigation />
+                </div>
+              </SheetContent>
+            </Sheet>
           </div>
         </Container>
-      </div>
-
-      <Container className="grid min-h-[88px] grid-cols-[1fr_auto] items-center gap-3 py-3 max-[400px]:px-3 xl:grid-cols-[260px_minmax(0,1fr)_auto] xl:gap-5">
-        <Link
-          href="/"
-          className="flex w-fit shrink-0 items-center rounded-sm focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#0760BC]"
-          aria-label="Bajrang home"
-        >
-          <Image
-            src="/img/common/logo.png"
-            alt="Bajrang Auto Parts"
-            width={320}
-            height={48}
-            className="h-auto w-[300px] max-[1170px]:w-[210px] max-[430px]:w-[185px] max-[360px]:w-[120px]"
-            priority
-          />
-        </Link>
-        <nav
-          className="hidden items-center justify-end gap-3 border-l border-slate-200 pl-5 xl:flex xl:gap-5"
-          aria-label="Primary navigation"
-        >
-          {megaMenuConfig.map((item) => (
-            <div
-              key={item.key}
-              className="relative"
-              onMouseEnter={() => setOpenMenu(item.key)}
-            >
-              <button
-                type="button"
-                onClick={() =>
-                  setOpenMenu(openMenu === item.key ? null : item.key)
-                }
-                aria-expanded={openMenu === item.key}
-                aria-haspopup="true"
-                className="group relative flex items-center gap-1 whitespace-nowrap py-3 text-xs font-semibold text-slate-700 transition-colors hover:text-[#0760BC] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0760BC] xl:text-[13px] cursor-pointer"
-              >
-                {item.label}
-                <ChevronDown
-                  className={`size-3.5 transition ${openMenu === item.key ? "rotate-180" : ""}`}
-                />
-                <span className="absolute inset-x-0 bottom-1 h-0.5 origin-left scale-x-0 bg-[#0760BC] transition-transform duration-200 group-hover:scale-x-100" />
-              </button>
-            </div>
-          ))}
-        </nav>
-        <div className="hidden items-center justify-end gap-2 xl:flex">
-          <SearchSheet open={isSearchOpen} onOpenChange={setIsSearchOpen} />
-          <AccountMenu open={isAccountOpen} onOpenChange={setIsAccountOpen} isAuthenticated={isAuthenticated} />
-          <Link href="/contact" className="site-action inline-flex h-10 items-center gap-2 whitespace-nowrap rounded-lg bg-[#0760BC] px-3 text-sm font-semibold text-white shadow-sm shadow-[#0760BC]/20 transition-[transform,box-shadow,color,background-color,border-color] hover:-translate-y-0.5 hover:bg-[#064d96] hover:shadow-md xl:px-4">
-            Request a quote
-            <ArrowRight aria-hidden="true" className="size-4" />
-          </Link>
-          {isAuthenticated ? <CartButton count={cartCount} /> : null}
-        </div>
-        <div className="flex items-center justify-end gap-1.5 xl:hidden">
-          <SearchSheet open={isSearchOpen} onOpenChange={setIsSearchOpen} />
-          {isAuthenticated ? <CartButton compact count={cartCount} /> : null}
-          <AccountMenu open={isAccountOpen} onOpenChange={setIsAccountOpen} isAuthenticated={isAuthenticated} />
-          <Sheet>
-            <SheetTrigger asChild>
-              <button
-                type="button"
-                aria-label="Open navigation"
-                className="grid size-10 place-items-center rounded-lg border border-slate-200 transition-colors hover:border-[#0760BC] hover:text-[#0760BC] xl:hidden"
-              >
-                <Menu className="size-5" />
-              </button>
-            </SheetTrigger>
-            <SheetContent className="overflow-y-auto p-0">
-              <div className="p-6">
-                <SheetHeader>
-                  <SheetTitle className="text-left text-xl tracking-[0.12em]">
-                    BAJRANG<span className="text-[#0760BC]">.</span>
-                  </SheetTitle>
-                  <SheetDescription className="text-left">
-                    Genuine parts. Global supply.
-                  </SheetDescription>
-                </SheetHeader>
-                <div className="mt-6">
-                  <SearchBar compact />
-                </div>
-                <MobileNavigation />
-              </div>
-            </SheetContent>
-          </Sheet>
-        </div>
-      </Container>
-      <AnimatePresence>
-        {activeMenu ? (
-          <MegaMenu
-            key={activeMenu.key}
-            label={activeMenu.label}
-            href={activeMenu.href}
-            description={activeMenu.description}
-            brands={brandGroups[activeMenu.key]}
-          />
-        ) : null}
-      </AnimatePresence>
-      <SheetContent className="w-full max-w-md overflow-y-auto p-0 font-sans">
-        <CartDrawerContents />
-      </SheetContent>
+        <AnimatePresence>
+          {activeMenu ? (
+            <MegaMenu
+              key={activeMenu.key}
+              label={activeMenu.label}
+              href={activeMenu.href}
+              description={activeMenu.description}
+              brands={brandGroups[activeMenu.key]}
+            />
+          ) : null}
+        </AnimatePresence>
+        <SheetContent className="w-full max-w-md overflow-y-auto p-0 font-sans">
+          <CartDrawerContents />
+        </SheetContent>
       </Sheet>
     </header>
   );
