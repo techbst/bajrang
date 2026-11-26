@@ -13,7 +13,7 @@ export default function AccountPage() {
 
   return (
     <>
-      <PageHeader title="Your Account" description="Manage your Bajrang Auto Parts trade account." />
+      <PageHeader title="Your Account" description="Manage your Bajrang Automotive trade account." />
       <section className="container grid gap-6 pb-12 lg:grid-cols-[1fr_0.9fr] lg:gap-8">
         <div className="grid content-start gap-3">
           {links.map(({ title, description, href, icon: Icon }) => (
@@ -25,7 +25,7 @@ export default function AccountPage() {
           ))}
         </div>
         <div className="relative min-h-[300px] overflow-hidden rounded-2xl bg-slate-900 sm:min-h-[380px]">
-          <Image src="/img/home/form_sbu.webp" alt="Bajrang Auto Parts team assisting a trade customer" fill sizes="(max-width: 1024px) 100vw, 42vw" className="object-cover" />
+          <Image src="/img/home/form_sbu.webp" alt="Bajrang Automotive team assisting a trade customer" fill sizes="(max-width: 1024px) 100vw, 42vw" className="object-cover" />
           <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/15 to-transparent" />
           <div className="absolute inset-x-0 bottom-0 p-6 text-white sm:p-8">
             <SectionEyebrow className="text-blue-200">Trade support</SectionEyebrow>

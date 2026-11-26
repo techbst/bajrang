@@ -1,12 +1,12 @@
-﻿import { ContactPage } from "@/components/company/company-pages";
+import { ContactPage } from "@/components/company/company-pages";
 
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 
 export const metadata = {
-  title: "Contact Bajrang Auto Parts",
+  title: "Contact Bajrang Automotive",
   description:
-    "Contact Bajrang Auto Parts for wholesale automotive parts and export enquiries."
+    "Contact Bajrang Automotive for wholesale automotive parts and export enquiries."
 };
 
 export default async function ContactRoute({

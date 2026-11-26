@@ -35,7 +35,7 @@ export function PartsSearchResults({ initialQuery = "", brand, model, catalogueH
       <div className="container container-narrow">
         <div className="text-center">
           <p className="text-xs font-bold uppercase tracking-[0.2em] text-primary">Parts catalogue</p>
-          <h1 className="mt-3 text-3xl font-bold tracking-tight text-slate-950 sm:text-4xl">Search auto parts</h1>
+          <h1 className="mt-3 text-3xl font-bold tracking-tight text-slate-950 sm:text-4xl">Search automotive parts</h1>
           <p className="mx-auto mt-3 max-w-2xl text-sm leading-6 text-slate-600 sm:text-base">Find parts by part number, name, brand or vehicle model. Trade pricing and availability are confirmed with your quote.</p>
         </div>
 

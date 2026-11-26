@@ -14,7 +14,7 @@ export function QuoteRequest() {
           <div className="relative aspect-[4/3] w-full overflow-hidden rounded-xl border border-border bg-[#f1f5f9] sm:aspect-[16/10] lg:aspect-[690/475] lg:max-w-[690px]">
             <Image
               src="/img/home/form_sbu.webp"
-              alt="Bajrang Auto Parts support team helping customers with parts enquiries"
+              alt="Bajrang Automotive support team helping customers with parts enquiries"
               fill
               sizes="(min-width: 1024px) 45vw, 100vw"
               className="object-cover object-[center_24%]"
@@ -23,7 +23,7 @@ export function QuoteRequest() {
 
           <div className="mt-7  sm:mt-8">
             <p className="text-base text-muted-foreground sm:text-lg">
-              We help importers and distributors source genuine OEM and aftermarket auto parts with ease, accuracy, and competitive pricing.
+              We help importers and distributors source genuine OEM and aftermarket automotive parts with ease, accuracy, and competitive pricing.
             </p>
 
             <div className="mt-6 grid gap-3 sm:gap-4 xl:grid-cols-2">
@@ -58,7 +58,7 @@ export function QuoteRequest() {
 
           <div className="relative z-10">
             <p className="max-w-2xl text-base text-muted-foreground sm:text-lg">
-              Sourcing genuine auto parts shouldn’t be complicated. We provide a complete export solution—from product selection to global delivery—ensuring quality, transparency, and timely shipments for your business.
+              Sourcing genuine automotive parts shouldn’t be complicated. We provide a complete export solution—from product selection to global delivery—ensuring quality, transparency, and timely shipments for your business.
             </p>
 
             <form

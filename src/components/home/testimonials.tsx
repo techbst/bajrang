@@ -29,7 +29,7 @@ const testimonials = [
   },
   {
     flagCode: "ae",
-    role: "Auto Parts Distributor",
+    role: "Automotive Parts Distributor",
     country: "UAE",
     quote: "Consistently reliable supplier. Genuine parts, competitive pricing, and always delivered on time. Highly recommended for bulk imports.",
     rating: 4,

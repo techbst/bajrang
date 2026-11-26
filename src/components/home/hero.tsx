@@ -13,7 +13,7 @@ import { aboutData } from "@/data/home/about";
 
 const slides = [
   {
-    title: "Auto Parts for Global Trade.",
+    title: "Automotive Parts for Global Trade.",
     description: "Source genuine OEM and aftermarket parts for cars, motorcycles, and trucks, with export support from enquiry through dispatch."
   },
   {
@@ -64,7 +64,7 @@ export function Hero() {
         <Container className="relative pt-10 pb-[clamp(8rem,38vw,16rem)] sm:pt-12 lg:flex lg:min-h-[clamp(25rem,55svh,33rem)] lg:flex-col lg:justify-center lg:py-14">
           <div className="w-full max-w-2xl">
             <p className="flex items-center gap-3 text-xs font-bold text-blue-200 uppercase">
-              Wholesale Auto Parts &amp; Export
+              Wholesale Automotive Parts &amp; Export
               <span
                 aria-hidden="true"
                 className="h-px w-6 shrink-0 bg-blue-400 sm:w-10"
@@ -101,7 +101,7 @@ export function Hero() {
               </a>
             </div>
             <dl
-              aria-label="Bajrang Auto Parts in numbers"
+              aria-label="Bajrang Automotive in numbers"
               tabIndex={0}
               className="mt-6 flex w-fit max-w-full snap-x overflow-x-auto overscroll-x-contain rounded-xl border border-white/20 bg-slate-950/35 backdrop-blur-lg [scrollbar-width:thin] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-blue-300 sm:mt-7"
             >
@@ -143,7 +143,7 @@ export function Hero() {
       <div className="relative -mt-6 py-5 backdrop-blur-[6px] lg:mt-0">
         <Container className="grid gap-3 xl:grid-cols-[11rem_minmax(0,1fr)] xl:items-center xl:gap-6">
           <h2 className="text-xl font-semibold">
-            Find auto parts
+            Find automotive parts
           </h2>
           <PartsFinder
             inputId="home-part-number"

@@ -29,7 +29,7 @@ export function CatalogueLanding({ category = "motorcycle" }: { category?: strin
         <div aria-hidden="true" className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top_right,rgba(7,96,188,0.5),transparent_55%)]" />
         <Container className="grid gap-10 py-12 sm:py-16 lg:min-h-[500px] lg:grid-cols-[1fr_0.9fr] lg:items-center lg:gap-14 lg:py-20">
           <div>
-            <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.06] px-3 py-1.5 text-xs font-semibold text-blue-100"><BadgeCheck className="size-4"/> Bajrang Auto Parts · B2B catalogue</span>
+            <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.06] px-3 py-1.5 text-xs font-semibold text-blue-100"><BadgeCheck className="size-4"/> Bajrang Automotive · B2B catalogue</span>
             <h1 className="mt-5 max-w-2xl text-3xl leading-tight font-bold tracking-tight sm:text-4xl lg:text-5xl">Find the right part for your business</h1>
             <p className="mt-4 max-w-xl text-base leading-7 text-slate-300 sm:text-lg">Browse parts by vehicle brand and model, or search by part number and name. Our team can also help source items not yet listed.</p>
             <div className="mt-7 flex flex-wrap gap-3">

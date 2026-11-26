@@ -26,9 +26,9 @@ export function WhoWeAreDetailPage() {
             <Link href="/contact" className="site-action mt-7 inline-flex h-11 items-center gap-2 rounded-lg bg-primary px-5 text-sm font-bold text-white">Discuss your sourcing needs <ArrowRight className="size-4" /></Link>
           </div>
           <div className="relative min-h-[280px] overflow-hidden rounded-2xl bg-slate-200 sm:min-h-[390px]">
-            <Image src="/img/home/trusted_baj.webp" alt="Bajrang Auto Parts team preparing products for customers" fill sizes="(min-width: 1024px) 52vw, 100vw" className="object-cover" />
+            <Image src="/img/home/trusted_baj.webp" alt="Bajrang Automotive team preparing products for customers" fill sizes="(min-width: 1024px) 52vw, 100vw" className="object-cover" />
             <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent" />
-            <div className="absolute inset-x-0 bottom-0 p-5 sm:p-7"><p className="text-xs font-bold tracking-[0.16em] text-white/75 uppercase">Bajrang Auto Parts</p><p className="mt-2 text-xl font-bold text-white sm:text-2xl">Export experience since 2009</p></div>
+            <div className="absolute inset-x-0 bottom-0 p-5 sm:p-7"><p className="text-xs font-bold tracking-[0.16em] text-white/75 uppercase">Bajrang Automotive</p><p className="mt-2 text-xl font-bold text-white sm:text-2xl">Export experience since 2009</p></div>
           </div>
         </Container>
       </section>

@@ -10,7 +10,7 @@ export function ComingSoonPage({ title }: { title: string }) {
         <div className="h-2 bg-gradient-to-r from-primary via-blue-500 to-sky-300" />
         <Container className="py-10 sm:py-14">
           <span className="grid size-12 place-items-center rounded-2xl bg-blue-50 text-primary"><Clock3 className="size-6" /></span>
-          <SectionEyebrow className="mt-7">Bajrang Auto Parts</SectionEyebrow>
+          <SectionEyebrow className="mt-7">Bajrang Automotive</SectionEyebrow>
           <h1 className="mt-3 text-3xl leading-tight font-bold tracking-tight text-slate-950 sm:text-4xl">{title}</h1>
           <p className="mt-4 max-w-xl text-base leading-7 text-slate-600">We’re preparing this information for our business customers. Please contact our team if you need help with this topic in the meantime.</p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">

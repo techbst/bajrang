@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useState } from "react";
 import { ChevronDown, Search } from "lucide-react";
@@ -52,7 +52,7 @@ export function PartsFinder({
     <form
       action="/search"
       role="search"
-      aria-label="Find auto parts"
+      aria-label="Find automotive parts"
       className={cn(
         "rounded-xl border border-white/15 bg-white p-3.5 text-base text-slate-900 shadow-lg sm:p-5 sm:text-sm",
         glass && "bg-transparent text-white",

@@ -16,7 +16,7 @@ export function CompanyCta({
   description,
   label,
   href = "/contact",
-  eyebrow = "Bajrang Auto Parts",
+  eyebrow = "Bajrang Automotive",
   className = "",
 }: CompanyCtaProps) {
   return (

@@ -199,8 +199,8 @@ function QuoteUploadForm({
         </DialogTitle>
         <DialogDescription className="mt-4 max-w-sm text-sm text-slate-200 sm:text-base">
           {cartItems
-            ? "Share your contact details to send the parts in your cart to Bajrang Auto Parts."
-            : "Upload your BOM to Bajrang Auto Parts for an export quote with pricing, weights, and freight estimates."}
+            ? "Share your contact details to send the parts in your cart to Bajrang Automotive."
+            : "Upload your BOM to Bajrang Automotive for an export quote with pricing, weights, and freight estimates."}
         </DialogDescription>
         <p className="mt-4 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3 py-1.5 text-xs font-medium text-white">
           <Clock3 aria-hidden="true" className="size-4 text-blue-300" /> No

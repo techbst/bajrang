@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { AnimatePresence } from "framer-motion";
@@ -17,6 +16,8 @@ import {
   Trash2
 } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
+import { BrandLogo } from "@/components/common/brand-logo";
+import { siteConfig } from "@/config/site";
 import {
   Sheet,
   SheetClose,
@@ -143,17 +144,9 @@ export function Header({
               <Link
                 href="/"
                 className="flex min-w-0 items-center rounded-sm focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#0760BC]"
-                aria-label="Bajrang home"
+                aria-label={`${siteConfig.name} home`}
               >
-                <Image
-                  src="/img/common/logo.png"
-                  alt="Bajrang Auto Parts"
-                  width={1461}
-                  height={221}
-                  sizes="(min-width: 1536px) 320px, (min-width: 640px) 288px, 240px"
-                  className="h-auto w-60 max-w-full sm:w-72 2xl:w-80"
-                  priority
-                />
+                <BrandLogo />
               </Link>
             </div>
             <nav

@@ -2,6 +2,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { BadgeCheck, Mail, MapPin, Phone } from "lucide-react";
 import { Container } from "@/components/common/container";
+import { BrandLogo } from "@/components/common/brand-logo";
+import { siteConfig } from "@/config/site";
 import { SocialIcons } from "@/components/common/socialmedia";
 import { CountryMarquee } from "@/components/home/country-marquee";
 
@@ -43,7 +45,7 @@ const trustPoints = [
 export function Footer() {
   return (
     <footer className="bg-[#0066a8] text-white">
-      <section className="bg-[#171717]" aria-label="Why customers trust Bajrang Auto Parts">
+      <section className="bg-[#171717]" aria-label="Why customers trust Bajrang Automotive">
         <div className="container grid sm:grid-cols-3">
           {trustPoints.map((point) => (
             <div
@@ -66,17 +68,11 @@ export function Footer() {
 
       <Container className="grid items-start gap-x-8 gap-y-9 py-10 sm:grid-cols-2 lg:grid-cols-[minmax(0,1.3fr)_minmax(0,1.2fr)_minmax(0,0.85fr)_minmax(0,0.85fr)] lg:gap-x-10 lg:py-14">
         <div className="min-w-0 lg:mt-[-25px]">
-          <Link href="/" aria-label="Bajrang Auto Parts home" className="inline-block">
-            <Image
-              src="/img/footer-logo.webp"
-              alt="Bajrang Auto Parts — International Leader in Quality Auto Parts"
-              width={560}
-              height={160}
-              className="h-auto w-[280px] max-w-full sm:w-[340px]"
-            />
+          <Link href="/" aria-label={`${siteConfig.name} home`} className="inline-block max-w-full">
+            <BrandLogo inverse />
           </Link>
           <p className="mt-4 max-w-sm text-base text-white/90">
-            Bajrang Auto Parts supplies genuine and aftermarket auto parts from India to wholesalers and distributors in over 50 countries.
+            Bajrang Automotive supplies genuine and aftermarket automotive parts from India to wholesalers and distributors in over 50 countries.
           </p>
           <div className="mt-5 flex gap-5 text-base sm:text-lg">
             <MapPin aria-hidden="true" className="mt-1 size-6 shrink-0" />
@@ -118,7 +114,7 @@ export function Footer() {
 
       <div className="pb-5">
         <div className="border-t border-white/50 pt-5 font-semibold text-center text-md ">
-          Copyright {new Date().getFullYear()} © | All Rights Reserved | Bajrang Auto Parts
+          Copyright {new Date().getFullYear()} © | All Rights Reserved | Bajrang Automotive
         </div>
       </div>
     </footer>

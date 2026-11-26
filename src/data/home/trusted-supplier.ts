@@ -14,9 +14,9 @@ export type TrustedSupplierData = {
 
 export const trustedSupplierData: TrustedSupplierData = {
   image: "/img/home/trusted_baj.webp",
-  imageAlt: "Bajrang Auto Parts team member preparing an export order",
-  title: "Your Trusted Global Auto Parts Supplier",
-  description: "Delivering genuine auto parts worldwide with speed and reliability.",
+  imageAlt: "Bajrang Automotive team member preparing an export order",
+  title: "Your Trusted Global Automotive Parts Supplier",
+  description: "Delivering genuine automotive parts worldwide with speed and reliability.",
   ctaLabel: "Send Your Requirement",
   ctaHref: "/contact",
   stats: [
@@ -28,7 +28,7 @@ export const trustedSupplierData: TrustedSupplierData = {
     {
       icon: "countries",
       title: "50+ Countries Served",
-      description: "Delivering auto parts across multiple continents with efficient logistics.",
+      description: "Delivering automotive parts across multiple continents with efficient logistics.",
     },
     {
       icon: "parts",
