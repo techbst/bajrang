@@ -21,7 +21,7 @@ export default function ShopByBrand() {
   const activeBrands = brands.filter((brand) => brand.vehicleType === activeVehicle.id);
 
   return (
-    <section className="py-20 relative" aria-labelledby="shop-by-brand-title">
+    <section className="relative bg-primary/5 py-20" aria-labelledby="shop-by-brand-title">
       <div className="container">
         <Heading eyebrow={eyebrow} title={title} subtitle={subtitle} />
 
@@ -37,7 +37,7 @@ export default function ShopByBrand() {
                 role="tab"
                 aria-selected={isActive}
                 onClick={() => setActiveVehicleType(index)}
-                className={`flex items-center justify-center gap-3 border-b border-border py-4 px-2 text-sm font-semibold uppercase transition-colors sm:border-r sm:border-b-0 last:border-0 ${isActive ? "bg-primary text-primary-foreground" : "bg-card text-foreground hover:bg-primary/5"
+                className={`flex items-center justify-center gap-3 border-b border-border py-4 px-2 text-sm font-semibold uppercase transition-colors sm:border-r sm:border-b-0 last:border-0 ${isActive ? "bg-(--primary) text-primary-foreground" : "bg-card text-foreground hover:bg-primary/5"
                   }`}
               >
                 <Icon className="size-5" aria-hidden="true" />

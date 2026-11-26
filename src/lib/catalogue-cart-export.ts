@@ -3,6 +3,7 @@
 import { cookies } from "next/headers";
 import { z } from "zod";
 import type { CatalogueCartItem } from "@/stores/catalogue-cart-store";
+import { catalogueCartCsv } from "@/lib/catalogue-cart-csv";
 
 const textField = z.string().max(500);
 const itemsSchema = z
@@ -30,36 +31,5 @@ export async function exportCatalogueCart(items: CatalogueCartItem[]) {
   if (!parsed.success)
     return { error: "The parts list could not be exported." };
 
-  const rows = [
-    [
-      "Part Number",
-      "Description",
-      "Product Type",
-      "Brand",
-      "Vehicle",
-      "Assembly",
-      "Quantity"
-    ],
-    ...parsed.data.map((item) => [
-      item.partNumber,
-      item.description,
-      item.productType ?? "",
-      item.brand,
-      item.vehicle,
-      `${item.assemblyCode} ${item.assemblyName}`,
-      String(item.quantity)
-    ])
-  ];
-  const csv = rows
-    .map((row) =>
-      row
-        .map((cell) => {
-          const value = /^[\s]*[=+@-]|^[\t\r\n]/.test(cell) ? "'" + cell : cell;
-          return '"' + value.replaceAll('"', '""') + '"';
-        })
-        .join(",")
-    )
-    .join("\r\n");
-
-  return { csv: "\ufeff" + csv };
+  return { csv: catalogueCartCsv(parsed.data) };
 }

@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import {
   BadgeCheck,
@@ -18,6 +19,13 @@ const steps = [
   { title: "Quality Inspection", description: "Parts are checked against specifications before packing.", icon: SearchCheck },
   { title: "Packaging", description: "Each order is packed securely for safe international transit.", icon: PackageCheck },
   { title: "Dispatch", description: "Your shipment leaves with the required export documents.", icon: Truck },
+];
+
+const partnerLogos = [
+  { name: "Bosch", src: "/img/brands/our-term-1.webp" },
+  { name: "Denso", src: "/img/brands/our-term-2.webp" },
+  { name: "Nissan", src: "/img/brands/nissan.svg" },
+  { name: "NGK", src: "/img/brands/our-term-4.webp" },
 ];
 
 export function Operations() {
@@ -57,7 +65,7 @@ export function Operations() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="bg-[#f5f9fd] py-20" aria-labelledby="operations-title">
+    <section ref={sectionRef} className="bg-primary/5 py-20" aria-labelledby="operations-title">
       <div className="container">
         <div id="operations-title">
           <Heading
@@ -97,7 +105,7 @@ export function Operations() {
             <li
               key={title}
               aria-current={index === activeStep ? "step" : undefined}
-              className={`group relative flex min-h-[260px] flex-col border bg-white p-5 shadow-[0_10px_30px_rgba(16,36,74,0.055)] transition-[transform,box-shadow,border-color,background-color] duration-300 hover:z-10 hover:-translate-y-1 hover:shadow-[0_18px_36px_rgba(7,96,188,0.13)] sm:p-6 xl:min-h-[280px] ${index === activeStep ? "border-2 border-primary bg-[#fbfdff] shadow-[0_16px_36px_rgba(7,96,188,0.16)]" : "border-[#dbe6f1]"} ${index === 0 ? "rounded-xl xl:rounded-l-xl xl:rounded-r-none" : index === steps.length - 1 ? "rounded-xl xl:rounded-r-xl xl:rounded-l-none" : "rounded-xl xl:rounded-none"}`}
+              className={`group relative flex min-h-[240px] flex-col border bg-white p-5 shadow-[0_10px_30px_rgba(16,36,74,0.055)] transition-[transform,box-shadow,border-color,background-color] duration-300 hover:z-10 hover:-translate-y-1 hover:shadow-[0_18px_36px_rgba(7,96,188,0.13)] sm:p-6 xl:min-h-[260px] ${index === activeStep ? "border-2 border-primary bg-[#fbfdff] shadow-[0_16px_36px_rgba(7,96,188,0.16)]" : "border-[#dbe6f1]"} ${index === 0 ? "rounded-xl xl:rounded-l-xl xl:rounded-r-none" : index === steps.length - 1 ? "rounded-xl xl:rounded-r-xl xl:rounded-l-none" : "rounded-xl xl:rounded-none"}`}
             >
               <span aria-hidden="true" className={`absolute -top-[50px] left-1/2 hidden h-[50px] w-px -translate-x-1/2 transition-colors xl:block ${index <= activeStep ? "bg-primary" : "bg-[#cbd8e6]"}`} />
               <span aria-hidden="true" className={`absolute inset-x-0 top-0 h-1.5 transition-colors ${index === activeStep ? "bg-primary" : "bg-[#e7eff8]"}`} />
@@ -105,18 +113,40 @@ export function Operations() {
                 <span className={`grid size-12 place-items-center rounded-xl transition-colors ${index === activeStep ? "bg-primary text-white" : "bg-[#edf5fd] text-primary group-hover:bg-primary group-hover:text-white"}`}>
                   <Icon aria-hidden="true" className="size-6" strokeWidth={1.8} />
                 </span>
-                <span className="text-sm font-bold tracking-[0.14em] text-[#9aabc0]">
+                <span className="text-sm font-bold text-[#9aabc0]">
                   {String(index + 1).padStart(2, "0")}
                 </span>
               </div>
               <div className="mt-4 pt-2">
                 <span className="mb-3 block h-0.5 w-9 rounded-full bg-primary/70" aria-hidden="true" />
-                <h3 className="text-lg leading-snug font-bold text-[#101b34] sm:text-xl">{title}</h3>
-                <p className="mt-2 text-sm leading-6 text-[#526176]">{description}</p>
+                <h3 className="text-lg font-bold text-foreground sm:text-xl">{title}</h3>
+                <p className="mt-2 !text-md text-muted-foreground">{description}</p>
               </div>
             </li>
           ))}
         </ol>
+
+        <div className="relative mt-12 flex min-w-0 flex-col items-center gap-5 overflow-hidden rounded-lg bg-white px-4 py-6 sm:mt-16 sm:gap-6 sm:px-9 lg:flex-row lg:gap-8">
+          <div aria-hidden="true" className="pointer-events-none absolute right-0 -bottom-20 size-56 opacity-40 sm:size-52 lg:size-70">
+            <Image
+              src="/img/home/export-globe.svg"
+              alt=""
+              fill
+              sizes="(min-width: 1024px) 384px, 288px"
+              className="object-contain"
+            />
+          </div>
+          <ul className="relative z-10 flex items-center justify-center -space-x-3" aria-label="Selected aftermarket partners">
+            {partnerLogos.map((partner) => (
+              <li key={partner.name} className="grid size-14 place-items-center overflow-hidden rounded-full border-2 border-white bg-white p-2 sm:size-16">
+                <Image src={partner.src} alt={partner.name} width={120} height={64} className="max-h-10 w-full object-contain" />
+              </li>
+            ))}
+          </ul>
+          <p className="relative z-10 max-w-xl text-center text-base font-bold text-foreground uppercase sm:text-lg lg:text-left">
+            We partner with over 100+ OEM and aftermarket brands worldwide.
+          </p>
+        </div>
       </div>
     </section>
   );

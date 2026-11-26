@@ -9,7 +9,7 @@ import {
   type MotionValue
 } from "framer-motion";
 
-export function HeroBackground() {
+export function HeroBackground({ className }: { className: string }) {
   const { scrollY } = useScroll();
   const scrollOffset = useTransform(scrollY, [0, 640], ["0px", "-64px"]);
   const backgroundOffset = useSpring(scrollOffset, {
@@ -22,7 +22,7 @@ export function HeroBackground() {
 
   return (
     <motion.div
-      className="absolute inset-0 bg-[url('/img/home/mobile-hero.webp')] bg-cover bg-bottom bg-no-repeat md:bg-[url('/img/home/main_bannernew.webp')] md:bg-right lg:motion-safe:-bottom-16 lg:motion-safe:translate-y-[var(--hero-background-offset)]"
+      className={`absolute inset-0 bg-cover bg-no-repeat lg:motion-safe:-bottom-16 lg:motion-safe:translate-y-[var(--hero-background-offset)] ${className}`}
       style={backgroundStyle}
     />
   );

@@ -22,7 +22,7 @@ export function QuoteRequest() {
           </div>
 
           <div className="mt-7  sm:mt-8">
-            <p className="text-base leading-7 text-[#444444] sm:text-lg sm:leading-8">
+            <p className="text-base text-muted-foreground sm:text-lg">
               We help importers and distributors source genuine OEM and aftermarket auto parts with ease, accuracy, and competitive pricing.
             </p>
 
@@ -32,7 +32,7 @@ export function QuoteRequest() {
                   <Mail aria-hidden="true" className="size-5 " />
                 </span>
                 <span className="min-w-0">
-                  <span className="block text-xs font-semibold tracking-wide text-[#64748b] uppercase">General Enquiries</span>
+                  <span className="block text-xs font-semibold text-muted-foreground uppercase">General Enquiries</span>
                   <span className="mt-1 block break-all font-semibold text-[#172033]">info@bajrangautoparts.com</span>
                 </span>
               </a>
@@ -41,7 +41,7 @@ export function QuoteRequest() {
                   <Phone aria-hidden="true" className="size-5" />
                 </span>
                 <span className="min-w-0">
-                  <span className="block text-xs font-semibold tracking-wide text-[#64748b] uppercase">Customer Sales Enquiries</span>
+                  <span className="block text-xs font-semibold text-muted-foreground uppercase">Customer Sales Enquiries</span>
                   <span className="mt-1 block font-semibold text-[#172033]">+91 971-8346-347</span>
                 </span>
               </a>
@@ -57,7 +57,7 @@ export function QuoteRequest() {
           />
 
           <div className="relative z-10">
-            <p className="max-w-2xl text-base leading-7 text-[#4b4b4b] sm:text-lg sm:leading-8">
+            <p className="max-w-2xl text-base text-muted-foreground sm:text-lg">
               Sourcing genuine auto parts shouldn’t be complicated. We provide a complete export solution—from product selection to global delivery—ensuring quality, transparency, and timely shipments for your business.
             </p>
 
@@ -67,7 +67,7 @@ export function QuoteRequest() {
               encType="text/plain"
               className="mt-6 block w-full min-w-0 rounded-xl border border-border bg-white p-4 shadow-[0_12px_32px_rgba(16,36,74,0.08)] sm:mt-8 sm:p-6 lg:relative lg:z-20 lg:mt-16 lg:p-7"
             >
-              <h2 id="quote-request-title" className="text-[clamp(1.5rem,4vw,1.875rem)] leading-tight font-bold text-[#171717] uppercase">
+              <h2 id="quote-request-title" className="text-[clamp(1.5rem,4vw,1.875rem)] font-bold text-foreground uppercase">
                 Request a Quote
               </h2>
 
@@ -76,23 +76,23 @@ export function QuoteRequest() {
                 <Input className={fieldClassName} name="email" type="email" placeholder="Email Address" aria-label="Email address" autoComplete="email" required />
                 <Input className={fieldClassName} name="phone" type="tel" placeholder="Phone" aria-label="Phone number" autoComplete="tel" required />
                 <div className="relative min-w-0">
-                  <select name="category" aria-label="Product category" defaultValue="" required className={`${fieldClassName} w-full appearance-none border px-3 pr-10 text-[#64748b] [&:valid]:text-[#172033]`}>
+                  <select name="category" aria-label="Product category" defaultValue="" required className={`${fieldClassName} w-full appearance-none border px-3 pr-10 text-muted-foreground [&:valid]:text-[#172033]`}>
                     <option value="" disabled>Product Category</option>
                     <option>Car Spare Parts</option>
                     <option>Motorcycle Spare Parts</option>
                     <option>Tractor &amp; HCV Parts</option>
                     <option>Other</option>
                   </select>
-                  <ChevronDown aria-hidden="true" className="pointer-events-none absolute top-1/2 right-3 size-4 -translate-y-1/2 text-[#64748b]" />
+                  <ChevronDown aria-hidden="true" className="pointer-events-none absolute top-1/2 right-3 size-4 -translate-y-1/2 text-muted-foreground" />
                 </div>
                 <div className="relative min-w-0">
-                  <select name="brandType" aria-label="Brand type" defaultValue="" required className={`${fieldClassName} w-full appearance-none border px-3 pr-10 text-[#64748b] [&:valid]:text-[#172033]`}>
+                  <select name="brandType" aria-label="Brand type" defaultValue="" required className={`${fieldClassName} w-full appearance-none border px-3 pr-10 text-muted-foreground [&:valid]:text-[#172033]`}>
                     <option value="" disabled>Brand (OEM / Aftermarket)</option>
                     <option>OEM</option>
                     <option>Aftermarket</option>
                     <option>Either</option>
                   </select>
-                  <ChevronDown aria-hidden="true" className="pointer-events-none absolute top-1/2 right-3 size-4 -translate-y-1/2 text-[#64748b]" />
+                  <ChevronDown aria-hidden="true" className="pointer-events-none absolute top-1/2 right-3 size-4 -translate-y-1/2 text-muted-foreground" />
                 </div>
                 <Input className={fieldClassName} name="partDetails" placeholder="Part Details / Inquiry" aria-label="Part details or inquiry" />
                 <textarea

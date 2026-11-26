@@ -10,7 +10,6 @@ type VehicleCatalogueData = {
   partCount: number;
   kitCount: number;
   assemblyCategoryCount: number;
-  vehicleCategoryCount: number;
   groups: AssemblyGroup[];
   kits: Assembly[];
 };
@@ -59,10 +58,10 @@ export function VehicleCatalogue({
           </div>
         </section>
 
-        <div className="mt-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+        <div id="assembly-groups" className="mt-6 flex scroll-mt-24 flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <div className="inline-flex w-fit rounded-xl border border-slate-200 bg-white p-1">
             <button type="button" onClick={() => setActiveTab("assemblies")} className={`rounded-lg px-4 py-2.5 text-sm font-bold transition-colors ${activeTab === "assemblies" ? "bg-primary text-white" : "text-slate-600 hover:bg-slate-50"}`}>Assemblies ({catalogue.assemblyCategoryCount})</button>
-            <button type="button" onClick={() => setActiveTab("kits")} className={`rounded-lg px-4 py-2.5 text-sm font-bold transition-colors ${activeTab === "kits" ? "bg-primary text-white" : "text-slate-600 hover:bg-slate-50"}`}>Kits ({catalogue.kitCount})</button>
+            {catalogue.kitCount > 0 && <button type="button" onClick={() => setActiveTab("kits")} className={`rounded-lg px-4 py-2.5 text-sm font-bold transition-colors ${activeTab === "kits" ? "bg-primary text-white" : "text-slate-600 hover:bg-slate-50"}`}>Kits ({catalogue.kitCount})</button>}
           </div>
           <div className="relative w-full sm:max-w-sm">
             <Search className="pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-slate-400" />
@@ -77,7 +76,7 @@ export function VehicleCatalogue({
               {group.assemblies.map((assembly) => <Link key={assembly.code} href={`/brands/${brandSlug}/vehicles/${vehicleSlug}/assemblies/${slugify(assembly.code)}`} className="group flex min-h-28 items-center justify-between gap-4 rounded-xl border border-slate-200 bg-white p-4 transition-[transform,box-shadow,border-color] hover:-translate-y-0.5 hover:border-primary/30 hover:shadow-md">
                 <div className="flex min-w-0 items-center gap-3">
                   <span className="grid size-12 shrink-0 place-items-center rounded-lg bg-primary/[0.06] text-sm font-bold text-primary">{assembly.code}</span>
-                  <div className="min-w-0"><h3 className="line-clamp-2 text-sm font-bold leading-5 text-slate-900 group-hover:text-primary">{assembly.name}</h3><p className="mt-1 text-xs text-slate-500">{assembly.partCount} parts</p></div>
+                  <div className="min-w-0"><h3 className="line-clamp-2 text-sm font-bold leading-5 text-slate-900 group-hover:text-primary">{assembly.name}</h3><p className="mt-1 text-xs text-slate-500">{assembly.partCount > 0 ? `${assembly.partCount} parts` : "Check availability"}</p></div>
                 </div>
                 <ArrowUpRight className="size-4 shrink-0 text-slate-400 transition group-hover:text-primary" />
               </Link>)}

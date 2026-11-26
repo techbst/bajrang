@@ -36,9 +36,9 @@ export type AboutData = {
 
 export const aboutData: AboutData = {
   eyebrow: "About Bajrang Auto Parts",
-  title: "<strong>Bajrang Auto Parts</strong> is a trusted Indian exporter of genuine and aftermarket automotive spare parts, serving customers in over 50 countries with competitive wholesale pricing.",
+  title: "Bajrang Auto Parts is a trusted Indian exporter of genuine and aftermarket automotive spare parts, serving customers in over 50 countries with competitive wholesale pricing.",
   description:
-    "Bajrang Auto Parts is one of the experienced provider and leading exporter of Automotive Spare Parts from India. Our approach is to recognize that each client has their own unique set of requirements to be met. We are constantly identifying opportunities to excel in the quest to satisfy the needs of our clients. Our commitment is to achieve maximum satisfaction of our customers and that's what drives us to work daily, so our products, infrastructure and service platform are always geared to meet all the needs and expectations of our related.",
+    "We source and export genuine and aftermarket auto parts from India for wholesalers and distributors. Tell us the parts, quantities, and brands you need, and we’ll help you put together an order at competitive wholesale prices and coordinate its export.",
   visual: {
     image: "/img/home/center-image.webp",
     overline: "Bajrang Auto Parts",

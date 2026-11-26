@@ -1,6 +1,19 @@
 @theme inline {
   --font-sans: "Google Sans";
   --font-mono: "Google Sans";
+  --text-xs--line-height: var(--text-line-height);
+  --text-sm--line-height: var(--text-line-height);
+  --text-base--line-height: var(--text-line-height);
+  --text-lg--line-height: var(--text-line-height);
+  --text-xl--line-height: var(--text-line-height);
+  --text-2xl--line-height: var(--text-line-height);
+  --text-3xl--line-height: var(--text-line-height);
+  --text-4xl--line-height: var(--text-line-height);
+  --text-5xl--line-height: var(--text-line-height);
+  --text-6xl--line-height: var(--text-line-height);
+  --text-7xl--line-height: var(--text-line-height);
+  --text-8xl--line-height: var(--text-line-height);
+  --text-9xl--line-height: var(--text-line-height);
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);

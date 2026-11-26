@@ -1,41 +1,46 @@
 import Image from "next/image";
+import { BadgeCheck, Globe2, Handshake, Tags } from "lucide-react";
 import Heading from "@/components/ui/heading";
 
 const reasons = [
   {
     title: "100% Genuine Parts",
-    description: "We supply verified OEM and high-quality aftermarket parts to ensure durability and performance.",
+    description: "Source verified OEM parts and quality aftermarket alternatives for your market.",
+    icon: BadgeCheck,
   },
   {
     title: "Competitive Pricing",
-    description: "Optimized sourcing and bulk supply help you get the best value without compromising quality.",
+    description: "Get competitive wholesale pricing through bulk supply and an established sourcing network.",
+    icon: Tags,
   },
   {
     title: "100+ Brand Collaborations",
-    description: "Working with leading OEM and aftermarket brands to ensure authenticity and quality.",
+    description: "Choose from a wide range of parts through our relationships with OEM and aftermarket brands.",
+    icon: Handshake,
   },
   {
     title: "Trusted by Global Clients",
-    description: "Long-term relationships built with distributors and importers across 36+ countries.",
+    description: "We work with distributors and importers across 36+ countries.",
+    icon: Globe2,
   },
 ];
 
 export function WhyChoose() {
   return (
-    <section className="py-20" aria-labelledby="why-choose-title">
-      <div className="container grid items-stretch gap-10 lg:grid-cols-2 lg:gap-12">
-        <figure className="group relative aspect-[4/3] overflow-hidden rounded-md lg:aspect-auto">
+    <section className="bg-white py-20" aria-labelledby="why-choose-title">
+      <div className="container grid items-stretch gap-8 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:gap-12">
+        <figure className="relative aspect-[4/3] overflow-hidden rounded-2xl lg:aspect-auto">
           <Image
             src="/img/home/why-choose.webp"
             alt="Bajrang warehouse team handling an export shipment"
             fill
             sizes="(min-width: 1024px) 50vw, 100vw"
-            className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.025]"
+            className="object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" aria-hidden="true" />
           <figcaption className="absolute inset-x-0 bottom-0 p-7 text-white sm:p-10">
-            <p className="text-lg font-medium sm:text-2xl">Inside Bajrang Warehouse</p>
-            <p className="mt-4 text-2xl leading-tight font-bold uppercase sm:text-4xl">14,000 Sq.Ft of Organized Excellence</p>
+            <p className="text-sm font-medium text-white/90 sm:text-base">Inside Bajrang Warehouse</p>
+            <p className="mt-2 text-2xl font-bold sm:text-3xl">14,000 sq. ft. of warehouse space</p>
           </figcaption>
         </figure>
 
@@ -43,22 +48,26 @@ export function WhyChoose() {
           <div id="why-choose-title">
             <Heading
               eyebrow="Why Choose Us"
-              title="Why Businesses<br />Choose Us Globally"
-              subtitle="Delivering consistency, quality, and speed—so your supply chain never slows down."
+              title="Why Businesses Choose Bajrang"
+              subtitle="Reliable parts sourcing, consistent quality, and timely dispatch help keep your supply chain moving."
               align="left"
+              className="[&>p]:mx-0 [&>p]:mb-0"
             />
           </div>
-          <ul className="mt-8 grid gap-4 sm:grid-cols-2">
-            {reasons.map((reason) => (
+          <ul className="mt-6 grid list-none gap-3 sm:grid-cols-2 sm:gap-4">
+            {reasons.map(({ title, description, icon: Icon }) => (
               <li
-                key={reason.title}
-                className="group rounded-lg border border-border bg-white p-6 transition-[transform,box-shadow,border-color] duration-500 ease-out hover:-translate-y-1 hover:border-primary/40 hover:shadow-[0_20px_45px_rgba(7,96,188,0.12)] sm:p-7"
+                key={title}
+                className="h-full rounded-xl border border-border bg-white p-5"
               >
-                <h3 className="!text-xl leading-tight font-bold text-[#171717] uppercase sm:text-2xl transition-colors duration-300 group-hover:text-primary">
-                  {reason.title}
+                <span className="grid size-9 place-items-center rounded-lg bg-secondary text-primary">
+                  <Icon aria-hidden="true" className="size-5" />
+                </span>
+                <h3 className="mt-3 text-lg font-semibold text-foreground">
+                  {title}
                 </h3>
-                <p className="mt-4 text-base leading-7 text-[#4b4b4b] sm:text-lg sm:leading-8">
-                  {reason.description}
+                <p className="mt-2 text-sm text-muted-foreground sm:text-base">
+                  {description}
                 </p>
               </li>
             ))}

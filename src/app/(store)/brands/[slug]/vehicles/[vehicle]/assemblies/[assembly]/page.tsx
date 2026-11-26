@@ -1,9 +1,9 @@
 import { notFound } from "next/navigation";
 import { AssemblyDetail } from "@/components/catalogue/assembly-detail";
-import heroAssemblyParts from "@/data/catalogue/hero-assembly-parts.json";
 import heroAssemblies from "@/data/catalogue/hero-assemblies.json";
-import sampleParts from "@/data/catalogue/sample-parts.json";
 import { getBrandCatalogue, getCatalogueBrand, titleFromCatalogueSlug } from "@/lib/catalogue-data";
+import { assemblyCategoryForVehicleType, getCatalogueAssembly } from "@/lib/catalogue-assemblies";
+import { loadAssemblyParts } from "@/lib/catalogue-assembly-parts";
 
 export default async function AssemblyPage({ params, searchParams }: {
   params: Promise<{ slug: string; vehicle: string; assembly: string }>;
@@ -15,13 +15,17 @@ export default async function AssemblyPage({ params, searchParams }: {
 
   const source = getBrandCatalogue(slug, brand);
   const vehicleName = source.models.flatMap((model) => model.variants).find((variant) => slugify(variant) === vehicleSlug) ?? titleFromCatalogueSlug(vehicleSlug);
-  const catalogueAssembly = (type === "kit" ? heroAssemblies.kits : heroAssemblies.groups.flatMap((group) => group.assemblies)).find((item) => slugify(item.code) === assemblySlug);
+  const category = assemblyCategoryForVehicleType(brand.vehicleType);
+  const catalogueAssembly = type === "kit"
+    ? (category === "motorcycle" ? heroAssemblies.kits.find((item) => slugify(item.code) === assemblySlug) : undefined)
+    : getCatalogueAssembly(assemblySlug, category);
   if (!catalogueAssembly) notFound();
 
-  const isHeroE4 = slug === "hero" && catalogueAssembly.code === "E-4";
-  const parts = isHeroE4
-    ? heroAssemblyParts.parts
-    : sampleParts.map((part, index) => ({ ref: index + 1, partNumber: part.partNumber, name: part.name, quantity: 1, productType: part.productType }));
+  const { parts, source: partsSource } = await loadAssemblyParts({
+    brand,
+    vehicle: { slug: vehicleSlug, name: vehicleName },
+    assembly: catalogueAssembly
+  });
 
   return <AssemblyDetail
     brand={brand.name}
@@ -30,7 +34,8 @@ export default async function AssemblyPage({ params, searchParams }: {
     vehicleSlug={vehicleSlug}
     assemblyCode={catalogueAssembly.code}
     assemblyName={catalogueAssembly.name}
-    partCount={catalogueAssembly.partCount}
+    partCount={parts.length}
+    isDemo={partsSource === "demo"}
     parts={parts}
   />;
 }

@@ -21,7 +21,7 @@ export function AftermarketPartners() {
   const activePartners = partners.filter((partner) => partner.vehicleType === activeVehicle.id);
 
   return (
-    <section className="relative py-20" aria-labelledby="aftermarket-partners-title">
+    <section className="relative bg-primary/5 py-20" aria-labelledby="aftermarket-partners-title">
       <div className="container">
         <div id="aftermarket-partners-title">
           <Heading
@@ -45,7 +45,7 @@ export function AftermarketPartners() {
                 aria-selected={isActive}
                 aria-controls="aftermarket-partner-list"
                 onClick={() => setActiveVehicleType(index)}
-                className={`flex items-center justify-center gap-2 whitespace-nowrap border-b border-border px-2 py-4 text-xs font-semibold uppercase transition-colors sm:gap-3 sm:text-sm sm:border-r sm:border-b-0 last:border-0 ${isActive ? "bg-primary text-primary-foreground" : "bg-card text-foreground hover:bg-primary/5"}`}
+                className={`flex items-center justify-center gap-2 whitespace-nowrap border-b border-border px-2 py-4 text-xs font-semibold uppercase transition-colors sm:gap-3 sm:text-sm sm:border-r sm:border-b-0 last:border-0 ${isActive ? "bg-(--primary) text-primary-foreground" : "bg-card text-foreground hover:bg-primary/5"}`}
               >
                 <Icon className="size-5" aria-hidden="true" />
                 {vehicleType.label}

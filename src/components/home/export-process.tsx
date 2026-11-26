@@ -67,8 +67,8 @@ export function ExportProcess() {
                   </span>
                 </span>
                 <div className="min-w-0 sm:border-l sm:border-slate-300 sm:py-1 sm:pl-5 lg:pl-7">
-                  <h3 className="text-base leading-snug font-bold text-[#101b34] sm:text-xl">{title}</h3>
-                  <p className="mt-1 text-sm leading-6 text-[#29354b] sm:text-base sm:leading-7">{description}</p>
+                  <h3 className="text-base font-bold text-foreground sm:text-xl">{title}</h3>
+                  <p className="mt-1 text-sm text-muted-foreground sm:text-base">{description}</p>
                 </div>
               </li>
             ))}
@@ -92,7 +92,7 @@ export function ExportProcess() {
               </li>
             ))}
           </ul>
-          <p className="relative z-10 max-w-xl text-center text-base leading-6 font-bold text-[#101b34] uppercase sm:text-lg sm:leading-7 lg:text-left">
+          <p className="relative z-10 max-w-xl text-center text-base font-bold text-foreground uppercase sm:text-lg lg:text-left">
             We partner with over 100+ OEM and aftermarket brands worldwide.
           </p>
         </div>

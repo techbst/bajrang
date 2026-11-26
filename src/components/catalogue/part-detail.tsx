@@ -3,7 +3,8 @@
 import Link from "next/link";
 import { useState } from "react";
 import { ArrowUpRight, Check, ChevronRight, Minus, Plus, ShoppingCart, Wrench } from "lucide-react";
-import { ProductTypeBadge, type AssemblyPart } from "@/components/catalogue/assembly-detail";
+import { ProductTypeBadge } from "@/components/catalogue/assembly-detail";
+import type { AssemblyPart } from "@/lib/catalogue-assembly-parts";
 import { useCatalogueCartStore } from "@/stores/catalogue-cart-store";
 import { useCartStore } from "@/stores/cart-store";
 
@@ -16,7 +17,9 @@ export function PartDetail({
   assemblyName,
   part,
   supportedVehicles,
-  relatedParts
+  relatedParts,
+  isDemo,
+  isKit
 }: {
   brand: string;
   brandSlug: string;
@@ -27,13 +30,15 @@ export function PartDetail({
   part: AssemblyPart;
   supportedVehicles: string[];
   relatedParts: AssemblyPart[];
+  isDemo: boolean;
+  isKit: boolean;
 }) {
   const addItem = useCatalogueCartStore((state) => state.addItem);
   const openCart = useCartStore((state) => state.openCart);
   const [quantity, setQuantity] = useState(part.quantity);
   const [added, setAdded] = useState(false);
   const [showAllVehicles, setShowAllVehicles] = useState(false);
-  const assemblyHref = `/brands/${brandSlug}/vehicles/${vehicleSlug}/assemblies/${slugify(assemblyCode)}`;
+  const assemblyHref = `/brands/${brandSlug}/vehicles/${vehicleSlug}/assemblies/${slugify(assemblyCode)}${isKit ? "?type=kit" : ""}`;
 
   function addToCart() {
     addItem({ partNumber: part.partNumber, description: part.name, productType: part.productType, brand, vehicle, assemblyCode, assemblyName }, quantity);
@@ -57,6 +62,7 @@ export function PartDetail({
         <div className="min-w-0 space-y-6">
           <section className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
             <div className="flex flex-wrap items-start justify-between gap-4"><div><div className="flex flex-wrap items-center gap-2"><span className="rounded-full bg-primary/5 px-3 py-1 text-xs font-bold text-primary">{brand} Part</span><ProductTypeBadge productType={part.productType} /></div><h1 className="mt-4 text-2xl font-bold tracking-tight text-slate-950 sm:text-3xl">{part.partNumber}</h1><p className="mt-2 text-lg font-semibold text-slate-700">{part.name}</p><p className="mt-3 text-sm text-slate-500">{brand} {vehicle} · Ref #{part.ref} in assembly</p></div><div className="grid size-14 place-items-center rounded-xl bg-primary/[0.06] text-primary"><Wrench className="size-6" /></div></div>
+            {isDemo && <p className="mt-4 rounded-lg bg-secondary px-3 py-2 text-sm text-secondary-foreground">Demo part. The part number and fitment are illustrative.</p>}
             <div className="mt-7 flex flex-wrap items-center gap-4 border-t border-slate-100 pt-6">
               <div><p className="text-xs font-semibold uppercase tracking-wide text-slate-400">Qty required</p><div className="mt-2 flex h-10 items-center rounded-lg border border-slate-200"><button type="button" aria-label="Decrease quantity" onClick={() => setQuantity((current) => Math.max(1, current - 1))} className="grid size-9 place-items-center text-slate-500 hover:text-primary"><Minus className="size-4" /></button><span className="min-w-8 text-center text-sm font-bold">{quantity}</span><button type="button" aria-label="Increase quantity" onClick={() => setQuantity((current) => current + 1)} className="grid size-9 place-items-center text-slate-500 hover:text-primary"><Plus className="size-4" /></button></div></div>
               <button type="button" onClick={addToCart} className="mt-5 inline-flex h-11 items-center gap-2 rounded-lg bg-primary px-6 text-sm font-bold text-white shadow-sm transition hover:bg-blue-800"><ShoppingCart className="size-4" /> Add to Cart</button>

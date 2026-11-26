@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 export function ContactCta() {
   return (
     <section
-      className="bg-white pb-16 sm:pb-20"
+      className="bg-white py-20"
       aria-labelledby="contact-cta-title"
     >
       <div className="container">
@@ -13,11 +13,11 @@ export function ContactCta() {
           <div>
             <h2
               id="contact-cta-title"
-              className="text-xl leading-tight font-semibold text-balance uppercase sm:text-2xl"
+              className="text-xl font-semibold text-balance uppercase sm:text-2xl"
             >
               Need Help Finding the Right Product?
             </h2>
-            <p className="mt-3 text-base leading-7 text-white/90 sm:text-lg sm:leading-8">
+            <p className="mt-3 text-base text-white/90 sm:text-lg">
               Our Parts Experts Can Help. Call for immediate assistance.
             </p>
           </div>
@@ -43,7 +43,7 @@ export function ContactCta() {
             <span className="block text-2xl font-semibold uppercase">
               +91 971-8346-347
             </span>
-            <span className="mt-2 block text-sm leading-6 text-white/90 sm:text-base">
+            <span className="mt-2 block text-sm text-white/90 sm:text-base">
               Call us between 10 AM – 7 PM
               <span className="block text-xs sm:text-sm">GMT (+05:30)</span>
             </span>

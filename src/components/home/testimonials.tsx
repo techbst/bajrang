@@ -1,4 +1,8 @@
+"use client";
+
 import Image from "next/image";
+import { ChevronLeft, ChevronRight, Star } from "lucide-react";
+import { useEffect, useRef } from "react";
 import Heading from "@/components/ui/heading";
 
 const testimonials = [
@@ -47,8 +51,27 @@ const testimonials = [
 ];
 
 export function Testimonials() {
+  const sliderRef = useRef<HTMLDivElement>(null);
+  const trackRef = useRef<HTMLUListElement>(null);
+
+  useEffect(() => {
+    const slider = sliderRef.current;
+    const track = trackRef.current;
+    if (!slider || !track) return;
+
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const timer = window.setInterval(() => {
+      const bounds = slider.getBoundingClientRect();
+      if (reducedMotion.matches || document.hidden || slider.matches(":hover, :focus-within") ||
+          bounds.bottom <= 0 || bounds.top >= window.innerHeight) return;
+      moveSlide(track, 1);
+    }, 4500);
+
+    return () => window.clearInterval(timer);
+  }, []);
+
   return (
-    <section className="bg-[#f5f9fd] py-16 sm:py-20" aria-labelledby="testimonials-title">
+    <section className="bg-primary/5 py-20" aria-labelledby="testimonials-title">
       <div className="container">
         <div id="testimonials-title">
           <Heading
@@ -60,42 +83,72 @@ export function Testimonials() {
           />
         </div>
 
-        <ul className="mt-10 grid gap-4 sm:mt-12 sm:grid-cols-2 sm:gap-5 xl:grid-cols-3 xl:gap-6">
-          {testimonials.map((testimonial) => (
-            <li
-              key={`${testimonial.country}-${testimonial.role}`}
-              className="flex min-h-[290px] flex-col rounded-xl border border-border bg-white p-5 shadow-[0_8px_24px_rgba(16,36,74,0.045)] sm:p-6"
-            >
-              <div className="flex items-start gap-4">
-                <Image
-                  src={`https://flagcdn.com/w80/${testimonial.flagCode}.png`}
-                  alt={`${testimonial.country} flag`}
-                  width={64}
-                  height={64}
-                  unoptimized
-                  className="size-12 shrink-0 rounded-full object-cover"
-                />
-                <div className="min-w-0">
-                  <h3 className="text-base leading-snug font-bold text-[#171717] uppercase sm:text-lg">
-                    {testimonial.role}
-                  </h3>
-                  <p className="mt-1 text-sm text-[#526176] sm:text-base">{testimonial.country}</p>
+        <div ref={sliderRef} className="relative mt-8 sm:mt-10">
+          <ul
+            id="testimonials-slides"
+            ref={trackRef}
+            tabIndex={0}
+            aria-label="Customer testimonials"
+            className="flex snap-x snap-mandatory gap-4 overflow-x-auto overscroll-x-contain [scrollbar-width:none] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary [&::-webkit-scrollbar]:hidden"
+          >
+            {testimonials.map((testimonial) => (
+              <li
+                key={`${testimonial.country}-${testimonial.role}`}
+                className="flex min-h-[260px] shrink-0 basis-full snap-start flex-col rounded-xl border border-border bg-white p-5 sm:basis-[calc((100%-1rem)/2)] sm:p-6 xl:basis-[calc((100%-2rem)/3)]"
+              >
+                <div className="flex items-start gap-4">
+                  <Image
+                    src={`https://flagcdn.com/w80/${testimonial.flagCode}.png`}
+                    alt={`${testimonial.country} flag`}
+                    width={64}
+                    height={64}
+                    unoptimized
+                    className="size-12 shrink-0 rounded-full object-cover"
+                  />
+                  <div className="min-w-0">
+                    <h3 className="text-base font-bold text-foreground uppercase sm:text-lg">
+                      {testimonial.role}
+                    </h3>
+                    <p className="mt-1 text-sm text-muted-foreground sm:text-base">{testimonial.country}</p>
+                  </div>
                 </div>
-              </div>
 
-              <p className="mt-6 flex-1 text-base leading-7 text-[#4b4b4b]">
-                {testimonial.quote}
-              </p>
+                <p className="mt-6 flex-1 text-base text-muted-foreground">
+                  {testimonial.quote}
+                </p>
 
-              <div className="mt-2 flex gap-1 text-2xl leading-none text-[#f59e0b]" aria-label={`${testimonial.rating} out of 5 stars`}>
-                {Array.from({ length: 5 }, (_, index) => (
-                  <span key={index} aria-hidden="true">{index < testimonial.rating ? "★" : "☆"}</span>
-                ))}
-              </div>
-            </li>
-          ))}
-        </ul>
+                <div className="mt-2 flex gap-1 text-2xl text-[#f59e0b]" aria-label={`${testimonial.rating} out of 5 stars`}>
+                  {Array.from({ length: 5 }, (_, index) => (
+                    <Star key={index} aria-hidden="true" className={`size-5 ${index < testimonial.rating ? "fill-current" : ""}`} />
+                  ))}
+                </div>
+              </li>
+            ))}
+          </ul>
+          <button type="button" aria-label="Previous review" aria-controls="testimonials-slides" onClick={() => moveSlide(trackRef.current, -1)} className="absolute top-1/2 -left-3 grid size-9 -translate-y-1/2 place-items-center rounded-full border border-border bg-white text-primary shadow-md hover:border-primary focus-visible:outline-2 focus-visible:outline-primary sm:-left-4 sm:size-10">
+            <ChevronLeft aria-hidden="true" className="size-5" />
+          </button>
+          <button type="button" aria-label="Next review" aria-controls="testimonials-slides" onClick={() => moveSlide(trackRef.current, 1)} className="absolute top-1/2 -right-3 grid size-9 -translate-y-1/2 place-items-center rounded-full border border-border bg-white text-primary shadow-md hover:border-primary focus-visible:outline-2 focus-visible:outline-primary sm:-right-4 sm:size-10">
+            <ChevronRight aria-hidden="true" className="size-5" />
+          </button>
+        </div>
       </div>
     </section>
   );
+}
+
+function moveSlide(track: HTMLUListElement | null, direction: -1 | 1) {
+  const card = track?.firstElementChild;
+  if (!track || !card) return;
+
+  const end = track.scrollWidth - track.clientWidth;
+  const step = card.getBoundingClientRect().width + (parseFloat(getComputedStyle(track).columnGap) || 0);
+  let left = track.scrollLeft + direction * step;
+  if (direction === 1 && track.scrollLeft >= end - 1) left = 0;
+  if (direction === -1 && track.scrollLeft <= 1) left = end;
+
+  track.scrollTo({
+    left,
+    behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth"
+  });
 }

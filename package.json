@@ -38,6 +38,7 @@
     "react-icons": "^5.7.0",
     "sonner": "latest",
     "tailwind-merge": "latest",
+    "xlsx": "https://cdn.sheetjs.com/xlsx-0.20.3/xlsx-0.20.3.tgz",
     "zod": "latest",
     "zustand": "latest"
   },

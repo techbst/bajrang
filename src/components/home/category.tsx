@@ -8,7 +8,7 @@ export default function Category() {
     const { eyebrow, title, subtitle, cards } = categoryData;
 
     return (
-        <section className="py-20 bg-primary/5">
+        <section className="bg-white py-20">
             <div className="container container-narrow">
 
                 {/* Heading */}
@@ -43,7 +43,7 @@ export default function Category() {
                             {/* Content */}
                             <div className="absolute inset-x-0 bottom-0 flex items-center justify-between gap-5 p-6 md:p-7">
 
-                                <div className="max-w-[75%] text-xl font-semibold leading-tight text-white md:text-2xl">
+                                <div className="max-w-[75%] text-xl font-semibold text-white md:text-2xl">
                                     {card.title}
                                 </div>
 

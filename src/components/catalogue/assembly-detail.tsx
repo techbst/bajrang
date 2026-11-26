@@ -6,8 +6,7 @@ import { SectionEyebrow } from "@/components/common/section-eyebrow";
 import { ArrowUpRight, Check, ChevronRight, Minus, Plus, ShoppingCart } from "lucide-react";
 import { useCatalogueCartStore } from "@/stores/catalogue-cart-store";
 import { useCartStore } from "@/stores/cart-store";
-
-export type AssemblyPart = { ref: number; partNumber: string; name: string; quantity: number; productType: string };
+import type { AssemblyPart } from "@/lib/catalogue-assembly-parts";
 
 export function AssemblyDetail({
   brand,
@@ -17,7 +16,8 @@ export function AssemblyDetail({
   assemblyCode,
   assemblyName,
   partCount,
-  parts
+  parts,
+  isDemo
 }: {
   brand: string;
   brandSlug: string;
@@ -27,6 +27,7 @@ export function AssemblyDetail({
   assemblyName: string;
   partCount: number;
   parts: AssemblyPart[];
+  isDemo: boolean;
 }) {
   const addItem = useCatalogueCartStore((state) => state.addItem);
   const openCart = useCartStore((state) => state.openCart);
@@ -53,14 +54,19 @@ export function AssemblyDetail({
           <section className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
             <SectionEyebrow>{brand} · Assembly</SectionEyebrow>
             <div className="mt-3 flex flex-wrap items-start justify-between gap-4">
-              <div><h1 className="text-2xl font-bold tracking-tight text-slate-950 sm:text-3xl">{assemblyCode} {assemblyName}</h1><p className="mt-2 text-sm text-slate-500">{brand} {vehicle} · {partCount} parts</p></div>
-              <button type="button" onClick={addAllParts} className="inline-flex h-10 items-center gap-2 rounded-lg bg-primary px-4 text-sm font-semibold text-white transition hover:bg-blue-800"><ShoppingCart className="size-4" /> Add all {parts.length} sample parts</button>
+              <div><h1 className="text-2xl font-bold tracking-tight text-slate-950 sm:text-3xl">{assemblyCode} {assemblyName}</h1><p className="mt-2 text-sm text-slate-500">{brand} {vehicle}{partCount > 0 ? ` · ${partCount} ${isDemo ? "demo parts" : "parts"}` : ""}</p></div>
+              {parts.length > 0 ? (<button type="button" onClick={addAllParts} className="inline-flex h-10 items-center gap-2 rounded-lg bg-primary px-4 text-sm font-semibold text-white transition hover:bg-blue-800"><ShoppingCart className="size-4" /> Add all {parts.length} sample parts</button>) : (<Link href="/contact" className="inline-flex h-10 items-center rounded-lg bg-primary px-4 text-sm font-semibold text-white">Request availability</Link>)}
             </div>
+            {isDemo && (
+              <p className="mt-4 rounded-lg bg-secondary px-3 py-2 text-sm text-secondary-foreground">
+                Demo parts for testing the catalogue and cart. Part numbers, quantities, and fitment are illustrative.
+              </p>
+            )}
             {added ? <div role="status" className="mt-5 flex flex-wrap items-center justify-between gap-3 rounded-lg border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm text-emerald-800"><span className="inline-flex items-center gap-2"><Check className="size-4" /> Parts added to your cart.</span><Link href="/cart" className="font-bold underline underline-offset-2">View cart</Link></div> : null}
           </section>
 
           <section className="mt-6 overflow-hidden rounded-2xl border border-slate-200 bg-white">
-            <div className="flex items-center justify-between border-b border-slate-200 px-5 py-4 sm:px-6"><div><h2 className="text-base font-semibold text-slate-800">Parts in this assembly</h2><p className="mt-1 text-xs text-slate-500">{partCount} catalogue parts · sample rows below</p></div><span className="rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold text-slate-600">Ref · Part · Description</span></div>
+            <div className="flex items-center justify-between border-b border-slate-200 px-5 py-4 sm:px-6"><div><h2 className="text-base font-semibold text-slate-800">Parts in this assembly</h2><p className="mt-1 text-xs text-slate-500">{partCount > 0 ? `${partCount} ${isDemo ? "demo parts" : "listed parts"}` : "Availability on request"}</p></div><span className="rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold text-slate-600">Ref · Part · Description</span></div>
             <div className="flex flex-wrap items-center gap-2 border-b border-slate-100 bg-slate-50 px-4 py-3 sm:px-6"><span className="mr-1 text-xs font-semibold text-slate-500">Product type</span>{["All", "OEM", "Aftermarket"].map((type) => <button key={type} type="button" onClick={() => setProductFilter(type)} aria-pressed={productFilter === type} className={`rounded-full border px-3 py-1.5 text-xs font-semibold transition-colors ${productFilter === type ? "border-primary bg-primary text-white" : "border-slate-200 bg-white text-slate-600 hover:border-primary/40 hover:text-primary"}`}>{type}</button>)}</div>
             <div className="divide-y divide-slate-100">
               {visibleParts.map((part) => <div key={part.partNumber} className="grid gap-3 px-4 py-4 sm:grid-cols-[36px_minmax(0,1fr)_90px_140px] sm:items-center sm:px-6">
@@ -76,7 +82,7 @@ export function AssemblyDetail({
                   <button type="button" aria-label={`Add ${part.partNumber} to cart`} onClick={() => addPart(part)} className="grid size-9 shrink-0 place-items-center rounded-lg bg-primary/5 text-primary transition-colors hover:bg-primary hover:text-white"><ShoppingCart className="size-4" /></button>
                 </div>
               </div>)}
-              {visibleParts.length === 0 ? <p className="px-5 py-10 text-center text-sm text-slate-500">No {productFilter.toLowerCase()} products in this sample assembly.</p> : null}
+              {visibleParts.length === 0 ? <p className="px-5 py-10 text-center text-sm text-slate-500">{parts.length === 0 ? "No parts are listed for this vehicle and assembly. Request availability to check fitment." : `No ${productFilter.toLowerCase()} products in this sample assembly.`}</p> : null}
             </div>
           </section>
         </div>

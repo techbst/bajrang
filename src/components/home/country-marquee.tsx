@@ -20,22 +20,24 @@ const countries = [
   { name: "Germany", code: "DE" },
 ];
 
-function FlagTrack({ reverse = false, duplicate = false }: { reverse?: boolean; duplicate?: boolean }) {
+function FlagTrack({ reverse = false, duplicate = false, compact = false }: { reverse?: boolean; duplicate?: boolean; compact?: boolean }) {
   return (
-    <div className={`country-marquee-track flex w-max items-center ${reverse ? "country-marquee-track-reverse" : ""}`} aria-hidden={duplicate}>
+    <div className={`country-marquee-track flex w-max items-center ${reverse ? "country-marquee-track-reverse" : ""} ${compact ? "group-focus-within:[animation-play-state:paused]" : ""}`} aria-hidden={duplicate}>
       {[0, 1].map((copy) => (
-        <ul key={copy} className="flex items-center gap-8 px-4" aria-hidden={duplicate || copy === 1}>
+        <ul key={copy} className={`flex items-center ${compact ? "min-w-[100vw] gap-1 pr-1" : "gap-8 px-4"} ${compact && copy === 1 ? "motion-reduce:hidden" : ""}`} aria-hidden={duplicate || copy === 1}>
           {countries.map((country) => (
-            <li key={`${copy}-${country.name}`} className="flex w-28 shrink-0 flex-col items-center gap-3 text-center sm:w-36">
-              <Image
-                src={`https://flagcdn.com/w160/${country.code.toLowerCase()}.png`}
-                alt={duplicate ? "" : `${country.name} flag`}
-                width={96}
-                height={64}
-                className="h-12 w-20 object-contain sm:h-14 sm:w-24"
-                unoptimized
-              />
-              <span className="text-base text-[#171717] sm:text-lg">{country.name}</span>
+            <li key={country.code} className={`flex shrink-0 flex-col items-center text-center ${compact ? "w-[4.5rem] grow gap-1.5" : "w-28 gap-3 sm:w-36"}`}>
+              <span className={`relative block ${compact ? "h-5 w-8 overflow-hidden rounded-sm" : "h-12 w-20 sm:h-14 sm:w-24"}`}>
+                <Image
+                  src={`https://flagcdn.com/${compact ? "w80" : "w160"}/${country.code.toLowerCase()}.png`}
+                  alt=""
+                  fill
+                  sizes={compact ? "32px" : "(min-width: 640px) 96px, 80px"}
+                  className="object-contain"
+                  unoptimized
+                />
+              </span>
+              <span className={compact ? "text-xs whitespace-nowrap text-white/90" : "text-base text-foreground sm:text-lg"}>{country.name}</span>
             </li>
           ))}
         </ul>
@@ -44,9 +46,22 @@ function FlagTrack({ reverse = false, duplicate = false }: { reverse?: boolean; 
   );
 }
 
-export function CountryMarquee() {
+export function CountryMarquee({ variant = "section" }: { variant?: "section" | "footer" }) {
+  if (variant === "footer") {
+    return (
+      <section className="border-t border-white/25  py-5" aria-labelledby="footer-global-reach">
+        <h2 id="footer-global-reach" className="px-6 text-center text-base font-semibold">
+          Trusted Across 36+ Countries Worldwide
+        </h2>
+        <div tabIndex={0} role="region" aria-label="Countries we serve" className="country-marquee group mt-4 w-full overflow-hidden py-1 focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-white motion-reduce:overflow-x-auto">
+          <FlagTrack compact />
+        </div>
+      </section>
+    );
+  }
+
   return (
-    <section className="overflow-hidden py-20" aria-label="Countries we serve">
+    <section className="overflow-hidden bg-primary/5 py-20" aria-label="Countries we serve">
       <div className="container">
         <Heading
           eyebrow="Global Reach"

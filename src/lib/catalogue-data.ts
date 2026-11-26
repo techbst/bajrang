@@ -6,7 +6,40 @@ import { aftermarketPartnersData } from "@/data/home/aftermarket-partners";
 import { aftermarketSlug } from "@/lib/catalogue-slugs";
 
 export type CatalogueBrand = { name: string; parts: number; vehicleType: string; logo: string; slug: string };
-type VehicleModel = { name: string; type: string; variantCount: number; variants: string[] };
+export type VehicleModel = {
+  name: string;
+  type: string;
+  variantCount: number;
+  variants: string[];
+  image?: {
+    src: string;
+    alt: string;
+    credit?: { author: string; sourceUrl: string; license: string; licenseUrl: string };
+  } | null;
+};
+
+const marutiModelImages: Record<string, NonNullable<VehicleModel["image"]>> = {
+  Swift: {
+    src: "/img/vehicles/swift.jpg",
+    alt: "White Suzuki Swift GLX, front three-quarter view",
+    credit: {
+      author: "Mr.choppers",
+      sourceUrl: "https://commons.wikimedia.org/wiki/File:2022_Suzuki_Swift_1.2_GLX_Automatic_in_Pure_White,_front_right.jpg",
+      license: "CC BY-SA 3.0",
+      licenseUrl: "https://creativecommons.org/licenses/by-sa/3.0/"
+    }
+  },
+  Baleno: {
+    src: "/img/vehicles/baleno.jpg",
+    alt: "Suzuki Baleno hatchback",
+    credit: {
+      author: "Haysnawri10",
+      sourceUrl: "https://commons.wikimedia.org/wiki/File:2021_Suzuki_Baleno.jpg",
+      license: "CC BY-SA 4.0",
+      licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0/"
+    }
+  }
+};
 
 export type BrandCatalogueData = {
   vehicleGroup: string;
@@ -47,6 +80,7 @@ export function getBrandCatalogue(slug: string, brand: CatalogueBrand): BrandCat
     return {
       name,
       type,
+      image: slug === "maruti-suzuki" ? marutiModelImages[name] : undefined,
       variantCount,
       variants: [`${name} (${2021 + (index % 3)})`, `${name} ${index % 2 ? "Deluxe" : "Standard"} (${2023 + (index % 2)})`]
     };

@@ -30,14 +30,14 @@ export default function Heading({
       )}
 
       <h2
-        className="text-3xl leading-tight font-bold tracking-tight text-[#171717] uppercase sm:text-4xl"
+        className="text-3xl font-bold text-foreground uppercase sm:text-4xl"
         dangerouslySetInnerHTML={{
           __html: title,
         }}
       />
 
       {subtitle && (
-        <p className="mx-auto mt-4 mb-10 max-w-3xl text-base leading-7 text-[#4b4b4b] sm:text-lg sm:leading-8">
+        <p className="mx-auto mt-4 mb-10 max-w-3xl text-base text-muted-foreground sm:text-lg ">
           {subtitle}
         </p>
       )}

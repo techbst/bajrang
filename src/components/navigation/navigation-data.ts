@@ -1,3 +1,18 @@
+import { assemblyCatalogueHref, assemblyGroupsByCategory, type AssemblyCategory } from "@/lib/catalogue-assemblies";
+
+export function getAssemblyMenuLinks(category: AssemblyCategory) {
+  const groups = assemblyGroupsByCategory[category];
+  const featured = category === "motorcycle"
+    ? groups.flatMap(({ assemblies }) => assemblies).filter(({ code }) => ["E-4", "E-11", "F-2"].includes(code))
+    : groups[0].assemblies.slice(0, 3);
+  return featured.map(({ code, name, partCount }) => ({
+    code,
+    name,
+    partCount,
+    href: assemblyCatalogueHref(code, category)
+  }));
+}
+
 export type BrandItem = {
   name: string;
   slug: string;
@@ -51,18 +66,21 @@ export const brandGroups: Record<string, BrandItem[]> = {
 export const megaMenuConfig = [
   {
     key: "car",
-    label: "Car Spare Parts",
+    category: "car",
+    label: "Car Parts",
     href: "/catalogue?category=car",
     description: "Genuine parts for passenger and commercial vehicles."
   },
   {
     key: "motorcycle",
-    label: "Motorcycle Spare Parts",
+    category: "motorcycle",
+    label: "Bike Parts",
     href: "/catalogue?category=motorcycle",
     description: "Reliable components for every ride."
   },
   {
     key: "tractor",
+    category: "truck",
     label: "Tractor & HCV Parts",
     href: "/catalogue?category=truck",
     description: "Hard-working parts for demanding applications."

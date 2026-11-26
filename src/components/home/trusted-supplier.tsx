@@ -17,7 +17,7 @@ type TrustedSupplierProps = {
 
 export function TrustedSupplier({ data = trustedSupplierData }: TrustedSupplierProps) {
   return (
-    <section className="grid overflow-hidden bg-[linear-gradient(180deg,#0066A8_0%,#004877_100%)] text-white  lg:grid-cols-[25%_35%_40%]" aria-labelledby="trusted-supplier-title">
+    <section className="grid overflow-hidden bg-linear-to-b from-[#0066A8] to-[#004877] text-white lg:grid-cols-[25%_35%_40%]" aria-labelledby="trusted-supplier-title">
       <div className="relative">
         <Image
           src={data.image}
@@ -29,10 +29,10 @@ export function TrustedSupplier({ data = trustedSupplierData }: TrustedSupplierP
       </div>
 
       <div className="flex flex-col justify-start px-7 py-5 sm:px-12 lg:px-15 lg:py-15 ">
-        <h2 id="trusted-supplier-title" className="text-3xl leading-tight font-bold tracking-tight text-white uppercase sm:text-4xl">
+        <h2 id="trusted-supplier-title" className="text-3xl font-bold text-white uppercase sm:text-4xl">
           {data.title}
         </h2>
-        <p className="mt-4 max-w-3xl text-base leading-7 text-white/95 sm:text-lg sm:leading-8">
+        <p className="mt-4 max-w-3xl text-base text-white/95 sm:text-lg">
           {data.description}
         </p>
         <Button
@@ -56,8 +56,8 @@ export function TrustedSupplier({ data = trustedSupplierData }: TrustedSupplierP
                 <Image src={icon} alt="" width={56} height={56} className="size-9 object-contain sm:size-12" />
               </span>
               <div>
-                <h4 className="!text-xl leading-tight font-bold sm:!text-2xl">{stat.title}</h4>
-                <p className="mt-3 text-base leading-7 text-white/95 sm:text-lg sm:leading-8">{stat.description}</p>
+                <h4 className="!text-xl font-bold sm:!text-2xl">{stat.title}</h4>
+                <p className="mt-3 text-base text-white/95 sm:text-lg">{stat.description}</p>
               </div>
             </li>
           );

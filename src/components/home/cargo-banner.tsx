@@ -27,10 +27,10 @@ export function CargoBanner() {
 
       <div className="container flex min-h-[inherit] items-center py-10 sm:py-12">
         <div className="w-full max-w-[540px] rounded-xl bg-[linear-gradient(153.32deg,#000000_-65.62%,rgba(0,0,0,0.09)_76.12%)] p-6 text-white shadow-[0px_4px_24px_-1px_#00234300] backdrop-blur-[50px] sm:p-8 lg:p-10">
-          <h2 id="cargo-banner-title" className="text-3xl leading-[1.1] font-bold tracking-tight uppercase sm:text-4xl">
+          <h2 id="cargo-banner-title" className="text-3xl font-bold uppercase sm:text-4xl">
             Shipped From India to Global Markets
           </h2>
-          <p className="mt-5 text-base leading-7 text-white/95 sm:text-lg sm:leading-8">
+          <p className="mt-5 text-base text-white/95 sm:text-lg">
             Our export network leverages India’s leading ports and logistics channels for efficient worldwide shipments.
           </p>
 
