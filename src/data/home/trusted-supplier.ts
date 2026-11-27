@@ -14,7 +14,7 @@ export type TrustedSupplierData = {
 
 export const trustedSupplierData: TrustedSupplierData = {
   image: "/img/home/trusted_baj.webp",
-  imageAlt: "Bajrang Automotive team member preparing an export order",
+  imageAlt: "Bajrang Auto Part team member preparing an export order",
   title: "Your Trusted Global Automotive Parts Supplier",
   description: "Delivering genuine automotive parts worldwide with speed and reliability.",
   ctaLabel: "Send Your Requirement",

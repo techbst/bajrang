@@ -3,7 +3,7 @@ import { Container } from "@/components/common/container";
 import { assemblyCatalogueHref, assemblyCategoryFromQuery, assemblyGroupsByCategory } from "@/lib/catalogue-assemblies";
 import { megaMenuConfig } from "@/components/navigation/navigation-data";
 
-export const metadata = { title: "Assembly Groups | Bajrang Automotive" };
+export const metadata = { title: "Assembly Groups | Bajrang Auto Part" };
 
 export default async function AssemblyCataloguePage({ searchParams }: { searchParams: Promise<{ category?: string | string[] }> }) {
   const selected = assemblyCategoryFromQuery((await searchParams).category) ?? "car";

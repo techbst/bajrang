@@ -4,9 +4,9 @@ import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 
 export const metadata = {
-  title: "Contact Bajrang Automotive",
+  title: "Contact Bajrang Auto Part",
   description:
-    "Contact Bajrang Automotive for wholesale automotive parts and export enquiries."
+    "Contact Bajrang Auto Part for wholesale automotive parts and export enquiries."
 };
 
 export default async function ContactRoute({

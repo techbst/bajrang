@@ -45,7 +45,7 @@ const trustPoints = [
 export function Footer() {
   return (
     <footer className="bg-[#0066a8] text-white">
-      <section className="bg-[#171717]" aria-label="Why customers trust Bajrang Automotive">
+      <section className="bg-[#171717]" aria-label="Why customers trust Bajrang Auto Part">
         <div className="container grid sm:grid-cols-3">
           {trustPoints.map((point) => (
             <div
@@ -72,7 +72,7 @@ export function Footer() {
             <BrandLogo inverse />
           </Link>
           <p className="mt-4 max-w-sm text-base text-white/90">
-            Bajrang Automotive supplies genuine and aftermarket automotive parts from India to wholesalers and distributors in over 50 countries.
+            Bajrang Auto Part supplies genuine and aftermarket automotive parts from India to wholesalers and distributors in over 50 countries.
           </p>
           <div className="mt-5 flex gap-5 text-base sm:text-lg">
             <MapPin aria-hidden="true" className="mt-1 size-6 shrink-0" />
@@ -114,7 +114,7 @@ export function Footer() {
 
       <div className="pb-5">
         <div className="border-t border-white/50 pt-5 font-semibold text-center text-md ">
-          Copyright {new Date().getFullYear()} © | All Rights Reserved | Bajrang Automotive
+          Copyright {new Date().getFullYear()} © | All Rights Reserved | Bajrang Auto Part
         </div>
       </div>
     </footer>

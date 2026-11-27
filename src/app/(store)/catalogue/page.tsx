@@ -1,7 +1,7 @@
 import { CatalogueLanding } from "@/components/catalogue/catalogue-landing";
 
 export const metadata = {
-  title: "Automotive Parts Catalogue | Bajrang Automotive",
+  title: "Automotive Parts Catalogue | Bajrang Auto Part",
   description: "Find car, motorcycle, truck, and HCV parts by brand, vehicle, part number, or name.",
 };
 

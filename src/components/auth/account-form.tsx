@@ -25,7 +25,7 @@ export function AccountForm({ mode }: { mode: "login" | "register" }) {
       <div className="container grid max-w-[1200px] gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(340px,0.78fr)] lg:items-stretch">
         <section className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-9 lg:p-11">
           <div className="mb-8">
-            <p className="text-xs font-bold uppercase tracking-[0.2em] text-primary">Bajrang Automotive · Trade Account</p>
+            <p className="text-xs font-bold uppercase tracking-[0.2em] text-primary">Bajrang Auto Part · Trade Account</p>
             <h1 className="mt-3 text-3xl font-bold tracking-tight text-slate-950 sm:text-4xl">{isRegister ? "Create your account" : "Welcome back"}</h1>
             <p className="mt-2 text-sm leading-6 text-slate-600">{isRegister ? "Register your business to manage parts enquiries and orders." : "Sign in to access your parts enquiries, orders and account details."}</p>
           </div>
@@ -56,7 +56,7 @@ export function AccountForm({ mode }: { mode: "login" | "register" }) {
           </form>
 
           <p className="mt-7 border-t border-slate-100 pt-6 text-sm text-slate-600">
-            {isRegister ? "Already have an account?" : "New to Bajrang Automotive?"}{" "}
+            {isRegister ? "Already have an account?" : "New to Bajrang Auto Part?"}{" "}
             <Link href={isRegister ? "/login" : "/register"} className="font-bold text-primary transition-colors hover:text-blue-800">{isRegister ? "Sign in" : "Create a trade account"}</Link>
           </p>
           <p className="mt-5 text-xs leading-5 text-slate-400">Demo account UI · account actions will connect to the account API.</p>
@@ -65,7 +65,7 @@ export function AccountForm({ mode }: { mode: "login" | "register" }) {
         <aside className="relative overflow-hidden rounded-2xl bg-[#101d2d] p-7 text-white sm:p-9 lg:p-11">
           <div className="absolute -right-20 -top-20 size-64 rounded-full bg-primary/30 blur-3xl" />
           <div className="relative -mx-7 -mt-7 mb-7 h-48 overflow-hidden sm:-mx-9 sm:-mt-9 sm:h-56 lg:-mx-11 lg:-mt-11 lg:h-64">
-            <Image src="/img/home/form_sbu.webp" alt="Bajrang Automotive trade support team" fill sizes="(max-width: 1024px) 100vw, 40vw" className="object-cover" />
+            <Image src="/img/home/form_sbu.webp" alt="Bajrang Auto Part trade support team" fill sizes="(max-width: 1024px) 100vw, 40vw" className="object-cover" />
             <div className="absolute inset-0 bg-gradient-to-t from-[#101d2d]/90 via-[#101d2d]/15 to-transparent" />
             <p className="absolute inset-x-5 bottom-4 text-xs font-bold uppercase tracking-[0.16em] text-white sm:inset-x-7">automotive parts sourcing for trade</p>
           </div>

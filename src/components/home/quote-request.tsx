@@ -14,7 +14,7 @@ export function QuoteRequest() {
           <div className="relative aspect-[4/3] w-full overflow-hidden rounded-xl border border-border bg-[#f1f5f9] sm:aspect-[16/10] lg:aspect-[690/475] lg:max-w-[690px]">
             <Image
               src="/img/home/form_sbu.webp"
-              alt="Bajrang Automotive support team helping customers with parts enquiries"
+              alt="Bajrang Auto Part support team helping customers with parts enquiries"
               fill
               sizes="(min-width: 1024px) 45vw, 100vw"
               className="object-cover object-[center_24%]"

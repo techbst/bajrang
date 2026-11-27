@@ -101,7 +101,7 @@ export function Hero() {
               </a>
             </div>
             <dl
-              aria-label="Bajrang Automotive in numbers"
+              aria-label="Bajrang Auto Part in numbers"
               tabIndex={0}
               className="mt-6 flex w-fit max-w-full snap-x overflow-x-auto overscroll-x-contain rounded-xl border border-white/20 bg-slate-950/35 backdrop-blur-lg [scrollbar-width:thin] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-blue-300 sm:mt-7"
             >

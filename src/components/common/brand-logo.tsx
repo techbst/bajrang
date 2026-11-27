@@ -1,19 +1,23 @@
-import { siteConfig } from "@/config/site";
+import Image from "next/image";
 
 export function BrandLogo({ inverse = false }: { inverse?: boolean }) {
-  return (
-    <span aria-hidden="true" className="inline-flex min-w-0 items-center gap-2 sm:gap-3">
-      <span
-        className={`shrink-0 bg-left bg-no-repeat bg-[length:auto_100%] ${inverse ? "size-12 bg-[url('/img/footer-logo.webp')]" : "size-9 bg-[url('/img/common/logo.png')] sm:size-11"}`}
-      />
-      <span className="min-w-0">
-        <span className={`block font-bold uppercase ${inverse ? "text-xl text-white sm:text-2xl" : "text-sm whitespace-nowrap text-primary sm:text-xl"}`}>
-          {siteConfig.name}
-        </span>
-        <span className={`block text-xs font-semibold ${inverse ? "text-white/85" : "text-slate-600"}`}>
-          {inverse ? "International leader in quality automotive parts" : "Since 2009"}
-        </span>
-      </span>
-    </span>
+  return inverse ? (
+    <Image
+      src="/img/footer-logo.webp"
+      alt=""
+      width={560}
+      height={160}
+      className="h-auto w-[280px] max-w-full sm:w-[340px]"
+    />
+  ) : (
+    <Image
+      src="/img/common/logo.png"
+      alt=""
+      width={1461}
+      height={221}
+      sizes="(min-width: 1536px) 320px, (min-width: 640px) 288px, 240px"
+      className="h-auto w-60 max-w-full sm:w-72 2xl:w-80"
+      priority
+    />
   );
 }
