@@ -3,7 +3,7 @@ import Image from "next/image";
 export function BrandLogo({ inverse = false }: { inverse?: boolean }) {
   return inverse ? (
     <Image
-      src="/img/footer-logo.webp"
+      src="/img/footer-logo-white.webp"
       alt=""
       width={560}
       height={160}
