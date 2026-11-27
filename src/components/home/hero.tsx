@@ -102,15 +102,14 @@ export function Hero() {
             </div>
             <dl
               aria-label="Bajrang Auto Part in numbers"
-              tabIndex={0}
-              className="mt-6 flex w-fit max-w-full snap-x overflow-x-auto overscroll-x-contain rounded-xl border border-white/20 bg-slate-950/35 backdrop-blur-lg [scrollbar-width:thin] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-blue-300 sm:mt-7"
+              className="mt-6 grid grid-cols-2 overflow-hidden rounded-xl border border-white/20 bg-slate-950/35 backdrop-blur-lg sm:mt-7 sm:w-fit sm:max-w-full sm:grid-cols-4"
             >
               {aboutData.facts.stats.map(({ label, value }) => (
                 <div
                   key={label}
-                  className="flex shrink-0 snap-start flex-col-reverse gap-0.5 border-r border-white/15 px-3 py-2 last:border-r-0 sm:px-4"
+                  className="flex min-w-0 flex-col-reverse gap-0.5 border-white/15 px-3 py-2 odd:border-r [&:nth-child(-n+2)]:border-b sm:border-r sm:px-4 sm:last:border-r-0 sm:[&:nth-child(-n+2)]:border-b-0"
                 >
-                  <dt className="text-[11px] font-medium whitespace-nowrap text-slate-200 sm:text-xs">{label}</dt>
+                  <dt className="text-[11px] font-medium text-slate-200 sm:text-xs">{label}</dt>
                   <dd className="text-xl font-semibold text-white tabular-nums sm:text-2xl">
                     <CountUp value={value} />
                   </dd>
